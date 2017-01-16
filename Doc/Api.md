@@ -1,5 +1,8 @@
 
-Application definition
+# Application definition
+
+* Application object definition
+
 ```json
 {
     "Id": 1,
@@ -24,16 +27,31 @@ Application definition
 ```
 
 1. Get application detail according to application ID
-Get {customer}/application/{applicationId}
 
+```text
+Get {customer}/application/{applicationId}
+```
 2. Get applciaiton details according to application Name
+
+```text
 Get {customer}/applciaiton/{applciaitonName}
+```
 
 3. Get all applciaitons
+
+```text
 Get {customer}/applications
+```
 
 4. Add a new application
+
+```text
 POST {customer}/application
+```
+
+Body Parameter
+
+```json
 {
     "Name": "Chocolately",
     "Description": "",
@@ -52,9 +70,17 @@ POST {customer}/application
     "Quiet": True(Default),
     "OS": [{}, {}]
 }
+```
 
 5. Update applicaiton details
+
+```text
 PUT {customer}/applicaiton/{applciationId}
+```
+
+Body Parameter
+
+```json
 {
     "Name": "Chocolately",
     "Version": "",
@@ -63,11 +89,18 @@ PUT {customer}/applicaiton/{applciationId}
     "QuitCode": 0,
     "Dependency": [{}]
 }
+```
 
 6. DELETE a single applcation accroding applciationId
-DELETE {customer}/application/{applciationId}
 
-Application Installation List
+```text
+DELETE {customer}/application/{applciationId}
+```
+
+# Application Installation List
+
+* Application List object definition
+
 ```json
 {
     "Id": 1,
@@ -82,39 +115,68 @@ Application Installation List
 }
 ```
 
-7. GET {customer}/applicationList/{ListID}
+7. Get a single list according to ListID
 
-8. GET {customer}/applicationLists
+```text 
+GET {customer}/applicationList/{ListID}
+```
 
-9. POST {customer}/applcationList
-{
-    "Name": "CWC Dev",
-    "Description": "Nanjint team cwc dev",
-    "Applications": [{}, {}],
-    "CreateDate": "2017-01-16",
-    "Customer": "root",
-    "Script": ""
-    "OS": [{}, {}],
-    "Like": 0
-}
+8. Get all list  
 
-10. PUT {customer}/applicationList/{ListID}
-{
-    "Name": "CWC Dev",
-    "Description": "Nanjint team cwc dev",
-    "Applications": [{}, {}],
-    "CreateDate": "2017-01-16",
-    "Customer": "root",
-    "Script": ""
-    "OS": [{}, {}],
-    "Like": 0
-}
+```text
+GET {customer}/applicationLists
+```
 
-11. DELETE {customer}/applicationList/{ListID}
+9. Create a new list 
 
-OS definition
+```text
+POST {customer}/applcationList
+```
+
+Body Parameter
+
 ```json
 {
-    Name: ""
+    "Name": "CWC Dev",
+    "Description": "Nanjint team cwc dev",
+    "Applications": [{}, {}],
+    "CreateDate": "2017-01-16",
+    "Customer": "root",
+    "Script": ""
+    "OS": [{}, {}],
+    "Like": 0
+}
+```
+
+10. Modify a application 
+
+```text
+PUT {customer}/applicationList/{ListID}
+```
+
+Body Parameter
+
+```json
+{
+    "Name": "CWC Dev",
+    "Description": "Nanjint team cwc dev",
+    "Applications": [{}, {}],
+    "CreateDate": "2017-01-16",
+    "Customer": "root",
+    "Script": ""
+    "OS": [{}, {}],
+    "Like": 0
+}
+```
+
+11. Delete a list according ListID
+```text
+ DELETE {customer}/applicationList/{ListID}
+```
+* OS definition
+
+```json
+{
+    "Name": "Windows 8 x64"
 }
 ```
