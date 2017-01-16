@@ -8,7 +8,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var mongoose = require('mongoose'); 		   // Mongoose for mongodb
 var path = require('path');
-var port = process.env.PORT || 3001; 		   // Set the port
 
 /* Router */
 var index = require('./routes/index');
@@ -34,10 +33,6 @@ app.use(bodyParser.urlencoded({'extended': 'true'})); // Parse application/x-www
 app.use(bodyParser.json()); // Parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'})); // Parse application/vnd.api+json as json
 app.use(cookieParser());
-
-/* Listen */
-app.listen(port);
-console.log("App listening on port: " + port);
 
 /* Catch 404 and forward to error handler */
 app.use(function(req, res, next) {
