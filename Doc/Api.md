@@ -1,27 +1,29 @@
 # Restful API definition
 
-# Application object definition
+# Application
+
+* Application object definition
 
 ```json
 {
-    "id": 1,
-    "name": "Chocolately",
-    "description": "",
-    "version": "",
-    "message": "Installing Chocolately",
-    "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
-    "quitCode": 0,
-    "dependency": [{}],
     "createDate": "",
-    "sourceURL": "",
-    "publisher": "",
+    "dependency": [{}],
+    "description": "",
     "downloadSize": "100 MB",
     "icon": "",
+    "id": 1,
     "like": 0,
-    "restart": True|False,
+    "message": "Installing Chocolately",
+    "name": "Chocolately",
     "passive": True|False,
+    "publisher": "",
     "quiet": True|Fasle,
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}]
+    "quitCode": 0,
+    "restart": True|False,
+    "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
+    "sourceURL": "",
+    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "version": ""
 }
 ```
 
@@ -52,22 +54,22 @@ Body Parameter
 
 ```json
 {
-    "name": "Chocolately",
-    "description": "",
-    "version": "",
-    "message": "Installing Chocolately",
-    "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
-    "quitCode": 0,
     "dependency": [{}],
-    "sourceURL": "",
-    "publisher": "",
+    "description": "",
     "downloadSize": "100 MB",
     "icon": "",
     "like": 0(Default),
-    "restart": False(Default),
+    "message": "Installing Chocolately",
+    "name": "Chocolately",
     "passive": False(Default),
+    "publisher": "",
     "quiet": True(Default),
-    "supportedOS": [{}, {}]
+    "quitCode": 0,
+    "restart": False(Default),
+    "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
+    "sourceURL": "",
+    "supportedOS": [{}, {}],
+    "version": ""
 }
 ```
 
@@ -81,12 +83,12 @@ Body Parameter
 
 ```json
 {
-    "name": "Chocolately",
-    "version": "",
+    "dependency": [{}],
     "message": "Installing Chocolately",
-    "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
+    "name": "Chocolately",
     "quitCode": 0,
-    "dependency": [{}]
+    "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
+    "version": ""
 }
 ```
 
@@ -102,15 +104,15 @@ DELETE {customer}/application/{applciationId}
 
 ```json
 {
-    "id": 1,
-    "name": "CWC Dev",
-    "description": "Nanjint team cwc dev",
     "applications": [{}, {}],
     "createDate": "2017-01-16",
     "customer": "root",
+    "description": "Nanjint team cwc dev",
+    "id": 1,
+    "like": 0,
+    "name": "CWC Dev",
     "script": "",
-    "supportedOS": [{}, {}],
-    "like": 0
+    "supportedOS": [{}, {}]
 }
 ```
 
@@ -136,14 +138,14 @@ Body Parameter
 
 ```json
 {
-    "name": "CWC Dev",
-    "description": "Nanjint team cwc dev",
     "applications": [{}, {}],
     "createDate": "2017-01-16",
     "customer": "root",
+    "description": "Nanjint team cwc dev",
+    "like": 0,
+    "name": "CWC Dev",
     "script": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
-    "like": 0
+    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}]
 }
 ```
 
@@ -157,14 +159,14 @@ Body Parameter
 
 ```json
 {
-    "name": "CWC Dev",
-    "description": "Nanjing CWC Dev Team",
     "applications": [{}, {}],
     "createDate": "2017-01-16",
     "customer": "root",
+    "description": "Nanjing CWC Dev Team",
+    "like": 0,
+    "name": "CWC Dev",
     "script": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
-    "like": 0
+    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}]
 }
 ```
 

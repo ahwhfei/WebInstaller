@@ -1,0 +1,15 @@
+<div class="navbar">
+    <span>Smart Automation Installer</span>
+</div>
+<div class="container">
+    <div class="search-bar">
+        <input class="search-textbox" type="text" placeholder="Search Application Name" />
+        <input class="search-button" type="button" value="Search" />
+    </div>
+    <div class="application-list">
+        <div *ngFor="let app of applicationList">
+            <span>{{app.name}}</span>
+        </div>
+    </div>
+</div>
+
