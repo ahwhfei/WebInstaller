@@ -1,28 +1,27 @@
+# Restful API definition
 
-# Application definition
-
-* Application object definition
+# Application object definition
 
 ```json
 {
-    "Id": 1,
-    "Name": "Chocolately",
-    "Description": "",
-    "Version": "",
-    "Message": "Installing Chocolately",
-    "Script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
-    "QuitCode": 0,
-    "Dependency": [{}],
-    "CreateDate": "",
-    "SourceURL": "",
-    "Publisher": "",
-    "DownloadSize": "100 MB",
-    "Icon": "",
-    "Like": 0,
-    "Restart": True|False,
-    "Passive": True|False,
-    "Quiet": True|Fasle,
-    "OS": [{}, {}]
+    "id": 1,
+    "name": "Chocolately",
+    "description": "",
+    "version": "",
+    "message": "Installing Chocolately",
+    "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
+    "quitCode": 0,
+    "dependency": [{}],
+    "createDate": "",
+    "sourceURL": "",
+    "publisher": "",
+    "downloadSize": "100 MB",
+    "icon": "",
+    "like": 0,
+    "restart": True|False,
+    "passive": True|False,
+    "quiet": True|Fasle,
+    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}]
 }
 ```
 
@@ -31,16 +30,16 @@
 ```text
 Get {customer}/application/{applicationId}
 ```
-2. Get applciaiton details according to application Name
+2. Get applicaiton details according to application Name
 
 ```text
-Get {customer}/applciaiton/{applciaitonName}
+GET {customer}/applicaiton/{applciaitonName}
 ```
 
-3. Get all applciaitons
+3. Get all applicaitons
 
 ```text
-Get {customer}/applications
+GET {customer}/applications
 ```
 
 4. Add a new application
@@ -53,22 +52,22 @@ Body Parameter
 
 ```json
 {
-    "Name": "Chocolately",
-    "Description": "",
-    "Version": "",
-    "Message": "Installing Chocolately",
-    "Script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
-    "QuitCode": 0,
-    "Dependency": [{}],
-    "SourceURL": "",
-    "Publisher": "",
-    "DownloadSize": "100 MB",
-    "Icon": "",
-    "Like": 0(Default),
-    "Restart": False(Default),
-    "Passive": False(Default),
-    "Quiet": True(Default),
-    "OS": [{}, {}]
+    "name": "Chocolately",
+    "description": "",
+    "version": "",
+    "message": "Installing Chocolately",
+    "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
+    "quitCode": 0,
+    "dependency": [{}],
+    "sourceURL": "",
+    "publisher": "",
+    "downloadSize": "100 MB",
+    "icon": "",
+    "like": 0(Default),
+    "restart": False(Default),
+    "passive": False(Default),
+    "quiet": True(Default),
+    "supportedOS": [{}, {}]
 }
 ```
 
@@ -82,12 +81,12 @@ Body Parameter
 
 ```json
 {
-    "Name": "Chocolately",
-    "Version": "",
-    "Message": "Installing Chocolately",
-    "Script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
-    "QuitCode": 0,
-    "Dependency": [{}]
+    "name": "Chocolately",
+    "version": "",
+    "message": "Installing Chocolately",
+    "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
+    "quitCode": 0,
+    "dependency": [{}]
 }
 ```
 
@@ -103,15 +102,15 @@ DELETE {customer}/application/{applciationId}
 
 ```json
 {
-    "Id": 1,
-    "Name": "CWC Dev",
-    "Description": "Nanjint team cwc dev",
-    "Applications": [{}, {}],
-    "CreateDate": "2017-01-16",
-    "Customer": "root",
-    "Script": ""
-    "OS": [{}, {}],
-    "Like": 0
+    "id": 1,
+    "name": "CWC Dev",
+    "description": "Nanjint team cwc dev",
+    "applications": [{}, {}],
+    "createDate": "2017-01-16",
+    "customer": "root",
+    "script": "",
+    "supportedOS": [{}, {}],
+    "like": 0
 }
 ```
 
@@ -130,21 +129,21 @@ GET {customer}/applicationLists
 9. Create a new list 
 
 ```text
-POST {customer}/applcationList
+POST {customer}/applicationList
 ```
 
 Body Parameter
 
 ```json
 {
-    "Name": "CWC Dev",
-    "Description": "Nanjint team cwc dev",
-    "Applications": [{}, {}],
-    "CreateDate": "2017-01-16",
-    "Customer": "root",
-    "Script": ""
-    "OS": [{}, {}],
-    "Like": 0
+    "name": "CWC Dev",
+    "description": "Nanjint team cwc dev",
+    "applications": [{}, {}],
+    "createDate": "2017-01-16",
+    "customer": "root",
+    "script": "",
+    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "like": 0
 }
 ```
 
@@ -158,14 +157,14 @@ Body Parameter
 
 ```json
 {
-    "Name": "CWC Dev",
-    "Description": "Nanjint team cwc dev",
-    "Applications": [{}, {}],
-    "CreateDate": "2017-01-16",
-    "Customer": "root",
-    "Script": ""
-    "OS": [{}, {}],
-    "Like": 0
+    "name": "CWC Dev",
+    "description": "Nanjing CWC Dev Team",
+    "applications": [{}, {}],
+    "createDate": "2017-01-16",
+    "customer": "root",
+    "script": "",
+    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "like": 0
 }
 ```
 
@@ -173,7 +172,7 @@ Body Parameter
 ```text
  DELETE {customer}/applicationList/{ListID}
 ```
-* OS definition
+# OS definition
 
 ```json
 {
