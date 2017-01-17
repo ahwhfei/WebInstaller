@@ -2,26 +2,12 @@
     margin: 0 200px;
 }
 
-.navbar {
-    height: 60px;
-    line-height: 60px;
-    background-color: #658db5;
-    color: #f8f8f8;
-    font-size: 1em;
-    font-weight: 700;
-    font-family: 'Open Sans', sans-serif;
-
-    span {
-        margin: 0 200px;
-    }
-}
-
 .search-bar {
     height: 80px;
     line-height: 80px;
 
     .search-textbox {
-        height: 42px;
+        height: 46px;
         background-color: white;
         border: 1px solid #f3f3f3;
         border-radius: 4px;
@@ -48,36 +34,49 @@
 
 .application-list {
     min-height: 500px;
-    margin-top: 10px;
-    overflow: hidden;
+    margin-top: 10px; 
+}
 
-    .application-item {
-        height: 80px;
-        margin-bottom: 10px;
-        background-color: white;
-        padding: 10px 20px;
+.application-item:hover {
+    box-shadow: 0 4px 8px 0 rgba(150, 150, 150, 0.2), 0 6px 20px 0 rgba(150, 150, 150, 0.1);
+}
 
-        img {
-            width: 48px;
-            height: 48px;
-        }
+.application-item {
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 
-        .add-button {
-            margin-top: 5px;
-            float: right;
-            height: 46px;
-            line-height: 46px;
-            border-radius: 4px;
-            color: #FFF;
-            background-color: #658db5;
-            border: 1px solid #FFF;
-            padding-left: 20px;
-            padding-right: 20px;
+    img {
+        margin-top: 6px;
+        width: 48px;
+        height: 48px;
+    }
 
-        }
+    .item {
+        overflow: hidden;
+    }
 
-        .add-button:hover {
-            background-color: #2c4f71;
-        }
+    .add-button {
+        margin-top: 5px;
+        float: right;
+        height: 46px;
+        line-height: 46px;
+        border-radius: 4px;
+        color: #FFF;
+        background-color: #658db5;
+        border: 1px solid #FFF;
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+    .add-button:hover {
+        background-color: #2c4f71;
+    }
+
+    .app-name {
+        font-size: 16px;
     }
 }

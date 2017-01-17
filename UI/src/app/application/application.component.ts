@@ -11,6 +11,7 @@ import { ApplicationService } from './application.service';
 })
 export class ApplicationComponent implements OnInit {
     public applicationList: Array<Application>;
+    public applicationCount: number = 0;
 
     constructor(private applicationService: ApplicationService) {}
 
@@ -20,5 +21,21 @@ export class ApplicationComponent implements OnInit {
 
     ngOnInit(): void {
         this.getApplications();
+        this.unSelectAllApplications();
+    }
+
+    private unSelectAllApplications(): void {
+        this.applicationList.map(e => {
+            e['isSelected'] = false;
+        });
+    }
+
+    public add(index: number): void {
+        if (this.applicationList[index]['isSelected']) {
+            this.applicationCount--;
+        } else {
+            this.applicationCount++;
+        }
+        this.applicationList[index]['isSelected'] = !this.applicationList[index]['isSelected'];
     }
 }

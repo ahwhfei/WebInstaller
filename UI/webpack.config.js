@@ -3,6 +3,14 @@ const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    devServer: {
+        port: 3000,
+        historyApiFallback: true,
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 1000
+        }
+    },
     entry: path.resolve('src', 'main.ts'),
     module: {
         rules: [

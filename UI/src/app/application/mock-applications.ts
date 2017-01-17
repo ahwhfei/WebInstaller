@@ -106,7 +106,7 @@ export const APPLICATIONS: Array<Application> = [
         dependency: [],
         description: '',
         downloadSize: '100 MB',
-        icon: 'https://chocolatey.org/content/packageimages/sublimetext2.2.0.2.2221.png',
+        icon: '',
         id: 1,
         like: 0,
         message: 'Installing Sublime Text3',
@@ -241,7 +241,6 @@ export const APPLICATIONS: Array<Application> = [
         supportedOS: [{name: 'Windows 8 x64'}, {name: 'Windows 10 x64'}],
         version: ''
     },
-    
     {
         createDate: '',
         dependency: [],

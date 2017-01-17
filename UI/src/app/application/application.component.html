@@ -1,19 +1,22 @@
-<div class="navbar">
-    <span>Smart Automation Installer</span>
-</div>
+
 <div class="application-container">
     <div class="search-bar">
         <input class="search-textbox" type="text" placeholder="Search Application Name" />
         <input class="search-button" type="button" value="Search" />
     </div>
     <div class="application-list">
-        <div *ngFor="let app of applicationList" class="application-item">
-            <div class="col-md-2 col-sm-2">
-                <img src={{app.icon}}></div>
-            <div class="col-md-8 col-sm-8">
-                <span>{{app.name}}</span></div>
-            <div class="col-md-2 col-sm-2">
-                <input type="button" value="Add" class="add-button" /></div>
+        <div *ngFor="let app of applicationList; let i=index;" class="application-item">
+            <div class="item">
+                <div class="col-md-1 col-sm-1">
+                    <img src={{app.icon}}></div>
+                <div class="col-md-9 col-sm-9">
+                    <div class="app-name">{{app.name}}</div>
+                    <div><span>{{app.script}}</span></div>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <input type="button" value="{{app.isSelected ? 'Remove' : 'Add'}}" class="add-button" (click)="add(i)"/>
+                </div>
+            </div>
         </div>
     </div>
 </div>
