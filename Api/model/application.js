@@ -7,7 +7,7 @@ var AppSchema = new mongoose.Schema({
     "Message": String,
     "Script": String,
     "QuitCode": Number,
-    "Dependency": Array,
+    "Dependency": [{"ID": String}],
     "CreateDate": String,
     "SourceURL": String,
     "Publisher": String,
@@ -17,7 +17,7 @@ var AppSchema = new mongoose.Schema({
     "Restart": Boolean,
     "Passive": Boolean,
     "Quiet": Boolean,
-    "OS": Array
+    "OS": [{"Name": String}]
 });
 
 module.exports = mongoose.model('App', AppSchema);
