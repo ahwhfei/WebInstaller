@@ -1,12 +1,12 @@
 /* Set up */
 var express = require('express');
-var app = express();                           // Create our app based on express
+var app = express();  // Create our app based on express
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var database = require('./config/database');   // Load the database config
+var database = require('./config/database');  // Load the database config
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var mongoose = require('mongoose'); 		   // Mongoose for mongodb
+var mongoose = require('mongoose');  // Mongoose for mongodb
 var path = require('path');
 
 /* Router */
@@ -18,7 +18,7 @@ app.use('/users', users);
 /* Connect to MongoDB */
 mongoose.Promise = global.Promise;
 mongoose.connect(database.localDB)
-	.then(() => console.log('connection succesful'))
+	.then(() => console.log('DB connection succesful'))
 	.catch((err) => console.error(err));
 
 /* View engine setup */
