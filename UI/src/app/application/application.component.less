@@ -1,4 +1,4 @@
-.container {
+.application-container {
     margin: 0 200px;
 }
 
@@ -32,6 +32,7 @@
 
     .search-button {
         height: 46px;
+        line-height: 46px;
         border-radius: 4px;
         color: #FFF;
         background-color: #658db5;
@@ -46,7 +47,37 @@
 }
 
 .application-list {
-    background-color: #FFF;
     min-height: 500px;
-    border-radius: 4px;
+    margin-top: 10px;
+    overflow: hidden;
+
+    .application-item {
+        height: 80px;
+        margin-bottom: 10px;
+        background-color: white;
+        padding: 10px 20px;
+
+        img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .add-button {
+            margin-top: 5px;
+            float: right;
+            height: 46px;
+            line-height: 46px;
+            border-radius: 4px;
+            color: #FFF;
+            background-color: #658db5;
+            border: 1px solid #FFF;
+            padding-left: 20px;
+            padding-right: 20px;
+
+        }
+
+        .add-button:hover {
+            background-color: #2c4f71;
+        }
+    }
 }
