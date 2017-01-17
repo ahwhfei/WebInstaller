@@ -4,34 +4,44 @@ var router = express.Router();
 
 var AppList = require('../model/applicationList');
 
-/* GET all application lists. */
+/* GET all application lists */
 router.get('/:customer/applicationLists', function(req, res, next) {
-    console.log(req.params.customer);
-	res.send('This is get all application lists api.');
+    AppList.find(function (err, appLists) {
+        if (err) return next(err);
+        res.json(appLists);
+    });
 });
 
-/* GET an application list according to ListID */
-router.get('/:customer/applicationList/:listID', function(req, res, next) {
-    console.log(req.params.customer);
-	res.send('This is get an application list api.');
+/* GET an application list according to ID */
+router.get('/:customer/applicationList/:id', function(req, res, next) {
+    AppList.findById(req.params.id, function (err, appList) {
+        if (err) return next(err);
+        res.json(appList);
+    });
 });
 
 /* CREATE a new application list */
 router.post('/:customer/applicationList', function(req, res, next) {
-    console.log(req.params.customer);
-	res.send('This is create an application list api.');
+    AppList.create(req.body, function (err, appList) {
+		if (err) return next(err);
+		res.send('Create successfully');
+	});
 });
 
 /* UPDATE an application list */
-router.put('/:customer/applicationList/:listID', function(req, res, next) {
-    console.log(req.params.customer);
-	res.send('This is update an application list api.');
+router.put('/:customer/applicationList/:id', function(req, res, next) {
+    AppList.findByIdAndUpdate(req.params.id, req.body, function (err, appList) {
+        if (err) return next(err);
+        res.send('Update successfully');
+    });
 });
 
-/* DELETE an application list according to ListID */
- router.delete('/:customer/applicationList/:listID', function(req, res, next) {
-    console.log(req.params.customer);
-	res.send('This is delete an application list api.');
+/* DELETE an application list */
+ router.delete('/:customer/applicationList/:id', function(req, res, next) {
+    AppList.findByIdAndRemove(req.params.id, function (err, appList) {
+        if (err) return next(err);
+        res.send('Delete successfully');
+    });
 });
 
 module.exports = router;

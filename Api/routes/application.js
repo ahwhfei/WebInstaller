@@ -4,7 +4,7 @@ var router = express.Router();
 
 var App = require('../model/application');
 
-/* GET all applications. */
+/* GET all applications */
 router.get('/:customer/applications', function(req, res, next) {
     App.find(function (err, apps) {
         if (err) return next(err);
@@ -35,7 +35,7 @@ router.post('/:customer/application', function(req, res, next) {
 	});
 });
 
-/* UPDATE a specific applicaiton details */
+/* UPDATE an applicaiton */
 router.put('/:customer/application/:id', function(req, res, next) {
     App.findByIdAndUpdate(req.params.id, req.body, function (err, app) {
         if (err) return next(err);
@@ -43,7 +43,7 @@ router.put('/:customer/application/:id', function(req, res, next) {
     });
 });
 
-/* DELETE one applcation accroding to applciationID */
+/* DELETE an applcation */
 router.delete('/:customer/application/:id', function(req, res, next) {
     App.findByIdAndRemove(req.params.id, function (err, app) {
         if (err) return next(err);
