@@ -11,9 +11,11 @@ var path = require('path');
 
 /* Router */
 var index = require('./routes/index');
-var users = require('./routes/users');
+var application = require('./routes/application');
+var applicationList = require('./routes/applicationList');
 app.use('/', index);
-app.use('/users', users);
+app.use('/', application);
+app.use('/', applicationList);
 
 /* Connect to MongoDB */
 mongoose.Promise = global.Promise;
@@ -43,11 +45,11 @@ app.use(function(req, res, next) {
 
 /* Error handler */
 app.use(function(err, req, res, next) {
-	// set locals, only providing error in development
+	// Set locals, only providing error in development
 	res.locals.message = err.message;
 	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-	// render the error page
+	// Render the error page
 	res.status(err.status || 500);
 	res.render('error');
 });
