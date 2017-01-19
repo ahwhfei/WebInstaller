@@ -8,10 +8,10 @@
         <div *ngFor="let app of applicationList; let i=index;" class="application-item">
             <div class="item">
                 <div class="col-md-1 col-sm-1">
-                    <img src={{app.icon}}></div>
+                    <img src={{app.application.icon}}></div>
                 <div class="col-md-9 col-sm-9">
-                    <div class="app-name">{{app.name}}</div>
-                    <div><span>{{app.script}}</span></div>
+                    <div class="app-name">{{app.application.name}}</div>
+                    <!--<div class="app-script">{{app.application.script}}</div>-->
                 </div>
                 <div class="col-md-2 col-sm-2">
                     <input type="button" value="{{app.isSelected ? 'Remove' : 'Add'}}" class="add-button" (click)="add(i)"/>

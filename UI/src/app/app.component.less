@@ -1,3 +1,5 @@
+@import "../../node_modules/bootstrap/less/variables.less";
+
 body {
     margin: 0 0;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
@@ -15,8 +17,14 @@ body {
     font-weight: 700;
     font-family: 'Open Sans', sans-serif;
 
-    span {
-        margin: 0 200px;
+    .home {
+        cursor: pointer;
+        height: 100%;
+        background-color: #3B5998;
+        width: 150px;
+        text-align: center;
+        padding: 0 10px;
+        float: left;
     }
 
     .list {
@@ -25,11 +33,39 @@ body {
         width: 80px;
         float: right;
         text-align: center;
-        margin-right: 200px;
         cursor: pointer;
     }
 
-    .list:hover {
+    .list:hover, .home:hover {
         background-color: #333;
+    }
+}
+
+.app-container, .navbar {
+    padding: 0 200px;
+    overflow: hidden;
+}
+
+@media (max-width: 1400px) {
+    .app-container, .navbar {
+        padding: 0 150px;
+    }
+}
+
+@media (max-width: @screen-md-max) {
+    .app-container, .navbar {
+        padding: 0 100px;
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .app-container, .navbar {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .app-container, .navbar {
+        padding: 0 10px;
     }
 }

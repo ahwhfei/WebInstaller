@@ -11,6 +11,7 @@ module.exports = {
             poll: 1000
         }
     },
+    devtool: 'source-map',
     entry: path.resolve('src', 'main.ts'),
     module: {
         rules: [

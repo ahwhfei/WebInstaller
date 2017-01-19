@@ -1,5 +1,7 @@
 <div class="navbar">
-    <span>Smart Automation Installer</span>
-    <div class="list" routerLink="/list" >App List</div>
+    <div class="home" routerLink="/">Smart Automation Installer</div>
+    <div class="list" routerLink="/list" >App List {{applicationCount}}</div>
 </div>
-<router-outlet></router-outlet>
+<div class="app-container">
+    <router-outlet></router-outlet>
+</div>
