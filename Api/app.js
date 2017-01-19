@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();  // Create our app based on express
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var cors = require('cors');
 var database = require('./config/database');  // Load the database config
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -20,6 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 /* Configuration */
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));  // Set the static files location
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));  // Set the favicon
 app.use(logger('dev'));  // Log every request to the console
