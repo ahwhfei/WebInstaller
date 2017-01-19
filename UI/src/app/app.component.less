@@ -8,64 +8,70 @@ body {
     background-color: #f3f3f3;
 }
 
-.navbar {
+.app-navbar {
     height: 60px;
-    line-height: 60px;
     background-color: #658db5;
     color: #f8f8f8;
     font-size: 1em;
     font-weight: 700;
     font-family: 'Open Sans', sans-serif;
 
-    .home {
-        cursor: pointer;
-        height: 100%;
-        background-color: #3B5998;
-        width: 150px;
-        text-align: center;
-        padding: 0 10px;
-        float: left;
-    }
+    .navmain {
+        margin: 0 auto 0;
+        list-style: none;
+        padding: 0;
 
-    .list {
-        height: 100%;
-        background-color: #3B5998;
-        width: 80px;
-        float: right;
-        text-align: center;
-        cursor: pointer;
-    }
+        li {
+            height: 60px;
+            line-height: 60px;
+            padding: 0 10px;
+            color: #f8f8f8;
+            text-decoration: none;
+            display: inline-block;
+            border-right: 1px solid #7397BB;
+            cursor: pointer;
+        }
 
-    .list:hover, .home:hover {
-        background-color: #333;
+        li:hover {
+            background-color: #333;
+        }
+
+        .home {
+            border-left: 1px solid #7397BB;
+        }
+
+        .subscribe {
+            float: right;
+            background-color: #3B5998;
+        }
     }
 }
 
-.app-container, .navbar {
+.app-container, .app-navbar {
     padding: 0 200px;
     overflow: hidden;
 }
 
 @media (max-width: 1400px) {
-    .app-container, .navbar {
+    .app-container, .app-navbar {
         padding: 0 150px;
     }
 }
 
 @media (max-width: @screen-md-max) {
-    .app-container, .navbar {
+    .app-container, .app-navbar {
         padding: 0 100px;
     }
 }
 
 @media (max-width: @screen-sm-max) {
-    .app-container, .navbar {
+    .app-container, .app-navbar {
         padding: 0 50px;
     }
 }
 
 @media (max-width: @screen-xs-max) {
-    .app-container, .navbar {
+    .app-container, .app-navbar {
         padding: 0 10px;
     }
 }

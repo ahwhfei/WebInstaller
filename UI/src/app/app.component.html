@@ -1,6 +1,10 @@
-<div class="navbar">
-    <div class="home" routerLink="/">Smart Automation Installer</div>
-    <div class="list" routerLink="/list" >App List {{applicationCount}}</div>
+<div class="app-navbar">
+    <ul class="navmain">
+        <li class="home" routerLink="/">Batch Installer</li>
+        <li routerLink="/">Package Management</li>
+        <li routerLink="/">Subscription</li>
+        <li class="subscribe" routerLink="/subscribe">Subscribe {{applicationCount}}</li>
+    </ul>
 </div>
 <div class="app-container">
     <router-outlet></router-outlet>

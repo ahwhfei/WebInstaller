@@ -24,13 +24,16 @@ export class ApplicationComponent implements OnInit {
                 private applicationListService: ApplicationListService) {}
 
     private getApplications(): void {
-        this.applicationService.getApplications().map(e => {
-            let app: ApplicationWithSelected = new ApplicationWithSelected();
-            app.application = e;
-            this.applicationList.push(app);
-        });
+        this.applicationService.getApplications()
+            .then (apps => {
+                apps.map(e => {
+                    let app: ApplicationWithSelected = new ApplicationWithSelected();
+                    app.application = e;
+                    this.applicationList.push(app);
+                });
 
-        this.setSelectedApplications();
+                this.setSelectedApplications();
+            });
     }
 
     private setSelectedApplications(): void {
