@@ -1,91 +1,43 @@
 <search-bar></search-bar>
 <div class="application-container">
-    <div class="generate-command">
-        <input class="generate-button" type="button" 
-            value="Generate Install Command" 
-            [disabled]="packageList.length === 0"
-            (click)="generateCommand()" />
+    <div class="create-button-area">
+        <input class="create-button" type="button" 
+            value="Create"
+            routerLink="/create" />
     </div>
     <div class="application-list">
         <div *ngIf="packageList.length === 0" class="non-application">
-            <span>You don't subscribe any app! Go to <a routerLink="/application">subscribe</a> yours! </span>
+            <span>You don't have any app! Go to <a routerLink="/create">create</a> yours! </span>
         </div>
         <div *ngFor="let app of packageList; let i=index;" class="application-item">
             <div class="item">
-                <span class="col-md-1 col-sm-2">
+                <span class="col-md-1 col-sm-2 col-xs-2">
                     <img src={{app.icon}}>
                 </span>
-                <span class="col-md-2 col-sm-2">
+                <span class="col-md-2 col-sm-8 col-xs-6">
                     <span class="app-name">{{app.name}}</span>
                 </span>
-                <span class="col-md-2 col-sm-2">
-                    <span class="app-name">{{app.message}}</span>
-                </span>
-                <span class="col-md-3 col-sm-3">
-                    <span class="app-name">{{app.script}}</span>
-                </span>
-                <span class="col-md-2 col-sm-2">
+                <span class="col-md-2 hidden-sm hidden-xs">
                     <span class="app-name">{{app.description}}</span>
                 </span>
-                <span class="col-md-2 col-sm-2">
+                <span class="col-md-5 hidden-sm hidden-xs">
+                    <span class="app-name">{{app.script}}</span>
+                </span>
+                <span class="col-md-2 col-sm-2 col-xs-4">
                     <input class="edit-button" type="button"
-                        value="{{currentEditPackage === i ? 'Done' : 'Edit'}}"
+                        value="{{currentEditPackageIndex === i ? 'Done' : 'Edit'}}"
                         (click)="editPackage(i)" />
                 </span>
             </div>
-            <div *ngIf="currentEditPackage === i" class="edit-area">
+            <div *ngIf="currentEditPackageIndex === i" class="edit-area">
                 <div class="edit-area-row discard-button-row">
                     <input type="button" value="Discard" class="discard-button" 
-                        (click)="discardChange()" />
+                        (click)="discardChange(i)" />
+                    <input type="button" value="Delete" class="delete-button" 
+                        (click)="deletePackage(i)" />
                 </div>
-                <div class="edit-area-row">
-                    <span class="col-md-3 col-sm-5 col-xs-12">Icon</span>
-                    <span class="col-md-9 col-sm-7 col-xs-12">
-                        <input type="text" value={{app.icon}} />
-                    </span>
-                </div>
-                <div class="edit-area-row">
-                    <span class="col-md-3 col-sm-5 col-xs-12">Name</span>
-                    <span class="col-md-9 col-sm-7 col-xs-12">
-                        <input type="text" value={{app.name}} />
-                    </span>
-                </div>
-                <div class="edit-area-row">
-                    <span class="col-md-3 col-sm-5 col-xs-12">Install Command</span>
-                    <span class="col-md-9 col-sm-7 col-xs-12">
-                        <input type="text" value={{app.script}} />
-                    </span>
-                </div>
-                <div class="edit-area-row">
-                    <span class="col-md-3 col-sm-5 col-xs-12">Install Message</span>
-                    <span class="col-md-9 col-sm-7 col-xs-12">
-                        <input type="text" value={{app.message}} />
-                    </span>
-                </div>
-                <div class="edit-area-row">
-                    <span class="col-md-3 col-sm-5 col-xs-12">Description</span>
-                    <span class="col-md-9 col-sm-7 col-xs-12">
-                        <input type="text" value={{app.description}} />
-                    </span>
-                </div>
-                <div class="edit-area-row">
-                    <span class="col-md-3 col-sm-5 col-xs-12">Version</span>
-                    <span class="col-md-9 col-sm-7 col-xs-12">
-                        <input type="text" value={{app.version}} />
-                    </span>
-                </div>
-                <div class="edit-area-row">
-                    <span class="col-md-3 col-sm-5 col-xs-12">Download Size</span>
-                    <span class="col-md-9 col-sm-7 col-xs-12">
-                        <input type="text" value={{app.downloadSize}} />
-                    </span>
-                </div>
-                <div class="edit-area-row">
-                    <span class="col-md-3 col-sm-5 col-xs-12">Publisher</span>
-                    <span class="col-md-9 col-sm-7 col-xs-12">
-                    <input type="text" value={{app.publisher}} />
-                    </span>
-                </div>
+                <div class="app-divider"></div>
+                <edit-package [package]="currentEditPackage"></edit-package>
             </div>
         </div>
     </div>

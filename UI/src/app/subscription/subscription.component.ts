@@ -6,4 +6,4 @@ import { Component } from '@angular/core';
     styles: [require('./subscription.component.less')],
     template: require('./subscription.component.html')
 })
-export class SubscriptionComponent{}
+export class SubscriptionComponent {}

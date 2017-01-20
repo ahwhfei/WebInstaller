@@ -4,10 +4,11 @@ import 'rxjs/add/operator/toPromise';
 
 import { Application } from './application';
 import { APPLICATIONS } from './mock-applications';
+import { Manifest } from '../manifest';
 
 @Injectable()
 export class ApplicationService {
-    private applicationsApi: string = 'http://10.108.102.162:3001/root/applications';
+    private applicationsApi: string = Manifest.apiUrl + '/applications';
 
     constructor(private http: Http) {}
 

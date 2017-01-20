@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { Application } from '../application/application';
 import { ApplicationService } from '../application/application.service';
+import { PackageManagementService } from './package-management.service';
 
 @Component({
-    providers: [],
+    providers: [PackageManagementService],
     selector: 'package-management',
     styles: [require('./package-management.component.less')],
     template: require('./package-management.component.html')
@@ -13,9 +14,11 @@ export class PackageManagementComponent implements OnInit {
 
     packageList: Application[] = [];
 
-    currentEditPackage: number;
+    currentEditPackageIndex: number;
+    currentEditPackage: Application;
 
-    constructor(private applicationService: ApplicationService) {
+    constructor(private applicationService: ApplicationService,
+                private packageManagementService: PackageManagementService) {
 
     }
 
@@ -29,14 +32,25 @@ export class PackageManagementComponent implements OnInit {
     }
 
     editPackage(i: number): void {
-        if (this.currentEditPackage === i) {
-            this.currentEditPackage = -1;
-        } else {
-            this.currentEditPackage = i;
+        if (this.currentEditPackageIndex === i) { // Click Done Button
+            if (!(JSON.stringify(this.currentEditPackage) === JSON.stringify(this.packageList[i]))) {
+                this.packageManagementService.modifyApplication(this.currentEditPackage);
+            }
+            this.currentEditPackageIndex = -1;
+
+        } else { // Click Edit Button
+            this.currentEditPackageIndex = i;
+            this.currentEditPackage = {...this.packageList[i]}; // Deep copy object
         }
     }
 
-    discardChange(): void {
-        this.currentEditPackage = -1;
+    discardChange(i: number): void {
+        this.currentEditPackageIndex = -1;
+    }
+
+    deletePackage(i: number): void {
+        console.log(i);
+
+        this.packageManagementService.deleteApplication(this.packageList[i].id);
     }
 }
