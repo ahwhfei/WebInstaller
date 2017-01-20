@@ -8,6 +8,7 @@ import { ApplicationComponent } from './application/application.component';
 import { ApplicationListComponent } from './application-list/application-list.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PackageManagementComponent } from './package-management/package-management.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 import { ApplicationListService } from './application-list/application-list.service';
 import { ApplicationService } from './application/application.service';
 
@@ -17,6 +18,7 @@ import { ApplicationService } from './application/application.service';
     ApplicationComponent,
     ApplicationListComponent,
     PackageManagementComponent,
+    SubscriptionComponent,
     SearchBarComponent
   ],
   imports: [
@@ -35,6 +37,10 @@ import { ApplicationService } from './application/application.service';
       {
         path: 'package-management',
         component: PackageManagementComponent
+      },
+      {
+        path: 'subscription',
+        component: SubscriptionComponent
       },
       {
         path: 'subscribe',
