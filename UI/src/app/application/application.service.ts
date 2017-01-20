@@ -22,7 +22,7 @@ export class ApplicationService {
                                 id: e.id || e._id,
                                 name: e.name || e.Name,
                                 description: e.description || e.Description,
-                                version: e.version || e.Version, 
+                                version: e.version || e.Version,
                                 message: e.message || e.Message,
                                 script: e.script || e.Script,
                                 quitCode: e.quitCode || e.QuitCode,
@@ -40,15 +40,15 @@ export class ApplicationService {
                             };
 
                             applicationsList.push(app);
-                        })
-                        
+                        });
+
                         return applicationsList;
                     })
                     .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); 
+        console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     }
 }

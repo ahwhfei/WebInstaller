@@ -10,7 +10,7 @@ export class ApplicationWithSelected {
 }
 
 @Component({
-    providers: [ ApplicationService ],
+    providers: [],
     selector: 'application',
     template: require('./application.component.html'),
     styles: [require('./application.component.less')]
@@ -20,7 +20,7 @@ export class ApplicationComponent implements OnInit {
     public selectedApplicationList: Array<Application> = [];
     public applicationCount: number = 0;
 
-    constructor(private applicationService: ApplicationService, 
+    constructor(private applicationService: ApplicationService,
                 private applicationListService: ApplicationListService) {}
 
     private getApplications(): void {
@@ -43,7 +43,7 @@ export class ApplicationComponent implements OnInit {
             let i = this.selectedApplicationList.findIndex( e => {
                 return e.id === app.application.id;
             });
-            
+
             if (i >= 0) {
                 app.isSelected = true;
             }

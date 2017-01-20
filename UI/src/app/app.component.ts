@@ -15,6 +15,6 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.applicationListService.applicationListObservable.subscribe(list => {
             this.applicationCount = list.length;
-        })
+        });
     }
 }

@@ -1,0 +1,92 @@
+<search-bar></search-bar>
+<div class="application-container">
+    <div class="generate-command">
+        <input class="generate-button" type="button" 
+            value="Generate Install Command" 
+            [disabled]="packageList.length === 0"
+            (click)="generateCommand()" />
+    </div>
+    <div class="application-list">
+        <div *ngIf="packageList.length === 0" class="non-application">
+            <span>You don't subscribe any app! Go to <a routerLink="/application">subscribe</a> yours! </span>
+        </div>
+        <div *ngFor="let app of packageList; let i=index;" class="application-item">
+            <div class="item">
+                <div class="col-md-1 col-sm-1">
+                    <img src={{app.icon}}>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <div class="app-name">{{app.name}}</div>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <div class="app-name">{{app.message}}</div>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <div class="app-name">{{app.script}}</div>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <div class="app-name">{{app.description}}</div>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <input class="edit-button" type="button"
+                        value="{{currentEditPackage === i ? 'Done' : 'Edit'}}"
+                        (click)="editPackage(i)" />
+                </div>
+            </div>
+            <div *ngIf="currentEditPackage === i" class="edit-area">
+                <div class="edit-area-row discard-button-row">
+                    <input type="button" value="Discard" class="discard-button" 
+                        (click)="discardChange()" />
+                </div>
+                <div class="edit-area-row">
+                    <span class="col-md-3 col-sm-5">Icon</span>
+                    <span class="col-md-9 col-sm-7">
+                        <input type="text" value={{app.icon}} />
+                    </span>
+                </div>
+                <div class="edit-area-row">
+                    <span class="col-md-3 col-sm-5">Name</span>
+                    <span class="col-md-9 col-sm-7">
+                        <input type="text" value={{app.name}} />
+                    </span>
+                </div>
+                <div class="edit-area-row">
+                    <span class="col-md-3 col-sm-5">Install Command</span>
+                    <span class="col-md-9 col-sm-7">
+                        <input type="text" value={{app.script}} />
+                    </span>
+                </div>
+                <div class="edit-area-row">
+                    <span class="col-md-3 col-sm-5">Install Message</span>
+                    <span class="col-md-9 col-sm-7">
+                        <input type="text" value={{app.message}} />
+                    </span>
+                </div>
+                <div class="edit-area-row">
+                    <span class="col-md-3 col-sm-5">Description</span>
+                    <span class="col-md-9 col-sm-7">
+                        <input type="text" value={{app.description}} />
+                    </span>
+                </div>
+                <div class="edit-area-row">
+                    <span class="col-md-3 col-sm-5">Version</span>
+                    <span class="col-md-9 col-sm-7">
+                        <input type="text" value={{app.version}} />
+                    </span>
+                </div>
+                <div class="edit-area-row">
+                    <span class="col-md-3 col-sm-5">Download Size</span>
+                    <span class="col-md-9 col-sm-7">
+                        <input type="text" value={{app.downloadSize}} />
+                    </span>
+                </div>
+                <div class="edit-area-row">
+                    <span class="col-md-3 col-sm-5">Publisher</span>
+                    <span class="col-md-9 col-sm-7">
+                    <input type="text" value={{app.publisher}} />
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

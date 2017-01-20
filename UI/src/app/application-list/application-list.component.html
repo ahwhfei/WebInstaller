@@ -5,13 +5,10 @@
             value="Generate Install Command" 
             [disabled]="selectedApplicationList.length === 0"
             (click)="generateCommand()" />
-        <!--<button class="generate-button" 
-            [disabled]="selectedApplicationList.length === 0"
-            (click)="generateCommand()">Generate Install Command</button>-->
     </div>
     <div class="application-list">
         <div *ngIf="selectedApplicationList.length === 0" class="non-application">
-            <span>You don't subscribe any app! Go to <a routerLink="/application">subscribe</a> yours! </span>
+            <span>You don't subscribe any app! Go to <a routerLink="/package">subscribe</a> yours! </span>
         </div>
         <div *ngFor="let app of selectedApplicationList; let i=index;" class="application-item">
             <div class="item">
@@ -19,7 +16,6 @@
                     <img src={{app.icon}}></div>
                 <div class="col-md-9 col-sm-9">
                     <div class="app-name">{{app.name}}</div>
-                    <!--<div class="app-script">{{app.application.script}}</div>-->
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@
         line-height: 60px;
     }
 
-    .add-button {
+    .add-button, .edit-button {
         margin-top: 5px;
         float: right;
         height: 46px;
@@ -36,10 +36,21 @@
         border: 1px solid #FFF;
         padding-left: 20px;
         padding-right: 20px;
-
     }
 
-    .add-button:hover {
+    .discard-button {
+        width: 76px !important;
+        margin-right: 15px;
+        float: right;
+        height: 46px;
+        line-height: 46px;
+        border-radius: 4px;
+        color: #FFF;
+        background-color: #658db5;
+        border: 1px solid #FFF;
+    }
+
+    .add-button:hover, .edit-button:hover, .discard-button:hover {
         background-color: #2c4f71;
     }
 
@@ -51,4 +62,28 @@
         white-space: nowrap;
         text-overflow: ellipsis;
     }
+}
+
+.edit-area {
+    min-height: 200px;
+    width: 100%;
+    border: 1px solid #bbb;
+    background-color: #FFF;
+    z-index: 999;
+    position: relative;
+
+    .edit-area-row {
+        width: 100%;
+        height: 30px;
+        margin: 5px 0;
+
+        input {
+            width: 100%;
+        }
+    }
+
+    .discard-button-row {
+        height: 50px;
+    }
+    
 }

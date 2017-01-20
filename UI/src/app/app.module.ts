@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 import { ApplicationComponent } from './application/application.component';
 import { ApplicationListComponent } from './application-list/application-list.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { PackageManagementComponent } from './package-management/package-management.component';
 import { ApplicationListService } from './application-list/application-list.service';
+import { ApplicationService } from './application/application.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ApplicationComponent,
     ApplicationListComponent,
+    PackageManagementComponent,
     SearchBarComponent
   ],
   imports: [
@@ -30,11 +33,17 @@ import { ApplicationListService } from './application-list/application-list.serv
         component: ApplicationComponent
       },
       {
+        path: 'package-management',
+        component: PackageManagementComponent
+      },
+      {
         path: 'subscribe',
         component: ApplicationListComponent
       }
     ])],
-  providers: [ApplicationListService],
+  providers: [
+    ApplicationListService,
+    ApplicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
