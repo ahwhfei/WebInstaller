@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { Application } from '../application/application';
+import { OperatingSystem, ALLWINDOWS } from '../operating-system/operating-system';
 
 @Component({
     providers: [],
@@ -11,4 +12,6 @@ import { Application } from '../application/application';
 export class EditPackageComponent {
     @Input()
     package: Application;
+
+    allWindows: OperatingSystem[] = ALLWINDOWS;
 }

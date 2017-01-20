@@ -37,7 +37,9 @@
                         (click)="deletePackage(i)" />
                 </div>
                 <div class="app-divider"></div>
-                <edit-package [package]="currentEditPackage"></edit-package>
+                <div class="edit-container">
+                    <edit-package [package]="currentEditPackage"></edit-package>
+                </div>
             </div>
         </div>
     </div>
