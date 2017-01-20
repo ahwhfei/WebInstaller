@@ -49,8 +49,7 @@ export class PackageManagementComponent implements OnInit {
     }
 
     deletePackage(i: number): void {
-        console.log(i);
-
         this.packageManagementService.deleteApplication(this.packageList[i].id);
+        this.currentEditPackageIndex = -1;
     }
 }
