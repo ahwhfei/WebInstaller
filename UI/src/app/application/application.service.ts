@@ -9,6 +9,7 @@ import { Manifest } from '../manifest';
 @Injectable()
 export class ApplicationService {
     private applicationsApi: string = Manifest.apiUrl + '/applications';
+    private postApplicationApi: string = Manifest.apiUrl + '/application';
 
     constructor(private http: Http) {}
 
@@ -46,6 +47,37 @@ export class ApplicationService {
                         return applicationsList;
                     })
                     .catch(this.handleError);
+    }
+
+    public modifyApplication(app: Application) {
+        let applicationId = app.id;
+        let url = this.applicationsApi + applicationId;
+        return this.http.put(url, app)
+            .toPromise()
+            .then(response => {
+                console.log(response);
+            })
+            .catch(this.handleError);
+    }
+
+    public deleteApplication(appId: string) {
+        let url = this.applicationsApi + appId;
+        return this.http.delete(url)
+            .toPromise()
+            .then(response => {
+                console.log(response);
+            })
+            .catch(this.handleError);
+    }
+
+    public addApplication(app: Application) {
+        let url = this.postApplicationApi;
+        return this.http.post(url, app)
+            .toPromise()
+            .then(response => {
+                console.log(response);
+            })
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
