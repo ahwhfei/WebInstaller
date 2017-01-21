@@ -22,7 +22,8 @@ app.set('view engine', 'jade');
 
 /* Configuration */
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));  // Set the static files location
+// app.use(express.static(path.join(__dirname, 'public')));  // Set the static files location
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));  // Set the favicon
 app.use(logger('dev'));  // Log every request to the console
 app.use(bodyParser.urlencoded({'extended': false})); // Parse application/x-www-form-urlencoded
