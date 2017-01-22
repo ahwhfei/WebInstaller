@@ -1,0 +1,55 @@
+.application-list {
+    min-height: 500px;
+    margin-top: 10px; 
+}
+
+.application-item:hover {
+    box-shadow: 0 4px 8px 0 rgba(150, 150, 150, 0.2), 0 6px 20px 0 rgba(150, 150, 150, 0.1);
+}
+
+.application-item {
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+    img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .item {
+        overflow: hidden;
+        height: 60px;
+        line-height: 60px;
+    }
+
+    .add-button {
+        margin-top: 5px;
+        float: right;
+        height: 46px;
+        line-height: 46px;
+        border-radius: 4px;
+        color: #FFF;
+        background-color: #658db5;
+        border: 1px solid #FFF;
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+    .add-button:hover {
+        background-color: #2c4f71;
+    }
+
+    .app-name {
+        text-overflow: ellipsis;
+        font-size: 16px;
+    }
+
+    .app-script {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}

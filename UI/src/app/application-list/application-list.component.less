@@ -1,0 +1,89 @@
+.generate-command {
+    height: 46px;
+    margin: 10px 0;
+
+    .generate-button {
+        height: 46px;
+        line-height: 46px;
+        border-radius: 4px;
+        color: #FFF;
+        background-color: #658db5;
+        border: 1px solid #f3f3f3;
+        padding-left: 20px;
+        padding-right: 20px;
+        float: right;
+    }
+
+    .generate-button:disabled {
+        background-color: #888;
+        &:hover {
+            background-color: #888;
+        }
+    }
+
+    .generate-button:hover {
+        background-color: #2c4f71;
+    }
+}
+
+
+.application-list {
+    min-height: 500px;
+    margin-top: 10px; 
+}
+
+.non-application {
+    background-color: white;
+    padding: 20px; 
+    font-size: 16px;
+}
+
+.application-item:hover {
+    box-shadow: 0 4px 8px 0 rgba(150, 150, 150, 0.2), 0 6px 20px 0 rgba(150, 150, 150, 0.1);
+}
+
+.application-item {
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+    img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .item {
+        overflow: hidden;
+        height: 60px;
+        line-height: 60px;
+    }
+
+    .add-button {
+        margin-top: 5px;
+        float: right;
+        height: 46px;
+        line-height: 46px;
+        border-radius: 4px;
+        color: #FFF;
+        background-color: #658db5;
+        border: 1px solid #FFF;
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+    .add-button:hover {
+        background-color: #2c4f71;
+    }
+
+    .app-name {
+        font-size: 16px;
+    }
+
+    .app-script {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
