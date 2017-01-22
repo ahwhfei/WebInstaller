@@ -1,7 +1,25 @@
 <div class="edit-package-row">
     <span class="col-lg-2 col-md-3 col-sm-5 col-xs-12">Icon</span>
     <span class="col-lg-10 col-md-9 col-sm-7 col-xs-12">
-        <input type="text" [(ngModel)]="package.icon" />
+        <div class="img-container"></div>
+        <img (dragenter)="dragDefault($event)"
+             (dragover)="dragDefault($event)"
+             (drop)="handleDrop($event)"
+             (dragleave)="dragDefault($event)"
+             [attr.src]="fileSrc"
+             height="{{img.height}}"
+             width="{{img.width}}"
+             alt=""/>
+        <div class="error-message" *ngIf="isLogoError !== ''">{{ isLogoError }}</div>
+        <div>
+            <input class="img-button" type="button" value="{{'Upload'}}" (click)="file.click()"/>
+            <input class="img-button" type="button" value="{{'Delete'}}" [disabled]="fileSrc === ''" (click)="deleteFile()"/>
+        </div>
+        <input type="file"
+               accept="image/jpeg, image/jpg, image/png, image/bmp, image/icon, image/svg, image/gif"
+               style="display: none"
+               id="input-file"
+               (change)="fileChange(file.files[0])" #file />
     </span>
 </div>
 <div class="edit-package-row">
