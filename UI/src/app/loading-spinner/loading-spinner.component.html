@@ -1,0 +1,12 @@
+<div *ngIf="loading" class="loading-spinner-content">
+<div class="container">
+  <div class="banner">
+    LOADING
+    <div class="banner-left"></div>
+    <div class="banner-right"></div>
+  </div>
+</div>
+</div>
+<div *ngIf="!loading">
+    <ng-content></ng-content>
+</div>
