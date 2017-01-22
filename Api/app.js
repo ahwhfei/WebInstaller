@@ -21,10 +21,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 /* Configuration */
-app.use(cors());
-// app.use(express.static(path.join(__dirname, 'public')));  // Set the static files location
-app.use(express.static(path.join(__dirname, 'dist')));
-app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));  // Set the favicon
+app.use(cors());  // Enable CORS
+app.use(express.static(path.join(__dirname, 'swagger')));  // Set the api document files location
+app.use(favicon(path.join(__dirname, 'swagger/images', 'favicon.ico')));  // Set the favicon
 app.use(logger('dev'));  // Log every request to the console
 app.use(bodyParser.urlencoded({'extended': false})); // Parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // Parse application/json
@@ -32,10 +31,8 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'})); // Parse applicati
 app.use(cookieParser());
 
 /* Router */
-var index = require('./routes/index');
 var application = require('./routes/application');
 var applicationList = require('./routes/applicationList');
-app.use('/', index);
 app.use('/', application);
 app.use('/', applicationList);
 

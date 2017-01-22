@@ -1,0 +1,572 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Insataller API",
+        "description": "All apis of Installer",
+        "version": "1.0.0"
+    },
+    "host": "10.108.102.162:3001",
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/{customer}/applications": {
+            "get": {
+                "summary": "Get all applications",
+                "description": "Return all existing applications.\n",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Application"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of existing applications",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Application"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{customer}/application": {
+            "post": {
+                "summary": "Add a new application.",
+                "description": "Add a new application.",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "application",
+                        "in": "body",
+                        "description": "Detail of the application.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Application"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Application"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Create Successfully.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{customer}/application/{id}": {
+            "get": {
+                "summary": "Get the detail of specific application.",
+                "description": "Return the detail of specific application.",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID or Name of the application.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Application"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The detail information of the application.",
+                        "schema": {
+                            "$ref": "#/definitions/Application"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update an existing application.",
+                "description": "Update an existing application.",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the application.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "application",
+                        "in": "body",
+                        "description": "Detail of the application.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Application"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Application"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update Successfully.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an existing application.",
+                "description": "Delete an existing application.",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the application.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Application"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Successfully.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{customer}/applicationLists": {
+            "get": {
+                "summary": "Get all application lists",
+                "description": "Return all existing application lists.\n",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Application List"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of existing application lists",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ApplicationList"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{customer}/applicationList": {
+            "post": {
+                "summary": "Add a new application list.",
+                "description": "Add a new application list.",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "application list",
+                        "in": "body",
+                        "description": "Detail of the application list.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationList"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Application List"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Create Successfully.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{customer}/applicationList/{id}": {
+            "get": {
+                "summary": "Get the detail of specific application list.",
+                "description": "Return the detail of specific application list.",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID or Name of the application list.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Application List"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The detail information of the application list.",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationList"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update an existing application list.",
+                "description": "Update an existing application list.",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the application list.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "application list",
+                        "in": "body",
+                        "description": "Detail of the application list.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationList"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Application List"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update Successfully.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an existing application list.",
+                "description": "Delete an existing application list.",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "Name of the customer.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the application list.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Application List"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Successfully.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Application": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Application name."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Application description."
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Application version."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Messages when installing the application."
+                },
+                "script": {
+                    "type": "string",
+                    "description": "The install script."
+                },
+                "quitCode": {
+                    "type": "number",
+                    "default": 0,
+                    "description": "The quit code."
+                },
+                "dependency": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Dependency"
+                    }
+                },
+                "createDate": {
+                    "type": "string",
+                    "description": "The creation date of this application."
+                },
+                "sourceURL": {
+                    "type": "string",
+                    "description": "The source URL of this application."
+                },
+                "publisher": {
+                    "type": "string",
+                    "description": "The publisher of this application."
+                },
+                "downloadSize": {
+                    "type": "string",
+                    "description": "The size of this application."
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of this application."
+                },
+                "like": {
+                    "type": "number",
+                    "default": 0,
+                    "description": "The like number of this application."
+                },
+                "restart": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether the computer need to restart again after installing."
+                },
+                "passive": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether the application is passive."
+                },
+                "quiet": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether the application is quiet installing."
+                },
+                "supportedOS": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OS"
+                    }
+                }
+            }
+        },
+        "Dependency": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the dependent application."
+                }
+            }
+        },
+        "OS": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the operation system."
+                }
+            }
+        },
+        "ApplicationList": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Application list name."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Application list description."
+                },
+                "applications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Application"
+                    }
+                },
+                "createDate": {
+                    "type": "string",
+                    "description": "The creation date of this application list."
+                },
+                "customer": {
+                    "type": "string",
+                    "description": "Customer who created this application list."
+                },
+                "script": {
+                    "type": "string",
+                    "description": "The install script."
+                },
+                "like": {
+                    "type": "number",
+                    "default": 0,
+                    "description": "The like number of this application list."
+                },
+                "supportedOS": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OS"
+                    }
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

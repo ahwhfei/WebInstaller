@@ -7,14 +7,14 @@
     "like": 0,
     "message": "Installing Chocolately",
     "name": "Chocolately",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -26,14 +26,14 @@
     "like": 0,
     "message": "Installing Web Platform Installer Command Line",
     "name": "Web Platform Installer Command Line",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst webpicmd --force --yes",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -45,14 +45,14 @@
     "like": 0,
     "message": "Installing Node JS",
     "name": "Node JS",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst nodejs.install --force --yes",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -64,14 +64,14 @@
     "like": 0,
     "message": "Installing Visual Studio",
     "name": "Visual Studio",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "Script": "iex (new-object net.webclient).DownloadString('https://raw.githubusercontent.com/ahwhfei/DevEnvironmentInstallation/develop/plugins/visualstudio/Install-VisualStudio.ps1')",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -83,14 +83,14 @@
     "like": 0,
     "message": "Installing Google Chrome",
     "name": "Google Chrome",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst googlechrome --force --yes",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -102,14 +102,14 @@
     "like": 0,
     "message": "Installing Sublime Text3",
     "name": "Sublime Text3",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst sublimetext3 --force --yes",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -121,14 +121,14 @@
     "like": 0,
     "message": "Installing Visual Studio Code",
     "name": "Visual Studio Code",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst visualstudiocode --force --yes",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -140,14 +140,14 @@
     "like": 0,
     "message": "Installing Source Tree",
     "name": "Source Tree",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst sourcetree --force --yes",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -159,14 +159,14 @@
     "like": 0,
     "message": "Installing Git",
     "name": "Git",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst git --force --yes",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -178,14 +178,14 @@
     "like": 0,
     "message": "Installing ReSharper",
     "name": "ReSharper",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst resharper --force --yes",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -197,14 +197,14 @@
     "like": 0,
     "message": "Installing Java Runtime Environment",
     "name": "JRE",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst jre8 --force --yes",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -216,14 +216,14 @@
     "like": 0,
     "message": "Installing Wix Toolset",
     "name": "Wix Toolset",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "cinst wixtoolset --force --yes --allow-empty-checksums",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -235,14 +235,14 @@
     "like": 0,
     "message": "Installing Azure PowerShell",
     "name": "Azure PowerShell",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "webpicmd /install /products:'Microsoft Azure PowerShell' /AcceptEULA /SuppressReboot",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -254,14 +254,14 @@
     "like": 0,
     "message": "Installing Azure SDK",
     "name": "Azure SDK for .net (VS2015) - 2.9.6",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "webpicmd /install /products:'Microsoft Azure SDK for .NET (VS 2015) - 2.9.6'",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -273,14 +273,14 @@
     "like": 0,
     "message": "Installing Azure Service Fabric SDK",
     "name": "Azure Service Fabric SDK",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "webpicmd /install /products:'Microsoft Azure Service Fabric SDK and Tools - 2.4.145 (VS2015)' /AcceptEULA /SuppressReboot",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
 {
@@ -292,13 +292,13 @@
     "like": 0,
     "message": "Installing Aws SDK",
     "name": "Aws SDK",
-    "passive": "False",
+    "passive": false,
     "publisher": "",
-    "quiet": "Fasle",
+    "quiet": false,
     "quitCode": 0,
-    "restart": "True",
+    "restart": true,
     "script": "Start-Process -FilePath msiexec.exe -ArgumentList '/i https://sdk-for-net.amazonwebservices.com/latest/AWSToolsAndSDKForNet.msi /quiet /norestart' -wait",
     "sourceURL": "",
-    "supportedOS": [{"Name": "Windows 8 x64"}, {"Name": "Windows 10 x64"}],
+    "supportedOS": [{"name": "Windows 8 x64"}, {"name": "Windows 10 x64"}],
     "version": ""
 }
