@@ -414,78 +414,78 @@
         "Application": {
             "type": "object",
             "properties": {
-                "Name": {
+                "name": {
                     "type": "string",
                     "description": "Application name."
                 },
-                "Description": {
+                "description": {
                     "type": "string",
                     "description": "Application description."
                 },
-                "Version": {
+                "version": {
                     "type": "string",
                     "description": "Application version."
                 },
-                "Message": {
+                "message": {
                     "type": "string",
                     "description": "Messages when installing the application."
                 },
-                "Script": {
+                "script": {
                     "type": "string",
                     "description": "The install script."
                 },
-                "QuitCode": {
+                "quitCode": {
                     "type": "number",
                     "default": 0,
                     "description": "The quit code."
                 },
-                "Dependency": {
+                "dependency": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/Dependency"
                     }
                 },
-                "CreateDate": {
+                "createDate": {
                     "type": "string",
                     "description": "The creation date of this application."
                 },
-                "SourceURL": {
+                "sourceURL": {
                     "type": "string",
                     "description": "The source URL of this application."
                 },
-                "Publisher": {
+                "publisher": {
                     "type": "string",
                     "description": "The publisher of this application."
                 },
-                "DownloadSize": {
+                "downloadSize": {
                     "type": "string",
                     "description": "The size of this application."
                 },
-                "Icon": {
+                "icon": {
                     "type": "string",
                     "description": "The icon of this application."
                 },
-                "Like": {
+                "like": {
                     "type": "number",
                     "default": 0,
                     "description": "The like number of this application."
                 },
-                "Restart": {
+                "restart": {
                     "type": "boolean",
                     "default": false,
                     "description": "Whether the computer need to restart again after installing."
                 },
-                "Passive": {
+                "passive": {
                     "type": "boolean",
                     "default": true,
                     "description": "Whether the application is passive."
                 },
-                "Quiet": {
+                "quiet": {
                     "type": "boolean",
                     "default": true,
                     "description": "Whether the application is quiet installing."
                 },
-                "OS": {
+                "supportedOS": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/OS"
@@ -496,7 +496,7 @@
         "Dependency": {
             "type": "object",
             "properties": {
-                "ID": {
+                "id": {
                     "type": "string",
                     "description": "The ID of the dependent application."
                 }
@@ -505,7 +505,7 @@
         "OS": {
             "type": "object",
             "properties": {
-                "Name": {
+                "name": {
                     "type": "string",
                     "description": "The name of the operation system."
                 }
@@ -514,38 +514,38 @@
         "ApplicationList": {
             "type": "object",
             "properties": {
-                "Name": {
+                "name": {
                     "type": "string",
                     "description": "Application list name."
                 },
-                "Description": {
+                "description": {
                     "type": "string",
                     "description": "Application list description."
                 },
-                "Applications": {
+                "applications": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/Application"
                     }
                 },
-                "CreateDate": {
+                "createDate": {
                     "type": "string",
                     "description": "The creation date of this application list."
                 },
-                "Customer": {
+                "customer": {
                     "type": "string",
                     "description": "Customer who created this application list."
                 },
-                "Script": {
+                "script": {
                     "type": "string",
                     "description": "The install script."
                 },
-                "Like": {
+                "like": {
                     "type": "number",
                     "default": 0,
                     "description": "The like number of this application list."
                 },
-                "OS": {
+                "supportedOS": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/OS"
