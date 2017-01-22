@@ -7,7 +7,7 @@ var AppSchema = new mongoose.Schema({
     message: String,
     script: String,
     quitCode: Number,
-    dependency: [{ ID: String }],
+    dependency: [{ id: String }],
     createDate: String,
     sourceURL: String,
     publisher: String,
