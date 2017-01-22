@@ -1,23 +1,23 @@
 var mongoose = require('mongoose');
 
 var AppSchema = new mongoose.Schema({
-    Name: String,
-    Description: String,
-    Version: String,
-    Message: String,
-    Script: String,
-    QuitCode: Number,
-    Dependency: [{ ID: String }],
-    CreateDate: String,
-    SourceURL: String,
-    Publisher: String,
-    DownloadSize: String,
-    Icon: String,
-    Like: { type: Number, default: 0 },
-    Restart: { type: Boolean, default: false },
-    Passive: { type: Boolean, default: true },
-    Quiet: { type: Boolean, default: true },
-    OS: [{ Name: String }]
+    name: String,
+    description: String,
+    version: String,
+    message: String,
+    script: String,
+    quitCode: Number,
+    dependency: [{ ID: String }],
+    createDate: String,
+    sourceURL: String,
+    publisher: String,
+    downloadSize: String,
+    icon: String,
+    like: { type: Number, default: 0 },
+    restart: { type: Boolean, default: false },
+    passive: { type: Boolean, default: true },
+    quiet: { type: Boolean, default: true },
+    supportedOS: [{ name: String }]
 });
 
 module.exports = mongoose.model('App', AppSchema);
