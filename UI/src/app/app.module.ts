@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ApplicationComponent } from './application/application.component';
 import { ApplicationListComponent } from './application-list/application-list.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PackageManagementComponent } from './package-management/package-management.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
@@ -20,6 +21,7 @@ import { ApplicationService } from './application/application.service';
     AppComponent,
     ApplicationComponent,
     ApplicationListComponent,
+    LoadingSpinnerComponent,
     PackageManagementComponent,
     SubscriptionComponent,
     EditPackageComponent,
