@@ -16,10 +16,6 @@ mongoose.connect(database.localDB)
 	.then(() => console.log('DB connection succesful'))
 	.catch((err) => console.error(err));
 
-/* View engine setup */
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
 /* Configuration */
 app.use(cors());  // Enable CORS
 app.use(express.static(path.join(__dirname, 'swagger')));  // Set the api document files location
