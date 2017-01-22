@@ -15,6 +15,8 @@ import { EditPackageComponent } from './edit-package/edit-package.component';
 import { CreatePackageComponent } from './create-package/create-package.component';
 import { ApplicationListService } from './application-list/application-list.service';
 import { ApplicationService } from './application/application.service';
+import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
+import { CreateSubscriptionComponent} from './create-subscription/create-subscription.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ApplicationService } from './application/application.service';
     SubscriptionComponent,
     EditPackageComponent,
     CreatePackageComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ModalDialogComponent,
+    CreateSubscriptionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,14 @@
+<modal-dialog>
+    <div class="app-modal-header">
+        header
+    </div>
+    <div class="app-modal-body">
+        Whatever content you like, form fields, anything
+    </div>
+    <div class="app-modal-footer">
+        <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+</modal-dialog>
+<button (click)="modal.show()" class="create-subscription-button"
+        [disabled]="applicationList.length === 0">Create Subscription</button>

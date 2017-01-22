@@ -1,7 +1,8 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
 import { ApplicationListService } from '../application-list/application-list.service';
 import { Application } from '../application/application';
 import { ApplicationList } from './application-list';
+// import { CreateSubscriptionComponent } from '../create-subscription/create-subscription.component';
 
 @Component({
     encapsulation: ViewEncapsulation.None,
@@ -12,6 +13,10 @@ import { ApplicationList } from './application-list';
 })
 export class ApplicationListComponent implements OnInit {
     selectedApplicationList: Array<Application>;
+
+    // @ViewChild(CreateSubscriptionComponent)
+    // public readonly modal: CreateSubscriptionComponent;
+
     constructor(private applicationListService: ApplicationListService) {
     }
 
@@ -28,7 +33,7 @@ export class ApplicationListComponent implements OnInit {
         this.selectedApplicationList.map(app => applicationList.applications.push(app));
 
         console.log(applicationList);
-        
+
         this.applicationListService.createApplicationList(applicationList)
             .subscribe();
     }

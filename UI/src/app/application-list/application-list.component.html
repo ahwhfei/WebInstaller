@@ -1,10 +1,7 @@
 <div class="application-container">
     <search-bar></search-bar>
     <div class="generate-command">
-        <input class="generate-button" type="button" 
-            value="Generate Install Command" 
-            [disabled]="selectedApplicationList.length === 0"
-            (click)="generateCommand()" />
+        <create-subscription [applicationList]="selectedApplicationList"></create-subscription>
     </div>
     <div class="application-list">
         <div *ngIf="selectedApplicationList.length === 0" class="non-application">

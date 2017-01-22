@@ -37,8 +37,8 @@ export class LoadingSpinnerComponent implements OnChanges, OnDestroy {
             changes.promise.currentValue.then(resolve, resolve);
         }).then(
             () => this.hideSpinner(),
-            () => this.hideSpinner() 
-            );           
+            () => this.hideSpinner()
+            );
     }
 
     public ngOnDestroy() {

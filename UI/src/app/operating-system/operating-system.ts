@@ -8,4 +8,4 @@ export const ALLWINDOWS: OperatingSystem[] = [
     {name: 'Windows 10'},
     {name: 'Windows Server 2012'},
     {name: 'Windows Server 2016'}
-]
+];
