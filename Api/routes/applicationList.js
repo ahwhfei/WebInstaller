@@ -24,7 +24,7 @@ router.get('/:customer/applicationList/:id', function(req, res, next) {
 router.post('/:customer/applicationList', function(req, res, next) {
     AppList.create(req.body, function (err, appList) {
 		if (err) return next(err);
-		res.send('Create successfully');
+        res.send(appList);
 	});
 });
 

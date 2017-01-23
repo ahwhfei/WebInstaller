@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
-import { map } from 'rxjs/Operator/map';
+import 'rxjs/add/operator/map';
 
 import { Application } from '../application/application';
 import { ApplicationList } from './application-list';
@@ -30,20 +30,26 @@ export class ApplicationListService {
         this.subject.next(list);
     }
 
-    public createApplicationList(list: ApplicationList): Observable<any> {
-        return this.http.post(this.applicationListApi, list);
+    public createApplicationList(list: ApplicationList): Observable<ApplicationList> {
+        return this.http.post(this.applicationListApi, list)
+                        .map(this.extractData);
     }
 
-    private handleError (error: Response | any) {
+    private extractData(res: Response): ApplicationList {
+        let resData = res.json();
+        let appList: ApplicationList = <ApplicationList>resData;
+        appList.id = resData.id || resData._id;
+        return appList;
+    }
+
+    private handleError (error: Response) {
         let errMsg: string;
         if (error instanceof Response) {
             const body = error.json() || '';
             const err = body.error || JSON.stringify(body);
             errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
         }
+
         console.error(errMsg);
-        return Observable.throw(errMsg);
     }
 }
