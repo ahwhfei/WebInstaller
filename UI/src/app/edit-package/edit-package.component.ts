@@ -23,27 +23,27 @@ export class EditPackageComponent {
     public invalidType: string = 'Invalid or unknown image format. Supported formats are jpg, png, bmp, icon, svg.';
 
     public fileChange(file: any) {
-    	this.isLogoError = '';
-    	if (this.isValidImageType(file)) {
-    		// Create a FileReader
-	        let reader = new FileReader();
-	        // Add an event listener to deal with the file when the reader is complete
-	        reader.addEventListener('load', (event: any) => {
-	            let img = document.createElement('img');
-	            img.src = event.target.result;
-	            this.img.height = 48;
-	            this.img.width = 48;
-	            this.fileSrc = img.src;
-	        }, false);
-	        // Start reading this file
-	        reader.readAsDataURL(file);
-    	}
-    	(<HTMLInputElement> document.getElementById('input-file')).value = '';
+        this.isLogoError = '';
+        if (this.isValidImageType(file)) {
+            // Create a FileReader
+            let reader = new FileReader();
+            // Add an event listener to deal with the file when the reader is complete
+            reader.addEventListener('load', (event: any) => {
+                let img = document.createElement('img');
+                img.src = event.target.result;
+                this.img.height = 48;
+                this.img.width = 48;
+                this.fileSrc = img.src;
+            }, false);
+            // Start reading this file
+            reader.readAsDataURL(file);
+        }
+        (<HTMLInputElement> document.getElementById('input-file')).value = '';
     }
 
     public deleteFile() {
-    	this.isLogoError = '';
-    	this.fileSrc = '';
+        this.isLogoError = '';
+        this.fileSrc = '';
     }
 
     // prevent the default drag operation
