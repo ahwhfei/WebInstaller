@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
 
 import { Application } from './application';
 import { APPLICATIONS } from './mock-applications';
@@ -72,12 +73,17 @@ export class ApplicationService {
 
     public addApplication(app: Application) {
         let url = this.postApplicationApi;
-        return this.http.post(url, app)
-            .toPromise()
-            .then(response => {
-                console.log(response);
-            })
-            .catch(this.handleError);
+        return this.http.post(url, app);
+    }
+
+    public removeApplication(list: Array<Application>, element: Application): void {
+        let i = list.findIndex(e => {
+            return e.id === element.id;
+        });
+
+        if (i >= 0) {
+            list.splice(i, 1);
+        }
     }
 
     private handleError(error: any): Promise<any> {

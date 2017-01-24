@@ -17,6 +17,7 @@ import { ApplicationListService } from './application-list/application-list.serv
 import { ApplicationService } from './application/application.service';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { CreateSubscriptionComponent} from './create-subscription/create-subscription.component';
+import { CtxSpinnerComponent } from './ctx-spinner/ctx-spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CreateSubscriptionComponent} from './create-subscription/create-subscri
     CreatePackageComponent,
     SearchBarComponent,
     ModalDialogComponent,
-    CreateSubscriptionComponent
+    CreateSubscriptionComponent,
+    CtxSpinnerComponent
   ],
   imports: [
     BrowserModule,

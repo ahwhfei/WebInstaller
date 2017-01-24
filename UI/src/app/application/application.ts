@@ -20,3 +20,26 @@ export class Application {
     quiet: boolean;
     supportedOS: Array<OperatingSystem>;
 }
+
+export class ApplicationExt {
+     public static reset(app: Application): void {
+        app.id = '';
+        app.name = '';
+        app.description = '';
+        app.version = '';
+        app.message = '';
+        app.script = '';
+        app.quitCode = undefined;
+        app.dependency = [];
+        app.createDate = '';
+        app.sourceURL = '';
+        app.publisher = '';
+        app.downloadSize = '';
+        app.icon = '';
+        app.like = undefined;
+        app.restart = undefined;
+        app.passive = undefined;
+        app.quiet = undefined;
+        app.supportedOS = [];
+    }
+}

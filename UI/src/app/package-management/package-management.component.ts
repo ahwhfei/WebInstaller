@@ -14,6 +14,8 @@ export class PackageManagementComponent implements OnInit {
 
     packageList: Application[] = [];
 
+    spinningPromise: Promise<any>;
+
     currentEditPackageIndex: number;
     currentEditPackage: Application;
 
@@ -34,10 +36,12 @@ export class PackageManagementComponent implements OnInit {
     editPackage(i: number): void {
         if (this.currentEditPackageIndex === i) { // Click Done Button
             if (!(JSON.stringify(this.currentEditPackage) === JSON.stringify(this.packageList[i]))) {
-                this.packageManagementService.modifyApplication(this.currentEditPackage);
+                this.packageManagementService.modifyApplication(this.currentEditPackage)
+                    .subscribe(() => {
+                        this.packageList[i] = this.currentEditPackage;
+                });
             }
             this.currentEditPackageIndex = -1;
-
         } else { // Click Edit Button
             this.currentEditPackageIndex = i;
             this.currentEditPackage = {...this.packageList[i]}; // Deep copy object
@@ -49,7 +53,10 @@ export class PackageManagementComponent implements OnInit {
     }
 
     deletePackage(i: number): void {
-        this.packageManagementService.deleteApplication(this.packageList[i].id);
-        this.currentEditPackageIndex = -1;
+        this.packageManagementService.deleteApplication(this.packageList[i].id)
+            .subscribe((app: Application) => {
+                this.currentEditPackageIndex = -1;
+                this.applicationService.removeApplication(this.packageList, app);
+        });
     }
 }

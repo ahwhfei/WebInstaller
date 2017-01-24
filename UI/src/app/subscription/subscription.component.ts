@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     providers: [],
@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
     styles: [require('./subscription.component.less')],
     template: require('./subscription.component.html')
 })
-export class SubscriptionComponent {}
+export class SubscriptionComponent implements OnInit {
+
+    ngOnInit(): void {
+
+    }
+}

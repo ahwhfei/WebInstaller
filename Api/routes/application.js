@@ -31,7 +31,7 @@ router.get('/:customer/application/:query', function(req, res, next) {
 router.post('/:customer/application', function(req, res, next) {
     App.create(req.body, function (err, app) {
 		if (err) return next(err);
-		res.send('Create successfully');
+		res.send(app);
 	});
 });
 
@@ -47,7 +47,7 @@ router.put('/:customer/application/:id', function(req, res, next) {
 router.delete('/:customer/application/:id', function(req, res, next) {
     App.findByIdAndRemove(req.params.id, function (err, app) {
         if (err) return next(err);
-        res.send('Delete successfully');
+        res.send(app);
     });
 });
 

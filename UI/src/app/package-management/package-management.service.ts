@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 import { Application } from '../application/application';
 import { Manifest } from '../manifest';
@@ -14,22 +16,17 @@ export class PackageManagementService {
     public modifyApplication(app: Application) {
         let applicationId = app.id;
         let url = this.applicationsApi + applicationId;
-        return this.http.put(url, app)
-            .toPromise()
-            .then(response => {
-                console.log(response);
-            })
-            .catch(this.handleError);
+        return this.http.put(url, app);
     }
 
-    public deleteApplication(appId: string) {
+    public deleteApplication(appId: string): Observable<Application> {
         let url = this.applicationsApi + appId;
         return this.http.delete(url)
-            .toPromise()
-            .then(response => {
-                console.log(response);
-            })
-            .catch(this.handleError);
+            .map((res: Response) => {
+                let app = res.json();
+                app.id = app._id;
+                return app as Application;
+            });
     }
 
     private handleError(error: any): Promise<any> {

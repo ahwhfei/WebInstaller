@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Application } from '../application/application';
+import { Application, ApplicationExt } from '../application/application';
 import { ApplicationService } from '../application/application.service';
 
 @Component({
@@ -14,8 +14,10 @@ export class CreatePackageComponent {
 
     constructor(private applicationService: ApplicationService) {}
 
-    savePackage(): void {
-        console.log(this.toBeCreatedPackage);
-        this.applicationService.addApplication(this.toBeCreatedPackage);
+    savePackage() {
+    this.applicationService.addApplication(this.toBeCreatedPackage)
+            .subscribe(() => {
+                ApplicationExt.reset(this.toBeCreatedPackage);
+            });
     }
 }

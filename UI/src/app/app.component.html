@@ -3,7 +3,10 @@
         <li class="home" routerLink="/">Batch Installer</li>
         <li routerLink="/package-management">Package Management</li>
         <li routerLink="/subscription">Subscription</li>
-        <li class="subscribe" routerLink="/subscribe">Subscribe {{applicationCount}}</li>
+        <li class="subscribe" routerLink="/subscribe">
+            <span class="icon icon-bell subscribe-bell" aria-hidden="true"></span>
+            <span class="subscribe-count">{{applicationCount}}</span>
+        </li>
     </ul>
 </div>
 <div class="app-container">
