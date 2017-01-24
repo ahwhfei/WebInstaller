@@ -4,7 +4,6 @@ import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 
 import { Application } from './application';
-import { APPLICATIONS } from './mock-applications';
 import { Manifest } from '../manifest';
 
 @Injectable()
@@ -20,27 +19,9 @@ export class ApplicationService {
                     .then(response => {
                         let data = response.json();
                         let applicationsList: Application[] = [];
-                        data.map(e => {
-                            let app: Application = {
-                                id: e.id || e._id,
-                                name: e.name || e.Name,
-                                description: e.description || e.Description,
-                                version: e.version || e.Version,
-                                message: e.message || e.Message,
-                                script: e.script || e.Script,
-                                quitCode: e.quitCode || e.QuitCode,
-                                dependency: e.dependency || e.Dependency,
-                                createDate: e.createDate || e.CreateDate,
-                                sourceURL: e.sourceURL || e.SourceURL,
-                                publisher: e.publisher || e.Publisher,
-                                downloadSize: e.downloadSize || e.DownloadSize,
-                                icon: e.icon || e.Icon,
-                                like: e.like || e.Like,
-                                restart: e.restart || e.Restart,
-                                passive: e.passive || e.Passive,
-                                quiet: e.quiet || e.Quiet,
-                                supportedOS: e.supportedOS || e.SupportedOS
-                            };
+                        data.map((e: Application) => {
+                            let app: Application = e as Application;
+                            app.id = e.id || e._id;
 
                             applicationsList.push(app);
                         });

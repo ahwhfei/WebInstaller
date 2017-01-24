@@ -1,6 +1,7 @@
 import { OperatingSystem } from '../operating-system/operating-system';
 
 export class Application {
+    _id: string;
     id: string;
     name: string;
     description: string;
