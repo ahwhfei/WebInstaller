@@ -4,8 +4,7 @@ import { Application } from './application';
 import { ApplicationService } from './application.service';
 import { ApplicationListService } from '../application-list/application-list.service';
 
-export class ApplicationWithSelected {
-    application: Application;
+export class ApplicationWithSelected extends Application {
     isSelected: boolean;
 }
 
@@ -27,8 +26,7 @@ export class ApplicationComponent implements OnInit {
         this.applicationService.getApplications()
             .then (apps => {
                 apps.map(e => {
-                    let app: ApplicationWithSelected = new ApplicationWithSelected();
-                    app.application = e;
+                    let app: ApplicationWithSelected = e as ApplicationWithSelected;
                     this.applicationList.push(app);
                 });
 
@@ -41,7 +39,7 @@ export class ApplicationComponent implements OnInit {
 
         this.applicationList.forEach( app => {
             let i = this.selectedApplicationList.findIndex( e => {
-                return e.id === app.application.id;
+                return e.id === app.id;
             });
 
             if (i >= 0) {
@@ -58,8 +56,6 @@ export class ApplicationComponent implements OnInit {
         this.getApplications();
     }
 
-
-
     private removeApplication(list: Array<Application>, element: Application): void {
         let i = list.findIndex(e => {
             return e.id === element.id;
@@ -73,10 +69,10 @@ export class ApplicationComponent implements OnInit {
     public add(index: number): void {
         if (this.applicationList[index].isSelected) {
             this.applicationCount--;
-            this.removeApplication(this.selectedApplicationList, this.applicationList[index].application);
+            this.removeApplication(this.selectedApplicationList, this.applicationList[index]);
         } else {
             this.applicationCount++;
-            this.selectedApplicationList.push(this.applicationList[index].application);
+            this.selectedApplicationList.push(this.applicationList[index]);
         }
         this.applicationList[index].isSelected = !this.applicationList[index].isSelected;
 
