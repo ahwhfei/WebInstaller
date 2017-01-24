@@ -1,1 +1,21 @@
-<div>subscription</div>
+<div class="subscription-container">
+    <search-bar></search-bar>
+    <div class="subscription-list">
+        <div *ngFor="let subscription of subscriptionList; let i=index;" class="subscription-item">
+            <div class="item">
+                <span class="col-md-2 col-sm-4 col-xs-12">
+                    <span class="app-name">{{subscription.name}}</span>
+                </span>
+                <span class="col-md-4 col-sm-8 col-xs-12">
+                    <span class="app-name">{{subscription.description}}</span>
+                </span>
+                <span class="col-md-4 col-sm-8 col-xs-12">
+                    <span class="app-name">{{subscription.script}}</span>
+                </span>
+                <span class="col-md-2 col-sm-4 col-xs-12">
+                    <button type="button" class="btn btn-primary right copy-button">Copy</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

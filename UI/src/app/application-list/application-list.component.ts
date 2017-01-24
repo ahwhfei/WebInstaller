@@ -13,28 +13,18 @@ import { ApplicationList } from './application-list';
 })
 export class ApplicationListComponent implements OnInit {
     selectedApplicationList: Array<Application>;
-
-    // @ViewChild(CreateSubscriptionComponent)
-    // public readonly modal: CreateSubscriptionComponent;
+    toBeCreatedSubscription: ApplicationList;
 
     constructor(private applicationListService: ApplicationListService) {
+        this.toBeCreatedSubscription = new ApplicationList();
+        this.toBeCreatedSubscription.applications = [];
+        this.toBeCreatedSubscription.name = '';
+        this.toBeCreatedSubscription.description = '';
+        this.toBeCreatedSubscription.script = '';
     }
 
     ngOnInit(): void {
         this.selectedApplicationList = this.applicationListService.selectedApplicationList;
-    }
-
-    public generateCommand(): void {
-        console.log('generateCommand');
-        let applicationList: ApplicationList = new ApplicationList();
-        applicationList.name = 'test';
-        applicationList.description = 'description';
-        applicationList.applications = [];
-        this.selectedApplicationList.map(app => applicationList.applications.push(app));
-
-        console.log(applicationList);
-
-        this.applicationListService.createApplicationList(applicationList)
-            .subscribe();
+        this.selectedApplicationList.map(app => this.toBeCreatedSubscription.applications.push(app));
     }
 }

@@ -15,27 +15,29 @@ export class CreateSubscriptionComponent {
     public readonly modal: ModalDialogComponent;
 
     @Input()
-    public applicationList: Application[];
+    public subscription: ApplicationList;
 
-    installationCommand: string = '';
+    script: string = '';
 
     constructor(private applicationListService: ApplicationListService) {}
 
-    public generateCommand(): void {
-        let list: ApplicationList = new ApplicationList();
-        list.name = 'test';
-        list.description = 'description';
-        list.applications = [];
-        this.applicationList.map(app => list.applications.push(app));
+    public generateCommand(name: string, description: string): void {
+        this.subscription.name = name.trim();
+        this.subscription.description = description.trim();
 
-        this.applicationListService.createApplicationList(list)
+        this.applicationListService.createApplicationList(this.subscription)
             .subscribe(
                 (appList: ApplicationList) => {
                     console.log(appList);
                     let executeString: string = `@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('http://localhost:3002/execute/${appList.id}'))"`;
 
-                    this.installationCommand = executeString;
+                    this.subscription.script = executeString;
+                    this.script = executeString;
                 }
             );
+    }
+
+    public copyCommand(): void {
+        console.log(this.subscription.script);
     }
 }

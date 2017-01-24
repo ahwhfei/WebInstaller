@@ -1,7 +1,7 @@
 <div class="application-container">
     <search-bar></search-bar>
     <div class="generate-command">
-        <create-subscription [applicationList]="selectedApplicationList"></create-subscription>
+        <create-subscription [subscription]="toBeCreatedSubscription"></create-subscription>
     </div>
     <div class="application-list">
         <div *ngIf="selectedApplicationList.length === 0" class="non-application">

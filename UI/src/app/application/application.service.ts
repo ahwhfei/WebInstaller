@@ -17,7 +17,7 @@ export class ApplicationService {
         return this.http.get(this.applicationsApi)
                     .toPromise()
                     .then(response => {
-                        let data = response.json();
+                        const data = response.json();
                         let applicationsList: Application[] = [];
                         data.map((e: Application) => {
                             let app: Application = e as Application;

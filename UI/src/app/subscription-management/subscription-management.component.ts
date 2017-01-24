@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApplicationList } from '../application-list/application-list';
-import { SubscriptionListService } from './subscription-list.service';
+import { SubscriptionListService } from '../subscription-list/subscription-list.service';
 
 @Component({
     providers: [SubscriptionListService],
-    selector: 'subscription-list',
-    styles: [require('./subscription-list.component.less')],
-    template: require('./subscription-list.component.html')
+    selector: 'subscription-management',
+    styles: [require('./subscription-management.component.less')],
+    template: require('./subscription-management.component.html')
 })
-export class SubscriptionListComponent implements OnInit {
+export class SubscriptionManagementComponent implements OnInit {
 
     public subscriptionList: ApplicationList[] = [];
 
