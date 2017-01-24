@@ -10,7 +10,7 @@ import { ApplicationListComponent } from './application-list/application-list.co
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PackageManagementComponent } from './package-management/package-management.component';
-import { SubscriptionComponent } from './subscription/subscription.component';
+import { SubscriptionListComponent } from './subscription-list/subscription-list.component';
 import { EditPackageComponent } from './edit-package/edit-package.component';
 import { CreatePackageComponent } from './create-package/create-package.component';
 import { ApplicationListService } from './application-list/application-list.service';
@@ -26,7 +26,7 @@ import { CtxSpinnerComponent } from './ctx-spinner/ctx-spinner.component';
     ApplicationListComponent,
     LoadingSpinnerComponent,
     PackageManagementComponent,
-    SubscriptionComponent,
+    SubscriptionListComponent,
     EditPackageComponent,
     CreatePackageComponent,
     SearchBarComponent,
@@ -54,7 +54,7 @@ import { CtxSpinnerComponent } from './ctx-spinner/ctx-spinner.component';
       },
       {
         path: 'subscription',
-        component: SubscriptionComponent
+        component: SubscriptionListComponent
       },
       {
         path: 'create',
