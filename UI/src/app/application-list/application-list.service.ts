@@ -35,6 +35,10 @@ export class ApplicationListService {
                         .map(this.extractData);
     }
 
+    public getSubscriptionScript(id: string): string {
+        return `@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('${Manifest.serverUrl}/execute/${id}'))"`;
+    }
+
     private extractData(res: Response): ApplicationList {
         let resData = res.json();
         let appList: ApplicationList = <ApplicationList>resData;

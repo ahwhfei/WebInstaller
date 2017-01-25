@@ -19,6 +19,7 @@ import { ApplicationService } from './application/application.service';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { CreateSubscriptionComponent} from './create-subscription/create-subscription.component';
 import { CtxSpinnerComponent } from './ctx-spinner/ctx-spinner.component';
+import { ClipboardDirective } from './clipboard/clipboard.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CtxSpinnerComponent } from './ctx-spinner/ctx-spinner.component';
     SubscriptionListComponent,
     SubscriptionManagementComponent,
     EditPackageComponent,
+    ClipboardDirective,
     CreatePackageComponent,
     SearchBarComponent,
     ModalDialogComponent,

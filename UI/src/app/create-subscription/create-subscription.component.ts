@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild, Input, ElementRef } from '@angular/core';
 
 import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 import { Application } from '../application/application';
@@ -17,27 +17,30 @@ export class CreateSubscriptionComponent {
     @Input()
     public subscription: ApplicationList;
 
-    script: string = '';
+    public disableGeneration: boolean = false;
+    public copyButtonText: string = 'Copy';
 
     constructor(private applicationListService: ApplicationListService) {}
 
     public generateCommand(name: string, description: string): void {
-        this.subscription.name = name.trim();
-        this.subscription.description = description.trim();
+        this.subscription.name = name.trim() || 'anonymous temporary subscription';
+        this.subscription.description = description.trim() || '';
 
         this.applicationListService.createApplicationList(this.subscription)
             .subscribe(
                 (appList: ApplicationList) => {
-                    console.log(appList);
-                    let executeString: string = `@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('http://localhost:3002/execute/${appList.id}'))"`;
-
+                    let executeString: string = this.applicationListService.getSubscriptionScript(appList.id || appList._id);
                     this.subscription.script = executeString;
-                    this.script = executeString;
+                    this.disableGeneration = true;
                 }
             );
     }
 
     public copyCommand(): void {
-        console.log(this.subscription.script);
+        this.copyButtonText = 'Copied';
+
+        setTimeout(() => {
+            this.copyButtonText = 'Copy';
+        }, 3000);
     }
 }

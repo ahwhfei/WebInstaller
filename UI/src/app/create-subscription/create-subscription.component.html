@@ -8,7 +8,9 @@
                 Name
             </span>
             <span class="col-md-9 col-xs-12">
-                <input type="text" class="col-input" #name />
+                <input type="text" class="col-input" #name 
+                placeholder="Enter subscription name or generate anonymous one!"
+                value="{{subscription.name}}" />
             </span>
         </div>
         <div class="create-subscription-row">
@@ -16,7 +18,9 @@
                 Description
             </span>
             <span class="col-md-9 col-xs-12">
-                <input type="text" class="col-input" #description />
+                <textarea rows=4 class="textarea-command" #description 
+                placeholder="Enter subscription description!"                
+                value="{{subscription.description}}"></textarea>
             </span>
         </div>
         <div class="create-subscription-row">
@@ -32,17 +36,26 @@
                 Installation Command
             </span>
             <span class="col-md-6 col-xs-8">
-                <textarea rows=4 class="textarea-command" disabled value="{{subscription.script}}" ></textarea>
+                <textarea rows=4 class="textarea-command" readonly 
+                #command
+                value="{{subscription.script}}" ></textarea>
             </span>
             <span class="col-md-3 col-xs-4">
-                <button type="button" class="btn btn-primary" 
-                    (click)="copyCommand()">Copy</button>
+                <input type="button" class="btn btn-primary"
+                    #copy
+                    [clipboard]="command"
+                    (click)="copyCommand(copy)"
+                    value="{{copyButtonText}}"
+                    [disabled]="copyButtonText === 'Copied' 
+                                || !subscription.script 
+                                || subscription.script.trim().length === 0" />
             </span>
         </div>
     </div>
     <div class="app-modal-footer">
         <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
         <input type="button" class="btn btn-primary" 
+            [disabled]="disableGeneration"
             (click)="generateCommand(name.value, description.value)"
             value="Generate" />
     </div>
