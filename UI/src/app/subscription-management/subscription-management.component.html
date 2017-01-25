@@ -1,11 +1,36 @@
-<div class="subscription-container">
+<div class="subscription-management-container">
     <search-bar></search-bar>
-    <div class="subscription-list">
-        <div *ngFor="let subscription of subscriptionList; let i=index;" class="subscription-item">
+    <div class="subscription-management-list">
+        <div *ngIf="subscriptionList.length === 0" class="no-content">
+            <span>No subscription!</span>
+        </div>
+        <div *ngFor="let subscription of subscriptionList; let i=index;" class="subscription-management-item">
             <div class="item">
-                <span class="col-md-9 col-sm-9 col-xs-5">
-                    <span class="app-name">{{subscription.name}}</span>
+                <span class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                    <span>{{subscription.name}}</span>
                 </span>
+                <span class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                    <span>{{subscription.description}}</span>
+                </span>
+                <span class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                    <span>{{subscription.customer}}</span>
+                </span>
+                <span class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                    <span>{{subscription.createDate}}</span>
+                </span>
+                <span class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <button type="button" class="btn btn-danger right"
+                        (click)="deleteSubscription(i)">Delete</button>
+                    <button type="button" class="btn btn-primary right">Edit</button>
+                </span>
+            </div>
+            <div class="subscription-management-package">
+                <div>Package List</div>
+                <ol>
+                    <li *ngFor="let package of subscription.applications">
+                        <span>{{package.name}}</span>
+                    </li>
+                </ol>
             </div>
         </div>
     </div>

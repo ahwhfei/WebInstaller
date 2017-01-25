@@ -35,6 +35,22 @@ export class ApplicationListService {
                         .map(this.extractData);
     }
 
+    public deleteSubscription(subscription: ApplicationList): Observable<ApplicationList> {
+        let url = Manifest.apiUrl + '/applicationList/' + (subscription.id || subscription._id);
+        return this.http.delete(url)
+                        .map(this.extractData);
+    }
+
+    public removeSubscription(list: Array<ApplicationList>, element: ApplicationList): void {
+        let i = list.findIndex(e => {
+            return e.id === element.id;
+        });
+
+        if (i >= 0) {
+            list.splice(i, 1);
+        }
+    }
+
     public getSubscriptionScript(id: string): string {
         return `@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('${Manifest.serverUrl}/execute/${id}'))"`;
     }

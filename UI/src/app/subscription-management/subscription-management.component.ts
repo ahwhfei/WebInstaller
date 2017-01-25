@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApplicationList } from '../application-list/application-list';
 import { SubscriptionListService } from '../subscription-list/subscription-list.service';
+import { ApplicationListService } from '../application-list/application-list.service';
 
 @Component({
     providers: [SubscriptionListService],
@@ -13,10 +14,17 @@ export class SubscriptionManagementComponent implements OnInit {
 
     public subscriptionList: ApplicationList[] = [];
 
-    constructor(private subscriptionListService: SubscriptionListService) {}
+    constructor(private subscriptionListService: SubscriptionListService,
+                private applicationListService: ApplicationListService) {}
 
     ngOnInit(): void {
         this.subscriptionListService.getSubscriptionList()
             .subscribe(data => this.subscriptionList = data);
+    }
+
+    public deleteSubscription(i: number): void {
+        this.applicationListService.deleteSubscription(this.subscriptionList[i])
+            .subscribe(subscription => 
+                this.applicationListService.removeSubscription(this.subscriptionList, this.subscriptionList[i]));
     }
 }

@@ -40,7 +40,7 @@ router.put('/:customer/applicationList/:id', function(req, res, next) {
  router.delete('/:customer/applicationList/:id', function(req, res, next) {
     AppList.findByIdAndRemove(req.params.id, function (err, appList) {
         if (err) return next(err);
-        res.send('Delete successfully');
+        res.send(appList);
     });
 });
 
