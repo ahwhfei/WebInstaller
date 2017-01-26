@@ -1,17 +1,31 @@
-<div class="app-navbar">
-    <ul class="navmain">
-        <li class="home" routerLink="/">Batch Installer</li>
-        <li routerLink="/package-management">Package Management</li>
-        <li routerLink="/subscription">Subscription</li>
-        <li routerLink="/subscription-management">Subscription Management</li>
-        <li class="subscribe" routerLink="/subscribe">
-            <span class="icon icon-bell subscribe-bell" aria-hidden="true"></span>
-            <span class="subscribe-count">{{applicationCount}}</span>
-        </li>
-    </ul>
-</div>
+<nav class="navbar navbar-default navbar-installer">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+            </button>
+            <a class="navbar-brand" routerLink="/">Batch Installer</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a routerLink="/">Package</a></li>
+                <li><a routerLink="/subscription">Subscription</a></li>
+                <li class="dropdown" (click)="toggleDropdown($event)"><a class="dropdown-toggle" data-toggle="dropdown">Management<span class="caret"></span></a>
+                    <ul class="dropdown-menu" *ngIf="isShown">
+                        <li><a routerLink="/package-management">Package Management</a></li>
+                        <li><a routerLink="/subscription-management">Subscription Management</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a routerLink="/subscribe"><span class="glyphicon glyphicon-bell"></span> {{applicationCount}}</a></li>                
+                <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> {{username}}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="app-container">
-	<!--<loading-spinner [promise]="testPromising">-->
-    	<router-outlet></router-outlet>
-	<!--</loading-spinner>-->
+    <router-outlet></router-outlet>
 </div>

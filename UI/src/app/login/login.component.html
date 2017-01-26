@@ -1,0 +1,16 @@
+<div class="login-container">
+    <h3>Log in</h3>
+    <div class="divider"></div>
+    <div class="form-group">
+        <label for="usr">Username</label>
+        <input #username type="text" class="form-control" id="usr">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password</label>
+        <input #password type="password" class="form-control" id="pwd">
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" value="">Keep me logged in</label>
+    </div>
+    <div><button type="button" class="btn btn-primary" (click)="login(username.value, password.value)">Log in</button></div>
+</div>

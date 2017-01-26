@@ -20,6 +20,8 @@ import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { CreateSubscriptionComponent} from './create-subscription/create-subscription.component';
 import { CtxSpinnerComponent } from './ctx-spinner/ctx-spinner.component';
 import { ClipboardDirective } from './clipboard/clipboard.directive';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { ClipboardDirective } from './clipboard/clipboard.directive';
     SearchBarComponent,
     ModalDialogComponent,
     CreateSubscriptionComponent,
-    CtxSpinnerComponent
+    CtxSpinnerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -69,13 +72,18 @@ import { ClipboardDirective } from './clipboard/clipboard.directive';
         component: CreatePackageComponent
       },
       {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
         path: 'subscribe',
         component: ApplicationListComponent
       }
     ])],
   providers: [
     ApplicationListService,
-    ApplicationService],
+    ApplicationService,
+    LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

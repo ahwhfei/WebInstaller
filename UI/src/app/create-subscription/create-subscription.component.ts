@@ -25,6 +25,7 @@ export class CreateSubscriptionComponent {
     public generateCommand(name: string, description: string): void {
         this.subscription.name = name.trim() || 'anonymous temporary subscription';
         this.subscription.description = description.trim() || '';
+        this.subscription.createDate = new Date().toUTCString();
 
         this.applicationListService.createApplicationList(this.subscription)
             .subscribe(

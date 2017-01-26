@@ -2,6 +2,27 @@
 @import "../../node_modules/bootstrap/less/bootstrap.less";
 @import "styles/global.less";
 
+.navbar-installer {
+    background-color: #658db5;
+    color: #f8f8f8 !important;
+
+    a {
+        color: #f8f8f8 !important;
+    }
+    a:hover, li:hover {
+        background-color: #333;
+    }
+}
+
+.dropdown-menu {
+    display: block;
+    background-color: #658db5;
+
+    a:hover, li:hover {
+        background-color: #333 !important;
+    }
+}
+
 .app-navbar {
     height: 60px;
     background-color: #658db5;
@@ -48,7 +69,7 @@
 
 .app-container, .app-navbar {
     padding: 0 200px;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 @media (max-width: 1400px) {
