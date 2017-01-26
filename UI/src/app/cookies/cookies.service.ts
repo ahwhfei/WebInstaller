@@ -51,4 +51,10 @@ export class CookiesService {
             document.cookie = name + '=' + value + '; path=/; domain=' + domain + '; expires=' + expirationDate.toUTCString() + '; secure';
         }
     }
+
+    public static remove(name: string): void {
+        let domain = this.domain();
+        document.cookie = name + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = name + '=; path=/; domain=' + domain + '; expires=Thu, 01 Jan 1970 00:00:01 GMT; secure';
+    }
 }

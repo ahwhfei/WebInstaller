@@ -20,13 +20,12 @@ export class LoginComponent implements OnInit {
     }
 
     public login(username: string, password: string): void {
-        console.log(username + ' ' + password);
         this.loginService.setUsername(username);
         CookiesService.put('user', username);
-        this.redirectTo('/package');
+        this.redirectTo('');
     }
 
     private redirectTo(path: string ): void {
-        this.router.navigate(['/package']);
+        this.router.navigate([path]);
     }
 }

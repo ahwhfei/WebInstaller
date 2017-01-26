@@ -6,9 +6,6 @@ import { CookiesService } from './cookies/cookies.service';
 
 @Component({
     encapsulation: ViewEncapsulation.None,
-    host: {
-        '(document:click)': 'onClick($event)',
-    },
     providers: [],
     selector: 'app-root',
     styles: [require('./app.component.less')],
@@ -29,15 +26,10 @@ export class AppComponent implements OnInit {
         this.applicationListService.applicationListObservable.subscribe(list =>
             this.applicationCount = list.length);
 
-        this.loginService.usernameObservable.subscribe(username => this.username = username);
-    }
-
-    public toggleDropdown($event): void {
-        this.isShown = !this.isShown;
-        event.stopPropagation();
-    }
-
-    onClick($event): void {
-        this.isShown = false;
+        this.loginService.usernameObservable.subscribe(username => {
+            (!!username && (username.trim().length > 0)) ?
+                this.username = username
+                : this.username = 'Log In';
+        });
     }
 }

@@ -21,6 +21,7 @@ import { CreateSubscriptionComponent} from './create-subscription/create-subscri
 import { CtxSpinnerComponent } from './ctx-spinner/ctx-spinner.component';
 import { ClipboardDirective } from './clipboard/clipboard.directive';
 import { LoginComponent } from './login/login.component';
+import { LogoffComponent } from './logoff/logoff.component';
 import { LoginService } from './login/login.service';
 
 @NgModule({
@@ -39,7 +40,8 @@ import { LoginService } from './login/login.service';
     ModalDialogComponent,
     CreateSubscriptionComponent,
     CtxSpinnerComponent,
-    LoginComponent
+    LoginComponent,
+    LogoffComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +76,10 @@ import { LoginService } from './login/login.service';
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'logoff',
+        component: LogoffComponent
       },
       {
         path: 'subscribe',
