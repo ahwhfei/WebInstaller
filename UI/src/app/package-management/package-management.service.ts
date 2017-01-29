@@ -5,11 +5,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Application } from '../application/application';
-import { Manifest } from '../manifest';
+import { ApiService } from '../services/api.service';
 
 @Injectable()
 export class PackageManagementService {
-    private applicationsApi: string = Manifest.apiUrl + '/application/';
+    private applicationsApi: string = ApiService.apiUrl + '/application/';
 
     constructor(private http: Http) {}
 

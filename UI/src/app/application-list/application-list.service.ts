@@ -7,13 +7,14 @@ import 'rxjs/add/operator/map';
 import { Application } from '../application/application';
 import { ApplicationList } from './application-list';
 import { Manifest } from '../manifest';
+import { ApiService } from '../services/api.service';
 
 @Injectable()
 export class ApplicationListService {
     private _selectedApplicationList: Array<Application> = [];
     private subject: Subject<Array<Application>> = new Subject<Array<Application>>();
     private _applicationListObservable: Observable<Array<Application>> = this.subject.asObservable();
-    private applicationListApi = Manifest.apiUrl + '/applicationList';
+    private applicationListApi = ApiService.apiUrl + '/applicationList';
 
     constructor(private http: Http) {}
 
@@ -36,7 +37,7 @@ export class ApplicationListService {
     }
 
     public deleteSubscription(subscription: ApplicationList): Observable<ApplicationList> {
-        let url = Manifest.apiUrl + '/applicationList/' + (subscription.id || subscription._id);
+        let url = ApiService.apiUrl + '/applicationList/' + (subscription.id || subscription._id);
         return this.http.delete(url)
                         .map(this.extractData);
     }

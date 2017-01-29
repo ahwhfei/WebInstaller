@@ -11,14 +11,9 @@ import { OperatingSystem, ALLWINDOWS } from '../operating-system/operating-syste
 })
 export class EditPackageComponent {
     @Input()
-    package: Application;
+    public package: Application;
 
-    allWindows: OperatingSystem[] = ALLWINDOWS;
-    public fileSrc: string = '';
-    public img: any = {
-        height: 48,
-        width: 48
-    };
+    public allWindows: OperatingSystem[] = ALLWINDOWS;
     public isLogoError: string = '';
     public invalidType: string = 'Invalid or unknown image format. Supported formats are jpg, png, bmp, icon, svg.';
 
@@ -28,13 +23,8 @@ export class EditPackageComponent {
             // Create a FileReader
             let reader = new FileReader();
             // Add an event listener to deal with the file when the reader is complete
-            reader.addEventListener('load', (event: any) => {
-                let img = document.createElement('img');
-                img.src = event.target.result;
-                this.img.height = 48;
-                this.img.width = 48;
-                this.fileSrc = img.src;
-            }, false);
+            reader.onloadend = (() => this.package.icon = reader.result);
+
             // Start reading this file
             reader.readAsDataURL(file);
         }
@@ -43,7 +33,7 @@ export class EditPackageComponent {
 
     public deleteFile() {
         this.isLogoError = '';
-        this.fileSrc = '';
+        this.package.icon = null;
     }
 
     // prevent the default drag operation

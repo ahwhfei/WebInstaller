@@ -4,12 +4,12 @@ import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 
 import { Application } from './application';
-import { Manifest } from '../manifest';
+import { ApiService } from '../services/api.service';
 
 @Injectable()
 export class ApplicationService {
-    private applicationsApi: string = Manifest.apiUrl + '/applications';
-    private postApplicationApi: string = Manifest.apiUrl + '/application';
+    private applicationsApi: string = ApiService.apiUrl + '/applications';
+    private postApplicationApi: string = ApiService.apiUrl + '/application';
 
     constructor(private http: Http) {}
 
