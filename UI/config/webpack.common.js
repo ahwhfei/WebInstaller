@@ -1,7 +1,8 @@
 const path = require('path');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     devServer: {
@@ -12,8 +13,10 @@ module.exports = {
             poll: 1000
         }
     },
-    devtool: 'source-map',
-    entry: path.resolve('client/src', 'main.ts'),
+    entry: {
+        polyfills: path.resolve('client/src', 'polyfills.ts'),
+        main: path.resolve('client/src', 'main.ts')
+    },
     module: {
         rules: [
             {
@@ -49,6 +52,18 @@ module.exports = {
     },
     plugins: [
         new CheckerPlugin(),
+        new CommonsChunkPlugin({
+            name: 'polyfills',
+            chunks: ['polyfills']
+        }),
+        new CommonsChunkPlugin({
+            name: 'vendor',
+            chunks: ['main'],
+            minChunks: module => /node_modules\//.test(module.resource)
+        }),
+        new CommonsChunkPlugin({
+            name: ['polyfills', 'vendor'].reverse()
+        }),
         new HtmlWebpackPlugin({
             template: 'client/src/index.html'
         })
