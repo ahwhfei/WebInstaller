@@ -1,6 +1,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 
 module.exports = {
     devServer: {
@@ -47,6 +48,7 @@ module.exports = {
         path: path.resolve('server', 'dist')
     },
     plugins: [
+        new CheckerPlugin(),
         new HtmlWebpackPlugin({
             template: 'client/src/index.html'
         })
