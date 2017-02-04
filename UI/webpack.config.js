@@ -1,6 +1,6 @@
 const path = require('path');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     devServer: {
@@ -33,8 +33,12 @@ module.exports = {
             },
             {
                 exclude: /node_modules/,
-                loaders: ['raw-loader', 'less-loader'],
+                loaders: ['to-string-loader', 'css-loader', 'less-loader'],
                 test: /\.less$/,
+            },
+            {
+                test: /\.(woff|woff2|ttf|eot|svg)$/,
+                loader: 'url-loader?name=fonts/[name].[ext]'
             }
         ]
     },

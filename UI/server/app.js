@@ -14,7 +14,7 @@
 
     // For resolve Angular enable HTML5 mode page refresh without 404 error
     app.get('*', function(req, res) {
-        res.sendFile(path.resolve('dist/index.html'));
+        res.sendFile(path.resolve('server/dist/index.html'));
     });
 
     module.exports = app;
