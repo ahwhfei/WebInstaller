@@ -12,7 +12,7 @@ module.exports = {
         }
     },
     devtool: 'source-map',
-    entry: path.resolve('src', 'main.ts'),
+    entry: path.resolve('client/src', 'main.ts'),
     module: {
         rules: [
             {
@@ -40,11 +40,11 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve('server', 'dist')
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'client/src/index.html'
         })
     ],
     resolve: {
