@@ -15,7 +15,8 @@ module.exports = {
     },
     entry: {
         polyfills: path.resolve('client/src', 'polyfills.ts'),
-        main: path.resolve('client/src', 'main.ts')
+        main: path.resolve('client/src', 'main.ts'),
+        manifest: path.resolve('client/src', 'manifest.ts')
     },
     module: {
         rules: [
@@ -62,7 +63,11 @@ module.exports = {
             minChunks: module => /node_modules\//.test(module.resource)
         }),
         new CommonsChunkPlugin({
-            name: ['polyfills', 'vendor'].reverse()
+            name: 'manifest',
+            chunks: ['manifest']
+        }),
+        new CommonsChunkPlugin({
+            name: ['polyfills', 'vendor', 'manifest'].reverse()
         }),
         new HtmlWebpackPlugin({
             template: 'client/src/index.html'

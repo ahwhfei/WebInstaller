@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { CustomerService } from './customer.service';
-import { Manifest } from '../manifest';
+import { Manifest } from '../../manifest';
 
 @Injectable()
 export class ApiService {

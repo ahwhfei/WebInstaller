@@ -19,6 +19,7 @@ let uglifyJsPlugin = new UglifyJsPlugin({
 
 
     beautify: false, //prod
+    exclude: ['manifest.js'],
     output: {
         comments: false
     }, //prod

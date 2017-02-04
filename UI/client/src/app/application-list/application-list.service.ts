@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { Application } from '../application/application';
 import { ApplicationList } from './application-list';
-import { Manifest } from '../manifest';
+import { Manifest } from '../../manifest';
 import { ApiService } from '../services/api.service';
 
 @Injectable()
