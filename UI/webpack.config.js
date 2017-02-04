@@ -23,7 +23,7 @@ module.exports = {
             },
             {
                 exclude: /node_modules/,
-                loader: 'ts-loader',
+                loader: 'awesome-typescript-loader',
                 test: /\.ts$/,
             },
             {
