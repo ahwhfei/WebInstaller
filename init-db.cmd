@@ -1,1 +1,0 @@
-mongoimport --db Installer --collection apps --drop --file F:/dev/SmartInstaller/Devops/applications.json
