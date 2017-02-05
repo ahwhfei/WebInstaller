@@ -25,6 +25,10 @@ export class ApplicationListComponent implements OnInit {
 
     ngOnInit(): void {
         this.selectedApplicationList = this.applicationListService.selectedApplicationList;
-        this.selectedApplicationList.map(app => this.toBeCreatedSubscription.applications.push(app));
+        this.selectedApplicationList.map(app => {
+            let toBeAddedPackage: Application = new Application();
+            toBeAddedPackage._id = app._id;
+            this.toBeCreatedSubscription.applications.push(toBeAddedPackage);
+        });
     }
 }
