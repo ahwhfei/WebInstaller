@@ -22,7 +22,7 @@ module.exports = {
         rules: [
             {
                 enforce: 'pre',
-                exclude: [/node_modules/, 'manifest.ts'],
+                exclude: /node_modules/,
                 loader: 'tslint-loader',
                 test: /\.ts$/,
             },
@@ -58,16 +58,16 @@ module.exports = {
             chunks: ['polyfills']
         }),
         new CommonsChunkPlugin({
+            name: 'manifest',
+            chunks: ['manifest']
+        }),
+        new CommonsChunkPlugin({
             name: 'vendor',
             chunks: ['main'],
             minChunks: module => /node_modules\//.test(module.resource)
         }),
         new CommonsChunkPlugin({
-            name: 'manifest',
-            chunks: ['manifest']
-        }),
-        new CommonsChunkPlugin({
-            name: ['polyfills', 'vendor', 'manifest'].reverse()
+            name: ['polyfills', 'manifest', 'vendor'].reverse()
         }),
         new HtmlWebpackPlugin({
             template: 'client/src/index.html'
