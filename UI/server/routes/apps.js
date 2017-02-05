@@ -21,6 +21,8 @@
                 try {
                     let appList = JSON.parse(rawData);
 
+                    appList.applications.map(app => delete app.icon);
+
                     let result = { Applications: appList.applications };
 
                     response.send(result);

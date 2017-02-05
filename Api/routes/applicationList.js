@@ -16,9 +16,11 @@ router.get('/:customer/applicationLists', function(req, res, next) {
 
 /* GET an application list according to ID */
 router.get('/:customer/applicationList/:id', function(req, res, next) {
-    applicationList.findById(req.params.id, function (err, appList) {
-        if (err) return next(err);
-        res.json(appList);
+    applicationList.findById(req.params.id)
+        .populate('applications')
+        .exec(function (err, appList) {
+            if (err) return next(err);
+            res.json(appList);
     });
 });
 
