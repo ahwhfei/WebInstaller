@@ -1,0 +1,37 @@
+<div class="subscription-container">
+    <search-bar></search-bar>
+    <div class="subscription-list">
+        <div *ngIf="subscriptionList.length === 0" class="no-content">
+            <span>No subscription! Go to <a routerLink="/package">subscribe</a> yours! </span>
+        </div>
+        <div *ngFor="let subscription of subscriptionList" class="subscription-item">
+            <div class="item">
+                <span class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                    <span>{{subscription.name}}</span>
+                </span>
+                <span class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                    <span>{{subscription.description}}</span>
+                </span>
+                <span class="col-lg-5 col-md-4 col-sm-8 col-xs-12">
+                    <textarea #command rows=4 value="{{subscription.script}}" readonly
+                        class="subscription-command"></textarea>
+                </span>
+                <span class="col-lg-1 col-md-2 col-sm-4 col-xs-12">
+                    <button type="button" 
+                        [clipboard]="command"
+                        class="btn btn-primary right copy-button">Copy</button>
+                </span>
+            </div>
+            <div class="package-list-divider"></div>
+            <div class="package-list">
+                <div>Package Sequence</div>
+                <ol>
+                    <li *ngFor="let package of subscription.applications">
+                        <img src="{{package.icon}}" />
+                        <span>{{package.name}}</span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

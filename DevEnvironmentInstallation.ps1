@@ -1,1 +1,0 @@
-iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/ahwhfei/DevEnvironmentInstallation/develop/Install.ps1'))
