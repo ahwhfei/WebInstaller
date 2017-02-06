@@ -1,0 +1,8 @@
+<div class="save-button-area">
+    <button class="save-button" type="button" 
+        [disabled]="!toBeCreatedPackage.name || !toBeCreatedPackage.script"
+        (click)="savePackage()">Save</button>
+</div>
+<div class="edit-area-container">
+    <edit-package [package]="toBeCreatedPackage"></edit-package>
+</div>

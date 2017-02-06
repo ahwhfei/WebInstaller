@@ -1,0 +1,103 @@
+@import "../../../node_modules/bootstrap/less/variables.less";
+@import "../../../node_modules/bootstrap/less/bootstrap.less";
+@import "styles/global.less";
+
+.navbar-installer {
+    background-color: #658db5;
+    color: #f8f8f8 !important;
+
+    a {
+        color: #f8f8f8 !important;
+        background-color: #658db5 !important;
+    }
+    a:hover, li:hover {
+        background-color: #333;
+    }
+}
+
+.dropdown:hover {
+    .dropdown-menu {
+        display: block;
+    }
+}
+
+.dropdown-menu {
+    background-color: #658db5;
+
+    a:hover, li:hover {
+        background-color: #333 !important;
+    }
+}
+
+.app-navbar {
+    height: 60px;
+    background-color: #658db5;
+    color: #f8f8f8;
+    font-size: 1em;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+
+    .navmain {
+        margin: 0 auto 0;
+        list-style: none;
+        padding: 0;
+
+        li {
+            height: 60px;
+            line-height: 60px;
+            padding: 0 10px;
+            color: #f8f8f8;
+            text-decoration: none;
+            display: inline-block;
+            border-right: 1px solid #7397BB;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #333;
+        }
+
+        .home {
+            border-left: 1px solid #7397BB;
+        }
+
+        .subscribe {
+            float: right;
+            background-color: #3B5998;
+        }
+
+        .subscribe-bell {
+            font-size: 18px;
+        }
+
+    }
+}
+
+.app-container, .app-navbar {
+    padding: 0 200px;
+    // overflow: hidden;
+}
+
+@media (max-width: 1400px) {
+    .app-container, .app-navbar {
+        padding: 0 150px;
+    }
+}
+
+@media (max-width: @screen-md-max) {
+    .app-container, .app-navbar {
+        padding: 0 100px;
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .app-container, .app-navbar {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .app-container, .app-navbar {
+        padding: 0 10px;
+    }
+}

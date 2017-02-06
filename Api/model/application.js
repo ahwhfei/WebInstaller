@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var AppSchema = new mongoose.Schema({
+var appSchema = new mongoose.Schema({
     name: String,
     description: String,
     version: String,
@@ -8,7 +8,7 @@ var AppSchema = new mongoose.Schema({
     script: String,
     quitCode: Number,
     dependency: [{ id: String }],
-    createDate: String,
+    createDate: { type: Date, default: Date.now },
     sourceURL: String,
     publisher: String,
     downloadSize: String,
@@ -20,4 +20,4 @@ var AppSchema = new mongoose.Schema({
     supportedOS: [{ name: String }]
 });
 
-module.exports = mongoose.model('App', AppSchema);
+module.exports = mongoose.model('app', appSchema);

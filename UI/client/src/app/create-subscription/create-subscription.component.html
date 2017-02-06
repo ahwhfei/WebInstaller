@@ -1,0 +1,64 @@
+<modal-dialog>
+    <div class="app-modal-header">
+        Create Subscription
+    </div>
+    <div class="app-modal-body">
+        <div class="create-subscription-row">
+            <span class="col-md-3 col-xs-12">
+                Name
+            </span>
+            <span class="col-md-9 col-xs-12">
+                <input type="text" class="col-input" #name 
+                placeholder="Enter subscription name or generate anonymous one!"
+                value="{{subscription.name}}" />
+            </span>
+        </div>
+        <div class="create-subscription-row">
+            <span class="col-md-3 col-xs-12">
+                Description
+            </span>
+            <span class="col-md-9 col-xs-12">
+                <textarea rows=4 class="textarea-command" #description 
+                placeholder="Enter subscription description!"                
+                value="{{subscription.description}}"></textarea>
+            </span>
+        </div>
+        <div class="create-subscription-row">
+            <span class="col-md-3 col-xs-12">
+                Supported OS
+            </span>
+            <span class="col-md-9 col-xs-12">
+                Windows 8
+            </span>
+        </div>
+        <div class="create-subscription-row">
+            <span class="col-md-3 col-xs-12">
+                Installation Command
+            </span>
+            <span class="col-md-6 col-xs-8">
+                <textarea rows=4 class="textarea-command" readonly 
+                #command
+                value="{{subscription.script}}" ></textarea>
+            </span>
+            <span class="col-md-3 col-xs-4">
+                <input type="button" class="btn btn-primary"
+                    #copy
+                    [clipboard]="command"
+                    (click)="copyCommand(copy)"
+                    value="{{copyButtonText}}"
+                    [disabled]="copyButtonText === 'Copied' 
+                                || !subscription.script 
+                                || subscription.script.trim().length === 0" />
+            </span>
+        </div>
+    </div>
+    <div class="app-modal-footer">
+        <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+        <input type="button" class="btn btn-primary" 
+            [disabled]="disableGeneration"
+            (click)="generateCommand(name.value, description.value)"
+            value="Generate" />
+    </div>
+</modal-dialog>
+<button (click)="modal.show()" class="create-subscription-button"
+        [disabled]="subscription.applications.length === 0">Create Subscription</button>
