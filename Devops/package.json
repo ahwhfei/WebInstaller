@@ -1,0 +1,14 @@
+{
+  "name": "install-devops",
+  "version": "1.0.0",
+  "description": "DevOps Tools for installer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "xml2js": "^0.4.17"
+  }
+}

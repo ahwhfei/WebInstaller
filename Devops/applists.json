@@ -1,0 +1,78 @@
+{
+    "_id": {
+        "$oid": "58949c29fb9c082b80ca31ff"
+    },
+    "name": "CWC Dev Team Building Toolset",
+    "description": "Include all CWC platform services building applications and front-end building tools",
+    "script": "",
+    "customer": "hongfeiw",
+    "like": 0,
+    "supportedOS": [],
+    "createDate": {
+        "$date": "2017-02-03T15:05:13.093Z"
+    },
+    "applications": [
+        {
+            "$oid": "5884220ad94330eb113d8d36"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d37"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d38"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d39"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d3b"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d3c"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d3d"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d3e"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d3f"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d40"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d41"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d42"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d43"
+        },
+        {
+            "$oid": "5884220ad94330eb113d8d44"
+        }
+    ],
+    "__v": 0
+}{
+    "_id": {
+        "$oid": "5895b0c71a7e614354912f85"
+    },
+    "name": "anonymous temporary subscription",
+    "description": "",
+    "script": "",
+    "customer": "hongfeiw",
+    "like": 0,
+    "supportedOS": [],
+    "createDate": {
+        "$date": "2017-02-04T10:45:27.376Z"
+    },
+    "applications": [
+        {
+            "$oid": "5895b00c1a7e614354912f84"
+        }
+    ],
+    "__v": 0
+}
