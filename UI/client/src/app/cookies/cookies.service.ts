@@ -48,13 +48,13 @@ export class CookiesService {
             // If we don't have more than two parts, we are probably running with localhost domain. We can't set cookies on domain=localhost.
             document.cookie = name + '=' + value + '; path=/; expires=' + expirationDate.toUTCString() + ';';
         } else {
-            document.cookie = name + '=' + value + '; path=/; domain=' + domain + '; expires=' + expirationDate.toUTCString() + '; secure';
+            document.cookie = name + '=' + value + '; path=/; domain=' + domain + '; expires=' + expirationDate.toUTCString() + ';';
         }
     }
 
     public static remove(name: string): void {
         let domain = this.domain();
         document.cookie = name + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        document.cookie = name + '=; path=/; domain=' + domain + '; expires=Thu, 01 Jan 1970 00:00:01 GMT; secure';
+        document.cookie = name + '=; path=/; domain=' + domain + '; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
 }
