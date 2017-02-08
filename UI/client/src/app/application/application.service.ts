@@ -14,7 +14,7 @@ export class ApplicationService {
     constructor(private http: Http) {}
 
     public getApplications(query?: string): Observable<Application[]> {
-        let queryApplicationsUrl = this.applicationsApi + '?q=' + query;
+        let queryApplicationsUrl = (!query ? this.applicationsApi : (this.applicationsApi + '?q=' + query));
         return this.http.get(queryApplicationsUrl)
             .map(response => {
                 const data = response.json();

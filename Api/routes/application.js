@@ -7,7 +7,7 @@ var application = require('../model/application');
 /* GET all applications */
 router.get('/:customer/applications', function(req, res, next) {
     let queryOption = {};
-    if (req.query['q'] !== 'undefined') {
+    if (!!req.query['q']) {
         queryOption = {
             name: {
                 $regex: req.query['q'],
