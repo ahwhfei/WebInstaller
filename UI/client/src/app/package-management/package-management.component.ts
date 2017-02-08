@@ -56,7 +56,9 @@ export class PackageManagementComponent implements OnInit {
         this.packageManagementService.deleteApplication(this.packageList[i].id)
             .subscribe((app: Application) => {
                 this.currentEditPackageIndex = -1;
-                this.applicationService.removeApplication(this.packageList, app);
+                if (this.packageList[i]._id === app._id) {
+                    this.packageList.splice(i, 1);
+                }
         });
     }
 }
