@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Application } from '../application/application';
 import { ApplicationService } from '../application/application.service';
@@ -20,17 +21,16 @@ export class PackageManagementComponent implements OnInit {
     currentEditPackage: Application;
 
     constructor(private applicationService: ApplicationService,
-                private packageManagementService: PackageManagementService) {
+                private packageManagementService: PackageManagementService,
+                private route: ActivatedRoute,
+                private router: Router) {
 
-    }
-
-    private getApplications(): void {
-        this.applicationService.getApplications()
-            .subscribe (apps => this.packageList = apps);
     }
 
     ngOnInit(): void {
-        this.getApplications();
+        this.route.params
+            .switchMap((params: Params) => this.applicationService.getApplications(params['q']))
+            .subscribe(apps => this.packageList = apps);
     }
 
     editPackage(i: number): void {

@@ -6,7 +6,7 @@
             routerLink="/create" />
     </div>
     <div class="application-list">
-        <div *ngIf="packageList.length === 0" class="non-application">
+        <div *ngIf="packageList.length === 0" class="no-content">
             <span>You don't have any app! Go to <a routerLink="/create">create</a> yours! </span>
         </div>
         <div *ngFor="let app of packageList; let i=index;" class="application-item">
