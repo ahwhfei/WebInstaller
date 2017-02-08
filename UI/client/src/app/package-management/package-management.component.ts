@@ -26,7 +26,7 @@ export class PackageManagementComponent implements OnInit {
 
     private getApplications(): void {
         this.applicationService.getApplications()
-            .then (apps => this.packageList = apps);
+            .subscribe (apps => this.packageList = apps);
     }
 
     ngOnInit(): void {

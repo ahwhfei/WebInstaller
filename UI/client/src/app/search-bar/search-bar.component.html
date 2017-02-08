@@ -1,4 +1,4 @@
 <div class="search-bar">
-    <input #searchTextBox class="search-textbox" type="text" placeholder="Search Package Name" />
+    <input #searchTextBox class="search-textbox" type="text" placeholder="Search Package Name" (keyup.enter)="search(searchTextBox.value)" />
     <input class="search-button" type="button" value="Search" (click)="search(searchTextBox.value)" />
 </div>

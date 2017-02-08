@@ -22,3 +22,8 @@ import '@angular/core';
 import '@angular/router';
 import '@angular/http';
 import '@angular/forms';
+
+import 'rxjs/Subject';
+import 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';

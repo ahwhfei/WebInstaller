@@ -11,6 +11,6 @@ export class SearchBarComponent {
 
     constructor(private router: Router) {}
     public search(keyword: string): void {
-        console.log(keyword);
+        this.router.navigate(['./', { q: keyword }]);
     }
 }
