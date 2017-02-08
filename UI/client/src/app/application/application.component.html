@@ -2,6 +2,9 @@
 <div class="application-container">
     <search-bar></search-bar>
     <div class="application-list">
+        <div *ngIf="applicationList.length === 0" class="no-content">
+            <span>No result!</span>
+        </div>
         <div *ngFor="let app of applicationList; let i=index;" class="application-item">
             <div class="item">
                 <span class="col-md-1 col-sm-1 col-xs-3">
