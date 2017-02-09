@@ -24,7 +24,10 @@ export class SubscriptionManagementComponent implements OnInit {
 
     public deleteSubscription(i: number): void {
         this.applicationListService.deleteSubscription(this.subscriptionList[i])
-            .subscribe(subscription =>
-                this.applicationListService.removeSubscription(this.subscriptionList, this.subscriptionList[i]));
+            .subscribe(subscription => {
+                if (subscription._id === this.subscriptionList[i]._id) {
+                    this.subscriptionList.splice(i, 1);
+                }
+            });
     }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     providers: [],
@@ -8,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class SearchBarComponent {
 
+    constructor(private router: Router) {}
+    public search(keyword: string): void {
+        this.router.navigate(['./', { q: keyword }]);
+    }
 }

@@ -1,5 +1,4 @@
 .application-list {
-    min-height: 500px;
     margin-top: 10px; 
 }
 
@@ -7,8 +6,15 @@
     box-shadow: 0 4px 8px 0 rgba(150, 150, 150, 0.2), 0 6px 20px 0 rgba(150, 150, 150, 0.1);
 }
 
+.no-content {
+    background-color: white;
+    padding: 20px; 
+    font-size: 16px;
+}
+
 .application-item {
-    height: 80px;
+    width: 100%;
+    display: inline-block;
     margin-bottom: 10px;
     background-color: white;
     padding: 10px 20px;
@@ -17,12 +23,6 @@
     img {
         width: 48px;
         height: 48px;
-    }
-
-    .item {
-        overflow: hidden;
-        height: 60px;
-        line-height: 60px;
     }
 
     .add-button {

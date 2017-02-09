@@ -6,7 +6,16 @@ var application = require('../model/application');
 
 /* GET all applications */
 router.get('/:customer/applications', function(req, res, next) {
-    application.find(function (err, apps) {
+    let queryOption = {};
+    if (!!req.query['q']) {
+        queryOption = {
+            name: {
+                $regex: req.query['q'],
+                $options: 'i'
+        }};
+    }
+
+    application.find(queryOption, function (err, apps) {
         if (err) return next(err);
         res.json(apps);
     });

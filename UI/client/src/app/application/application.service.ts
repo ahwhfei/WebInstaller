@@ -13,22 +13,21 @@ export class ApplicationService {
 
     constructor(private http: Http) {}
 
-    public getApplications(): Promise<Application[]> {
-        return this.http.get(this.applicationsApi)
-                    .toPromise()
-                    .then(response => {
-                        const data = response.json();
-                        let applicationsList: Application[] = [];
-                        data.map((e: Application) => {
-                            let app: Application = e as Application;
-                            app.id = e.id || e._id;
+    public getApplications(query?: string): Observable<Application[]> {
+        let queryApplicationsUrl = (!query ? this.applicationsApi : (this.applicationsApi + '?q=' + query));
+        return this.http.get(queryApplicationsUrl)
+            .map(response => {
+                const data = response.json();
+                let applicationsList: Application[] = [];
+                data.map((e: Application) => {
+                    let app: Application = e as Application;
+                    app.id = e.id || e._id;
 
-                            applicationsList.push(app);
-                        });
+                    applicationsList.push(app);
+                });
 
-                        return applicationsList;
-                    })
-                    .catch(this.handleError);
+                return applicationsList;
+        });
     }
 
     public modifyApplication(app: Application) {

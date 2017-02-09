@@ -9,7 +9,8 @@ var appListSchema = new mongoose.Schema({
     customer: String,
     script: String,
     supportedOS: [{ name: String }],
-    like: { type: Number, default: 0 }
+    like: { type: Number, default: 0 },
+    count: { type: Number, default: 0 }
 });
 
 module.exports = mongoose.model('applist', appListSchema);

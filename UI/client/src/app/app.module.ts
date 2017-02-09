@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApplicationComponent } from './application/application.component';
 import { ApplicationListComponent } from './application-list/application-list.component';
@@ -47,45 +48,8 @@ import { LoginService } from './login/login.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/package',
-        pathMatch: 'full'
-      },
-      {
-        path: 'package',
-        component: ApplicationComponent
-      },
-      {
-        path: 'package-management',
-        component: PackageManagementComponent
-      },
-      {
-        path: 'subscription',
-        component: SubscriptionListComponent
-      },
-      {
-        path: 'subscription-management',
-        component: SubscriptionManagementComponent
-      },
-      {
-        path: 'create',
-        component: CreatePackageComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'logoff',
-        component: LogoffComponent
-      },
-      {
-        path: 'subscribe',
-        component: ApplicationListComponent
-      }
-    ])],
+    AppRoutingModule
+  ],
   providers: [
     ApplicationListService,
     ApplicationService,
