@@ -1,0 +1,9 @@
+<div class="login-area">
+    <div *ngIf="!userDisplayName" id="{{googleLoginButtonId}}"></div>
+    <div class="dropdown" *ngIf="userDisplayName">
+        <a class="dropdown-toggle" data-toggle="dropdown">Hello, {{userDisplayName}}</a>
+        <ul class="dropdown-menu">
+            <li><a (click)="signOut()" href="">Log Out</a></li>
+        </ul>
+    </div>
+</div>
