@@ -9,14 +9,17 @@
             <div class="item">
                 <span class="col-md-1 col-sm-2 col-xs-3">
                     <img src={{app.icon}}></span>
-                <span class="col-md-3 col-sm-8 col-xs-6">
-                    <span class="app-name">{{app.name}}</span>
+                <span class="col-md-3 col-sm-6 col-xs-4">
+                    <span title="Name" class="app-name">{{app.name}}</span>
                 </span>
-                <span class="col-md-5 hidden-sm hidden-xs">
-                    <span class="app-name">{{app.description}}</span>
+                <span class="col-md-1 col-sm-2 col-xs-2">
+                    <span title="Popular Rate" class="app-name">{{app.count}}</span>
+                </span>
+                <span class="col-md-4 hidden-sm hidden-xs">
+                    <span title="Description" class="app-name">{{app.description}}</span>
                 </span>
                 <span class="col-md-2 hidden-sm hidden-xs">
-                    <span class="app-name">{{app.version}}</span>
+                    <span title="Version" class="app-name">{{app.version}}</span>
                 </span>
                 <span class="col-md-1 col-sm-2 col-xs-3">
                     <input type="button" value="{{app.isSelected ? 'Remove' : 'Add'}}" class="add-button" (click)="add(i)"/>

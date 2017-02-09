@@ -6,12 +6,25 @@
         router = express.Router();
     
     const http = require('http');
+    const request = require('request');
     const config = require('../config');
+
+    var _increaseCount = function (url) {
+        request.put(url,
+            {json: {$inc: {count: 1}}},
+            (err, res, body) => {
+            if (!!err) {
+                console.error('count increment:', err);
+            }
+        });
+    };
 
     router.get('/:id', function (req, response) {
         const id = req.params.id;
         const url = config.apiUrl + '/applicationList/' + id;
         let applications = [];
+
+        _increaseCount(url);
 
         http.get(url, (res) => {
             let rawData = '';
@@ -21,7 +34,12 @@
                 try {
                     let appList = JSON.parse(rawData);
 
-                    appList.applications.map(app => delete app.icon);
+                    let appUrl = config.apiUrl + '/application/';
+
+                    appList.applications.map(app => {
+                        delete app.icon;
+                        _increaseCount(appUrl + app._id);
+                    });
 
                     let result = { Applications: appList.applications };
 
