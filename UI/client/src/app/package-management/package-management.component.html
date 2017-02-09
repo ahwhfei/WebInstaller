@@ -6,7 +6,7 @@
             routerLink="/create" />
     </div>
     <div class="application-list">
-        <div *ngIf="packageList.length === 0" class="non-application">
+        <div *ngIf="packageList.length === 0" class="no-content">
             <span>You don't have any app! Go to <a routerLink="/create">create</a> yours! </span>
         </div>
         <div *ngFor="let app of packageList; let i=index;" class="application-item">
@@ -17,11 +17,14 @@
                 <span class="col-md-2 col-sm-8 col-xs-6">
                     <span class="app-name">{{app.name}}</span>
                 </span>
-                <span class="col-md-2 hidden-sm hidden-xs">
+                <span class="col-md-4 hidden-sm hidden-xs">
                     <span class="app-name">{{app.description}}</span>
                 </span>
-                <span class="col-md-5 hidden-sm hidden-xs">
+                <span class="col-md-2 hidden-sm hidden-xs">
                     <span class="app-name">{{app.script}}</span>
+                </span>
+                <span class="col-md-1 hidden-sm hidden-xs">
+                    <span class="app-name">{{app.version}}</span>
                 </span>
                 <span class="col-md-2 col-sm-2 col-xs-4">
                     <input class="edit-button" type="button"

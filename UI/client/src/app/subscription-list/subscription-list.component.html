@@ -1,5 +1,4 @@
 <div class="subscription-container">
-    <search-bar></search-bar>
     <div class="subscription-list">
         <div *ngIf="subscriptionList.length === 0" class="no-content">
             <span>No subscription! Go to <a routerLink="/package">subscribe</a> yours! </span>
@@ -9,8 +8,11 @@
                 <span class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
                     <span>{{subscription.name}}</span>
                 </span>
-                <span class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                <span class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <span>{{subscription.description}}</span>
+                </span>
+                <span class="col-lg-1 col-md-1 col-sm-2 col-xs-12">
+                    <span title="Popular Rate">{{subscription.count}}</span>
                 </span>
                 <span class="col-lg-5 col-md-4 col-sm-8 col-xs-12">
                     <textarea #command rows=4 value="{{subscription.script}}" readonly

@@ -2,14 +2,26 @@
 <div class="application-container">
     <search-bar></search-bar>
     <div class="application-list">
+        <div *ngIf="applicationList.length === 0" class="no-content">
+            <span>No result!</span>
+        </div>
         <div *ngFor="let app of applicationList; let i=index;" class="application-item">
             <div class="item">
-                <span class="col-md-1 col-sm-1 col-xs-3">
+                <span class="col-md-1 col-sm-2 col-xs-3">
                     <img src={{app.icon}}></span>
-                <span class="col-md-9 col-sm-9 col-xs-5">
-                    <span class="app-name">{{app.name}}</span>
+                <span class="col-md-3 col-sm-6 col-xs-4">
+                    <span title="Name" class="app-name">{{app.name}}</span>
                 </span>
-                <span class="col-md-2 col-sm-2 col-xs-4">
+                <span class="col-md-1 col-sm-2 col-xs-2">
+                    <span title="Popular Rate" class="app-name">{{app.count}}</span>
+                </span>
+                <span class="col-md-4 hidden-sm hidden-xs">
+                    <span title="Description" class="app-name">{{app.description}}</span>
+                </span>
+                <span class="col-md-2 hidden-sm hidden-xs">
+                    <span title="Version" class="app-name">{{app.version}}</span>
+                </span>
+                <span class="col-md-1 col-sm-2 col-xs-3">
                     <input type="button" value="{{app.isSelected ? 'Remove' : 'Add'}}" class="add-button" (click)="add(i)"/>
                 </span>
             </div>
