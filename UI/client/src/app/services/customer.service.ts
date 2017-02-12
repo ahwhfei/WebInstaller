@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { CookiesService } from '../cookies/cookies.service';
+import { CookiesService } from './cookies.service';
 
 @Injectable()
 export class CustomerService {

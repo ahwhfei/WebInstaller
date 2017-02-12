@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { ApplicationListService } from './application-list/application-list.service';
 import { LoginService } from './login/login.service';
 
-import { CookiesService } from './cookies/cookies.service';
+import { CookiesService } from './services/cookies.service';
 
 @Component({
     encapsulation: ViewEncapsulation.None,
@@ -12,8 +12,7 @@ import { CookiesService } from './cookies/cookies.service';
     template: require('./app.component.html')
 })
 export class AppComponent implements OnInit {
-    constructor(private applicationListService: ApplicationListService,
-                private loginService: LoginService) {}
+    constructor(private applicationListService: ApplicationListService) {}
     public applicationCount: number = 0;
     public testPromising: Promise<boolean>;
     public username: string = 'Log In';
@@ -25,11 +24,5 @@ export class AppComponent implements OnInit {
 
         this.applicationListService.applicationListObservable.subscribe(list =>
             this.applicationCount = list.length);
-
-        this.loginService.usernameObservable.subscribe(username => {
-            (!!username && (username.trim().length > 0)) ?
-                this.username = username
-                : this.username = 'Log In';
-        });
     }
 }

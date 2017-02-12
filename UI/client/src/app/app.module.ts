@@ -24,6 +24,8 @@ import { ClipboardDirective } from './clipboard/clipboard.directive';
 import { LoginComponent } from './login/login.component';
 import { LogoffComponent } from './logoff/logoff.component';
 import { LoginService } from './login/login.service';
+import { OauthComponent } from './oauth/oauth.component';
+import { CookiesService } from './services/cookies.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { LoginService } from './login/login.service';
     CreateSubscriptionComponent,
     CtxSpinnerComponent,
     LoginComponent,
-    LogoffComponent
+    LogoffComponent,
+    OauthComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,9 @@ import { LoginService } from './login/login.service';
   providers: [
     ApplicationListService,
     ApplicationService,
-    LoginService],
+    LoginService,
+    CookiesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
