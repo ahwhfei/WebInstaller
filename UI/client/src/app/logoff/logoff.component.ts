@@ -21,7 +21,6 @@ export class LogoffComponent implements OnInit {
 
     private logoff(): void {
         CookiesService.remove('user');
-        this.loginService.setUsername('');
         this.redirectTo('');
     }
 
