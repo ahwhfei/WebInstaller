@@ -2,7 +2,6 @@ import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
 import { ApplicationListService } from '../application-list/application-list.service';
 import { Application } from '../application/application';
 import { ApplicationList } from './application-list';
-// import { CreateSubscriptionComponent } from '../create-subscription/create-subscription.component';
 
 @Component({
     encapsulation: ViewEncapsulation.None,

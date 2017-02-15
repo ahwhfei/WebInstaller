@@ -13,6 +13,7 @@ import { ApplicationListService } from '../application-list/application-list.ser
 export class SubscriptionListComponent implements OnInit {
 
     public subscriptionList: ApplicationList[] = [];
+    public spinning: boolean = true;
 
     constructor(private subscriptionListService: SubscriptionListService,
                 private applicationListService: ApplicationListService) {}
@@ -26,6 +27,7 @@ export class SubscriptionListComponent implements OnInit {
                         subscription.script = this.applicationListService.getSubscriptionScript(subscription.id || subscription._id);
                     }
                 });
+                this.spinning = false;
             });
     }
 }

@@ -20,6 +20,7 @@ export class ApplicationComponent implements OnInit {
     public selectedApplicationList: Array<Application> = [];
     public applicationCount: number = 0;
     public query: string;
+    public spinning: boolean;
 
     constructor(private applicationService: ApplicationService,
                 private applicationListService: ApplicationListService,
@@ -47,8 +48,14 @@ export class ApplicationComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params
-            .switchMap((params: Params) => this.applicationService.getApplications(params['q']))
-            .subscribe(appList => this.setSelectedApplications(appList));
+            .switchMap((params: Params) => {
+                this.spinning = true;
+                return this.applicationService.getApplications(params['q']);
+            })
+            .subscribe(appList => {
+                this.setSelectedApplications(appList);
+                this.spinning = false;
+            });
     }
 
     private removeApplication(list: Array<Application>, element: Application): void {
@@ -72,6 +79,5 @@ export class ApplicationComponent implements OnInit {
         this.applicationList[index].isSelected = !this.applicationList[index].isSelected;
 
         this.applicationListService.setSelectedApplicationList(this.selectedApplicationList);
-
     }
 }

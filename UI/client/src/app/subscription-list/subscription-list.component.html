@@ -1,5 +1,5 @@
 <div class="subscription-container">
-    <div class="subscription-list">
+    <spinner class="subscription-list" [spinning]="spinning" [size]="'large'">
         <div *ngIf="subscriptionList.length === 0" class="no-content">
             <span>No subscription! Go to <a routerLink="/package">subscribe</a> yours! </span>
         </div>
@@ -35,5 +35,5 @@
                 </ol>
             </div>
         </div>
-    </div>
+    </spinner>
 </div>

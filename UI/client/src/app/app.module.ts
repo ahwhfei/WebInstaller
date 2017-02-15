@@ -19,7 +19,7 @@ import { ApplicationListService } from './application-list/application-list.serv
 import { ApplicationService } from './application/application.service';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { CreateSubscriptionComponent} from './create-subscription/create-subscription.component';
-import { CtxSpinnerComponent } from './ctx-spinner/ctx-spinner.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 import { ClipboardDirective } from './clipboard/clipboard.directive';
 import { LoginComponent } from './login/login.component';
 import { LogoffComponent } from './logoff/logoff.component';
@@ -40,7 +40,7 @@ import { LoginService } from './login/login.service';
     SearchBarComponent,
     ModalDialogComponent,
     CreateSubscriptionComponent,
-    CtxSpinnerComponent,
+    SpinnerComponent,
     LoginComponent,
     LogoffComponent
   ],
