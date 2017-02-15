@@ -7,7 +7,6 @@ import { SubscriptionManagementComponent } from './subscription-management/subsc
 import { SubscriptionListComponent } from './subscription-list/subscription-list.component';
 import { CreatePackageComponent } from './create-package/create-package.component';
 import { LoginComponent } from './login/login.component';
-import { LogoffComponent } from './logoff/logoff.component';
 import { OauthComponent } from './oauth/oauth.component';
 import { ApplicationListComponent } from './application-list/application-list.component';
 
@@ -35,10 +34,6 @@ const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent
-    },
-    {
-        path: 'logoff',
-        component: LogoffComponent
     },
     {
         path: 'oauth',

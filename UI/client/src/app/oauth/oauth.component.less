@@ -1,0 +1,24 @@
+@import "../../../../node_modules/bootstrap/less/variables.less";
+
+.login-container {
+    width: 400px;
+    max-width: 400px;
+    min-height: 200px;
+    margin: 50px auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+
+    .divider {
+        border-top: 1px solid #cfd0d0;
+        border-bottom: 1px solid #ffffff;
+        margin: 8px 0;
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .login-container {
+        width: 100%;
+    }
+}

@@ -22,10 +22,8 @@ import { CreateSubscriptionComponent} from './create-subscription/create-subscri
 import { CtxSpinnerComponent } from './ctx-spinner/ctx-spinner.component';
 import { ClipboardDirective } from './clipboard/clipboard.directive';
 import { LoginComponent } from './login/login.component';
-import { LogoffComponent } from './logoff/logoff.component';
 import { LoginService } from './login/login.service';
 import { OauthComponent } from './oauth/oauth.component';
-import { CookiesService } from './services/cookies.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +42,6 @@ import { CookiesService } from './services/cookies.service';
     CreateSubscriptionComponent,
     CtxSpinnerComponent,
     LoginComponent,
-    LogoffComponent,
     OauthComponent
   ],
   imports: [
@@ -56,8 +53,7 @@ import { CookiesService } from './services/cookies.service';
   providers: [
     ApplicationListService,
     ApplicationService,
-    LoginService,
-    CookiesService
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
