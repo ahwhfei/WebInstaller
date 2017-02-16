@@ -1,10 +1,10 @@
 <div class="login-area">
     <button *ngIf="!customerName" class="btn btn-primary" (click)="login()">Login</button>
     <div class="dropdown" *ngIf="!!customerName">
-        <a class="dropdown-toggle" data-toggle="dropdown">Hello {{customerName}}</a>
+        <a class="dropdown-toggle" data-toggle="dropdown">Hello {{customerName}}<span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li>
-                <a href="#" (click)="logout()">Logout</a>
+                <a (click)="logout()">Logout</a>
             </li>
         </ul>
     </div>

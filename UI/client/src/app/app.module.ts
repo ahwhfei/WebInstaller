@@ -24,6 +24,7 @@ import { ClipboardDirective } from './clipboard/clipboard.directive';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { OauthComponent } from './oauth/oauth.component';
+import { OauthService } from './oauth/oauth.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { OauthComponent } from './oauth/oauth.component';
   providers: [
     ApplicationListService,
     ApplicationService,
-    LoginService
+    LoginService,
+    OauthService
   ],
   bootstrap: [AppComponent]
 })

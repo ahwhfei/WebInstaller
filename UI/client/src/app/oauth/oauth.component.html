@@ -1,16 +1,10 @@
-<div class="oauth-container">
-    <h3>Log in</h3>
-    <div class="divider"></div>
-    <div class="form-group">
-        <label for="usr">Username</label>
-        <input #username type="text" class="form-control" id="usr" autofocus>
+<modal-dialog align="center">
+    <div class="app-modal-header">
+        <h3>Batch Installer need to read your information.</h3>
     </div>
-    <div class="form-group">
-        <label for="pwd">Password</label>
-        <input #password type="password" class="form-control" id="pwd">
+    <div class="app-modal-body">
+        <button class="btn btn-primary" (click)="confirmLogin()">Confirm</button>
+        <button class="btn btn-secondary" (click)="cancelLogin()">Cancel</button>
     </div>
-    <div class="checkbox">
-        <label><input type="checkbox" value="">Keep me logged in</label>
-    </div>
-    <div><button type="button" class="btn btn-primary" (click)="login(username.value, password.value)">Log in</button></div>
-</div>
+    <div class="app-modal-footer"></div>
+</modal-dialog>
