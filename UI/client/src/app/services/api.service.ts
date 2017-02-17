@@ -6,7 +6,7 @@ import { Manifest } from '../../manifest';
 @Injectable()
 export class ApiService {
     public static get apiUrl(): string {
-        let customer: string = CustomerService.customer || 'anonymous';
+        let customer: string = 'anonymous';
         return Manifest.apiUrl.replace('[customer]', customer);
     }
 }

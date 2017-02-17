@@ -13,7 +13,7 @@ export class LoginComponent {
     public userAuthToken: string = '';
     public userDisplayName: string = '';
 
-    constructor(private _zone: NgZone) {}
+    constructor(private zone: NgZone) {}
 
     // Angular hook that allows for interaction with elements inserted by the rendering of a view.
     ngAfterViewInit() {
@@ -31,7 +31,7 @@ export class LoginComponent {
 
     // Triggered after a user successfully logs in using the Google external login provider.
     private onGoogleLoginSuccess = (loggedInUser) => {
-        this._zone.run(() => {
+        this.zone.run(() => {
             let profile = loggedInUser.getBasicProfile();
             console.log('ID: ' + profile.getId()); // Don't send this directly to your server!
             console.log('Full Name: ' + profile.getName());

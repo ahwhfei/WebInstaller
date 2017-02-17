@@ -1,8 +1,9 @@
 <modal-dialog align="center">
-    <div class="app-modal-header">
+    <div *ngIf="isAuthening" class="app-modal-header">Loading...</div>
+    <div *ngIf="!isAuthening" class="app-modal-header">
         <h3>Batch Installer need to read your information.</h3>
     </div>
-    <div class="app-modal-body">
+    <div *ngIf="!isAuthening" class="app-modal-body">
         <button class="btn btn-primary" (click)="confirmLogin()">Confirm</button>
         <button class="btn btn-secondary" (click)="cancelLogin()">Cancel</button>
     </div>

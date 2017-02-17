@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { OauthComponent } from './oauth/oauth.component';
 import { OauthService } from './oauth/oauth.service';
+import { CustomerService } from './services/customer.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { OauthService } from './oauth/oauth.service';
     ApplicationListService,
     ApplicationService,
     LoginService,
-    OauthService
+    OauthService,
+    CustomerService
   ],
   bootstrap: [AppComponent]
 })

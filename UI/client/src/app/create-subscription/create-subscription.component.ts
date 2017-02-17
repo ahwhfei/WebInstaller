@@ -4,7 +4,7 @@ import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 import { Application } from '../application/application';
 import { ApplicationList } from '../application-list/application-list';
 import { ApplicationListService } from '../application-list/application-list.service';
-import { CustomerService } from '../services/customer.service';
+import { CookiesService } from '../services/cookies.service';
 
 @Component({
     selector: 'create-subscription',
@@ -26,7 +26,7 @@ export class CreateSubscriptionComponent {
     public generateCommand(name: string, description: string): void {
         this.subscription.name = name.trim() || 'anonymous temporary subscription';
         this.subscription.description = description.trim() || '';
-        this.subscription.customer = CustomerService.customer;
+        this.subscription.customer = CookiesService.get('name');
 
         this.applicationListService.createApplicationList(this.subscription)
             .subscribe(
