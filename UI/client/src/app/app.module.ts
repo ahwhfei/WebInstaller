@@ -22,8 +22,10 @@ import { CreateSubscriptionComponent} from './create-subscription/create-subscri
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ClipboardDirective } from './clipboard/clipboard.directive';
 import { LoginComponent } from './login/login.component';
-import { LogoffComponent } from './logoff/logoff.component';
 import { LoginService } from './login/login.service';
+import { OauthComponent } from './oauth/oauth.component';
+import { OauthService } from './oauth/oauth.service';
+import { CustomerService } from './services/customer.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { LoginService } from './login/login.service';
     CreateSubscriptionComponent,
     SpinnerComponent,
     LoginComponent,
-    LogoffComponent
+    OauthComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,10 @@ import { LoginService } from './login/login.service';
   providers: [
     ApplicationListService,
     ApplicationService,
-    LoginService],
+    LoginService,
+    OauthService,
+    CustomerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

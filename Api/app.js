@@ -33,8 +33,10 @@ app.use(cookieParser());
 /* Router */
 var application = require('./routes/application');
 var applicationList = require('./routes/applicationList');
+var customer = require('./routes/customer');
 app.use('/', application);
 app.use('/', applicationList);
+app.use('/', customer);
 
 /* Catch 404 and forward to error handler */
 app.use(function(req, res, next) {
