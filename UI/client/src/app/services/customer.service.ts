@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { ApiService } from '../services/api.service';
 import { CookiesService } from './cookies.service';
-import { CustomerInfo } from './customerInfo';
+import { CustomerInfo } from './customer-info';
 
 @Injectable()
 export class CustomerService {
@@ -26,7 +26,7 @@ export class CustomerService {
 
     // Public: Get all customers from api
     public getAllCustomers(): Observable<CustomerInfo[]> {
-        let url = `${this.customerApi}/all`;
+        let url = `${ApiService.apiUrl}/customers`;
         return this.http.get(url).map(response => {
             return response.json() as CustomerInfo[];
         });

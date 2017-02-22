@@ -5,9 +5,8 @@ var router = express.Router();
 var customer = require('../model/customer');
 
 /* GET all customers */
-router.get('/:customer/customer/all', function(req, res, next) {
+router.get('/:customer/customers', function(req, res, next) {
     customer.find()
-        .populate('customers')
         .exec(function (err, customers) {
             if (err) return next(err);
             res.json(customers);

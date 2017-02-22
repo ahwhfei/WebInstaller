@@ -5,7 +5,7 @@ import { OauthService } from './oauth.service';
 import { CustomerService } from '../services/customer.service';
 import { CookiesService } from '../services/cookies.service';
 import { Customer } from './customer';
-import { CustomerInfo } from '../services/customerInfo';
+import { CustomerInfo } from '../services/customer-info';
 
 @Component({
     selector: 'oauth',
