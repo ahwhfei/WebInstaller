@@ -1,6 +1,3 @@
-import { Injectable } from '@angular/core';
-
-@Injectable()
 export class CookiesService {
     private static domain(): string {
         let host = location.host,
