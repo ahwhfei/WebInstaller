@@ -13,13 +13,17 @@ import { PackageListService } from '../subscription/subscription.service';
 export class SubscriptionManagementComponent implements OnInit {
 
     public subscriptionList: PackageList[] = [];
+    public spinning: boolean = true;
 
     constructor(private subscriptionListService: SubscriptionListService,
                 private applicationListService: PackageListService) {}
 
     ngOnInit(): void {
         this.subscriptionListService.getSubscriptionList()
-            .subscribe(data => this.subscriptionList = data);
+            .subscribe(data => {
+                this.spinning = false;
+                this.subscriptionList = data;
+            });
     }
 
     public deleteSubscription(i: number): void {

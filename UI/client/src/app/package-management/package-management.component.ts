@@ -19,6 +19,7 @@ export class PackageManagementComponent implements OnInit {
 
     currentEditPackageIndex: number;
     currentEditPackage: Package;
+    public spinning: boolean;
 
     constructor(private applicationService: PackageService,
                 private packageManagementService: PackageManagementService,
@@ -29,8 +30,14 @@ export class PackageManagementComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params
-            .switchMap((params: Params) => this.applicationService.getPackages(params['q']))
-            .subscribe(apps => this.packageList = apps);
+            .switchMap((params: Params) => {
+                this.spinning = true;
+                return this.applicationService.getPackages(params['q']);
+            })
+            .subscribe(apps => {
+                this.spinning = false;
+                this.packageList = apps
+            });
     }
 
     editPackage(i: number): void {

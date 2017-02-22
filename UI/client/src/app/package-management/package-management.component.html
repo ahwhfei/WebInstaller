@@ -5,7 +5,7 @@
             value="Create"
             routerLink="/create" />
     </div>
-    <div class="subscription">
+    <spinner class="subscription" [spinning]="spinning" [size]="'large'">
         <div *ngIf="packageList.length === 0" class="no-content">
             <span>You don't have any app! Go to <a routerLink="/create">create</a> yours! </span>
         </div>
@@ -45,5 +45,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </spinner>
 </div>

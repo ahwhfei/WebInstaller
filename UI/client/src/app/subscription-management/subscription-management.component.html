@@ -1,5 +1,5 @@
 <div class="subscription-management-container">
-    <div class="subscription-management-list">
+    <spinner class="subscription-management-list" [spinning]="spinning" [size]="'large'">
         <div *ngIf="subscriptionList.length === 0" class="no-content">
             <span>No subscription!</span>
         </div>
@@ -32,5 +32,5 @@
                 </ol>
             </div>
         </div>
-    </div>
+    </spinner>
 </div>
