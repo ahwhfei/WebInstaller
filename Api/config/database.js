@@ -1,3 +1,3 @@
 module.exports = {
-    localDB : 'mongodb://localhost:27017/Installer'
+    localDB : 'mongodb://installerapi.eng.citrite.net:8080/InstallerForDevelop'
 };
