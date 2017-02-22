@@ -1,6 +1,6 @@
 import { OperatingSystem } from '../operating-system/operating-system';
 
-export class Application {
+export class Package {
     _id: string;
     id: string;
     name: string;
@@ -9,7 +9,7 @@ export class Application {
     message: string;
     script: string;
     quitCode: number;
-    dependency: Array<Application>;
+    dependency: Array<Package>;
     createDate: string;
     sourceURL: string;
     publisher: string;
@@ -22,8 +22,8 @@ export class Application {
     supportedOS: Array<OperatingSystem>;
 }
 
-export class ApplicationExt {
-     public static reset(app: Application): void {
+export class PackageExt {
+     public static reset(app: Package): void {
         app.id = '';
         app.name = '';
         app.description = '';

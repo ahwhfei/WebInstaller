@@ -1,12 +1,12 @@
-import { Application } from '../application/application';
+import { Package } from '../package/package';
 import { OperatingSystem } from '../operating-system/operating-system';
 
-export class ApplicationList {
+export class PackageList {
     _id: string;
     id: string;
     name: string;
     description: string;
-    applications: Application[];
+    applications: Package[];
     createDate: string;
     customer: string;
     script: string;

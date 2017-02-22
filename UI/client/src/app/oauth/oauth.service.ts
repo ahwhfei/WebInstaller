@@ -40,7 +40,7 @@ export class OauthService {
     public getTokenWithCode(): Observable<Token> {
         let url = `${Manifest.trustApiUrl}/Tokens?code=${this.code}&redirect_uri=${Manifest.authenticationRedirectUri}&clientId=${Manifest.athenaClientId}`;
         let header = new Headers();
-        header.append('Content-Type', 'application/x-www-form-urlencoded');
+        header.append('Content-Type', 'package/x-www-form-urlencoded');
         return this.http.post(url, {}, { headers: header }).map(response => {
             return response.json() as Token;
         });

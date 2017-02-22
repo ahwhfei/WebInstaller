@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '../services/api.service';
-import { ApplicationList } from '../application-list/application-list';
+import { PackageList } from '../subscription/subscription';
 
 @Injectable()
 export class SubscriptionListService {
@@ -11,11 +11,11 @@ export class SubscriptionListService {
 
     constructor(private http: Http) {}
 
-    public getSubscriptionList(): Observable<ApplicationList[]> {
+    public getSubscriptionList(): Observable<PackageList[]> {
         return this.http.get(this.applicationListsApi)
             .map((res: Response) => {
                 let data = res.json();
-                return data as ApplicationList[];
+                return data as PackageList[];
             });
     }
 }

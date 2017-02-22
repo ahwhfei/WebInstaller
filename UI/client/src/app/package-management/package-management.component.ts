@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { Application } from '../application/application';
-import { ApplicationService } from '../application/application.service';
+import { Package } from '../package/package';
+import { PackageService } from '../package/package.service';
 import { PackageManagementService } from './package-management.service';
 
 @Component({
@@ -13,14 +13,14 @@ import { PackageManagementService } from './package-management.service';
 })
 export class PackageManagementComponent implements OnInit {
 
-    packageList: Application[] = [];
+    packageList: Package[] = [];
 
     spinningPromise: Promise<any>;
 
     currentEditPackageIndex: number;
-    currentEditPackage: Application;
+    currentEditPackage: Package;
 
-    constructor(private applicationService: ApplicationService,
+    constructor(private applicationService: PackageService,
                 private packageManagementService: PackageManagementService,
                 private route: ActivatedRoute,
                 private router: Router) {
@@ -29,14 +29,14 @@ export class PackageManagementComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params
-            .switchMap((params: Params) => this.applicationService.getApplications(params['q']))
+            .switchMap((params: Params) => this.applicationService.getPackages(params['q']))
             .subscribe(apps => this.packageList = apps);
     }
 
     editPackage(i: number): void {
         if (this.currentEditPackageIndex === i) { // Click Done Button
             if (!(JSON.stringify(this.currentEditPackage) === JSON.stringify(this.packageList[i]))) {
-                this.packageManagementService.modifyApplication(this.currentEditPackage)
+                this.packageManagementService.modifyPackage(this.currentEditPackage)
                     .subscribe(() => {
                         this.packageList[i] = this.currentEditPackage;
                 });
@@ -53,8 +53,8 @@ export class PackageManagementComponent implements OnInit {
     }
 
     deletePackage(i: number): void {
-        this.packageManagementService.deleteApplication(this.packageList[i].id)
-            .subscribe((app: Application) => {
+        this.packageManagementService.deletePackage(this.packageList[i].id)
+            .subscribe((app: Package) => {
                 this.currentEditPackageIndex = -1;
                 if (this.packageList[i]._id === app._id) {
                     this.packageList.splice(i, 1);

@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ApplicationComponent } from './application/application.component';
-import { ApplicationListComponent } from './application-list/application-list.component';
+import { PackageComponent } from './package/package.component';
+import { PackageListComponent } from './subscription/subscription.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PackageManagementComponent } from './package-management/package-management.component';
@@ -15,8 +15,8 @@ import { SubscriptionListComponent } from './subscription-list/subscription-list
 import { SubscriptionManagementComponent } from './subscription-management/subscription-management.component';
 import { EditPackageComponent } from './edit-package/edit-package.component';
 import { CreatePackageComponent } from './create-package/create-package.component';
-import { ApplicationListService } from './application-list/application-list.service';
-import { ApplicationService } from './application/application.service';
+import { PackageListService } from './subscription/subscription.service';
+import { PackageService } from './package/package.service';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { CreateSubscriptionComponent} from './create-subscription/create-subscription.component';
 import { SpinnerComponent } from './spinner/spinner.component';
@@ -30,8 +30,8 @@ import { CustomerService } from './services/customer.service';
 @NgModule({
   declarations: [
     AppComponent,
-    ApplicationComponent,
-    ApplicationListComponent,
+    PackageComponent,
+    PackageListComponent,
     LoadingSpinnerComponent,
     PackageManagementComponent,
     SubscriptionListComponent,
@@ -53,8 +53,8 @@ import { CustomerService } from './services/customer.service';
     AppRoutingModule
   ],
   providers: [
-    ApplicationListService,
-    ApplicationService,
+    PackageListService,
+    PackageService,
     LoginService,
     OauthService,
     CustomerService

@@ -1,10 +1,10 @@
-<div class="application-container">
+<div class="package-container">
     <search-bar></search-bar>
-    <spinner class="application-list" [spinning]="spinning" [size]="'large'">
+    <spinner class="subscription" [spinning]="spinning" [size]="'large'">
         <div *ngIf="applicationList.length === 0" class="no-content">
             <span>No result!</span>
         </div>
-        <div *ngFor="let app of applicationList; let i=index;" class="application-item">
+        <div *ngFor="let app of applicationList; let i=index;" class="package-item">
             <div class="item">
                 <span class="col-md-1 col-sm-2 col-xs-3">
                     <img src={{app.icon}}></span>

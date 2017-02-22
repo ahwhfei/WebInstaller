@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Application } from '../application/application';
+import { Package } from '../package/package';
 import { OperatingSystem, ALLWINDOWS } from '../operating-system/operating-system';
 
 @Component({
@@ -11,7 +11,7 @@ import { OperatingSystem, ALLWINDOWS } from '../operating-system/operating-syste
 })
 export class EditPackageComponent {
     @Input()
-    public package: Application;
+    public package: Package;
 
     public allWindows: OperatingSystem[] = ALLWINDOWS;
     public isLogoError: string = '';

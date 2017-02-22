@@ -1,9 +1,9 @@
 import { Component, ViewChild, Input, ElementRef } from '@angular/core';
 
 import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
-import { Application } from '../application/application';
-import { ApplicationList } from '../application-list/application-list';
-import { ApplicationListService } from '../application-list/application-list.service';
+import { Package } from '../package/package';
+import { PackageList } from '../subscription/subscription';
+import { PackageListService } from '../subscription/subscription.service';
 import { CookiesService } from '../services/cookies.service';
 
 @Component({
@@ -16,21 +16,21 @@ export class CreateSubscriptionComponent {
     public readonly modal: ModalDialogComponent;
 
     @Input()
-    public subscription: ApplicationList;
+    public subscription: PackageList;
 
     public disableGeneration: boolean = false;
     public copyButtonText: string = 'Copy';
 
-    constructor(private applicationListService: ApplicationListService) {}
+    constructor(private applicationListService: PackageListService) {}
 
     public generateCommand(name: string, description: string): void {
         this.subscription.name = name.trim() || 'anonymous temporary subscription';
         this.subscription.description = description.trim() || '';
         this.subscription.customer = CookiesService.get('name');
 
-        this.applicationListService.createApplicationList(this.subscription)
+        this.applicationListService.createPackageList(this.subscription)
             .subscribe(
-                (appList: ApplicationList) => {
+                (appList: PackageList) => {
                     let executeString: string = this.applicationListService.getSubscriptionScript(appList.id || appList._id);
                     this.subscription.script = executeString;
                     this.disableGeneration = true;

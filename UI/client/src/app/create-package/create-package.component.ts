@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { Application, ApplicationExt } from '../application/application';
-import { ApplicationService } from '../application/application.service';
+import { Package, PackageExt } from '../package/package';
+import { PackageService } from '../package/package.service';
 
 @Component({
     providers: [],
@@ -10,14 +10,14 @@ import { ApplicationService } from '../application/application.service';
     template: require('./create-package.component.html')
 })
 export class CreatePackageComponent {
-    toBeCreatedPackage: Application = new Application();
+    toBeCreatedPackage: Package = new Package();
 
-    constructor(private applicationService: ApplicationService) {}
+    constructor(private applicationService: PackageService) {}
 
     savePackage() {
-    this.applicationService.addApplication(this.toBeCreatedPackage)
+    this.applicationService.addPackage(this.toBeCreatedPackage)
             .subscribe(() => {
-                ApplicationExt.reset(this.toBeCreatedPackage);
+                PackageExt.reset(this.toBeCreatedPackage);
             });
     }
 }

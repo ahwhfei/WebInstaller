@@ -1,12 +1,12 @@
-<div class="application-container">
+<div class="package-container">
     <div class="generate-command">
         <create-subscription [subscription]="toBeCreatedSubscription"></create-subscription>
     </div>
-    <div class="application-list">
-        <div *ngIf="selectedApplicationList.length === 0" class="non-application">
+    <div class="subscription">
+        <div *ngIf="selectedPackageList.length === 0" class="non-package">
             <span>You don't subscribe any app! Go to <a routerLink="/package">subscribe</a> yours! </span>
         </div>
-        <div *ngFor="let app of selectedApplicationList; let i=index;" class="application-item">
+        <div *ngFor="let app of selectedPackageList; let i=index;" class="package-item">
             <div class="item">
                 <div class="col-md-1 col-sm-1">
                     <img src={{app.icon}}></div>

@@ -1,15 +1,15 @@
 <search-bar></search-bar>
-<div class="application-container">
+<div class="package-container">
     <div class="create-button-area">
         <input class="create-button" type="button" 
             value="Create"
             routerLink="/create" />
     </div>
-    <div class="application-list">
+    <div class="subscription">
         <div *ngIf="packageList.length === 0" class="no-content">
             <span>You don't have any app! Go to <a routerLink="/create">create</a> yours! </span>
         </div>
-        <div *ngFor="let app of packageList; let i=index;" class="application-item">
+        <div *ngFor="let app of packageList; let i=index;" class="package-item">
             <div class="item">
                 <span class="col-md-1 col-sm-2 col-xs-2">
                     <img src={{app.icon}}>

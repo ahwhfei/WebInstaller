@@ -1,12 +1,12 @@
-import { Application } from '../application/application';
-import { ApplicationList } from '../application-list/application-list';
+import { Package } from '../package/package';
+import { PackageList } from '../subscription/subscription';
 
 export class CustomerInfo {
     id: String;
     name: String;
     email: String;
     type: String;
-    applications: Application[];
-    applicationLists: ApplicationList[];
+    applications: Package[];
+    applicationLists: PackageList[];
     createDate: string;
 }

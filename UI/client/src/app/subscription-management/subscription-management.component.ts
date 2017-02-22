@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ApplicationList } from '../application-list/application-list';
+import { PackageList } from '../subscription/subscription';
 import { SubscriptionListService } from '../subscription-list/subscription-list.service';
-import { ApplicationListService } from '../application-list/application-list.service';
+import { PackageListService } from '../subscription/subscription.service';
 
 @Component({
     providers: [SubscriptionListService],
@@ -12,10 +12,10 @@ import { ApplicationListService } from '../application-list/application-list.ser
 })
 export class SubscriptionManagementComponent implements OnInit {
 
-    public subscriptionList: ApplicationList[] = [];
+    public subscriptionList: PackageList[] = [];
 
     constructor(private subscriptionListService: SubscriptionListService,
-                private applicationListService: ApplicationListService) {}
+                private applicationListService: PackageListService) {}
 
     ngOnInit(): void {
         this.subscriptionListService.getSubscriptionList()

@@ -3,24 +3,24 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 
-import { Application } from './application';
+import { Package } from './package';
 import { ApiService } from '../services/api.service';
 
 @Injectable()
-export class ApplicationService {
+export class PackageService {
     private applicationsApi: string = ApiService.apiUrl + '/applications';
-    private postApplicationApi: string = ApiService.apiUrl + '/application';
+    private postPackageApi: string = ApiService.apiUrl + '/package';
 
     constructor(private http: Http) {}
 
-    public getApplications(query?: string): Observable<Application[]> {
-        let queryApplicationsUrl = (!query ? this.applicationsApi : (this.applicationsApi + '?q=' + query));
-        return this.http.get(queryApplicationsUrl)
+    public getPackages(query?: string): Observable<Package[]> {
+        let queryPackagesUrl = (!query ? this.applicationsApi : (this.applicationsApi + '?q=' + query));
+        return this.http.get(queryPackagesUrl)
             .map(response => {
                 const data = response.json();
-                let applicationsList: Application[] = [];
-                data.map((e: Application) => {
-                    let app: Application = e as Application;
+                let applicationsList: Package[] = [];
+                data.map((e: Package) => {
+                    let app: Package = e as Package;
                     app.id = e.id || e._id;
 
                     applicationsList.push(app);
@@ -30,7 +30,7 @@ export class ApplicationService {
         });
     }
 
-    public modifyApplication(app: Application) {
+    public modifyPackage(app: Package) {
         let applicationId = app.id;
         let url = this.applicationsApi + applicationId;
         return this.http.put(url, app)
@@ -41,7 +41,7 @@ export class ApplicationService {
             .catch(this.handleError);
     }
 
-    public deleteApplication(appId: string) {
+    public deletePackage(appId: string) {
         let url = this.applicationsApi + appId;
         return this.http.delete(url)
             .toPromise()
@@ -51,12 +51,12 @@ export class ApplicationService {
             .catch(this.handleError);
     }
 
-    public addApplication(app: Application) {
-        let url = this.postApplicationApi;
+    public addPackage(app: Package) {
+        let url = this.postPackageApi;
         return this.http.post(url, app);
     }
 
-    public removeApplication(list: Array<Application>, element: Application): void {
+    public removePackage(list: Array<Package>, element: Package): void {
         let i = list.findIndex(e => {
             return e.id === element.id;
         });
