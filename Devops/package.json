@@ -9,6 +9,7 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
+    "mongodb": "^2.2.24",
     "request": "^2.79.0",
     "rxjs": "^5.2.0",
     "sharp": "^0.17.2",
