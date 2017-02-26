@@ -13,11 +13,10 @@ MongoClient.connect(url, function(err, db) {
         !!err && console.log(err);
 
         if (!app) {
-            db.close();
             return false;
         } 
 
-        if (!!app.icon && (app.icon.indexOf('http') >=0)) {
+        if (!!app && !!app.icon && (app.icon.indexOf('http') >=0)) {
             download.convertIconToBase64(app.icon).then(
                 base64Image => {
                     apps.findOneAndUpdate({_id: app._id}, 
