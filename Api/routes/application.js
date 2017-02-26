@@ -11,14 +11,16 @@ router.get('/:customer/applications', function(req, res, next) {
         queryOption = {
             name: {
                 $regex: req.query['q'],
-                $options: 'i'
+                $options: 'i'   // Case insentive
         }};
     }
 
     application.find(queryOption, function (err, apps) {
         if (err) return next(err);
         res.json(apps);
-    });
+    })
+    .limit(40)
+    .sort({count: -1, name: 1});
 });
 
 /* GET application detail according to ID or Name */
