@@ -25,9 +25,15 @@ if (-not $isAdministrator) {
 	exit 1
 }
 
+$status = @{
+    SUCCESS='Success'
+    FAIL='Fail'
+    INTERRUPT='Interrupt'
+}
+
 $applist_id = '<<APPLISTID>>'
 $startTime = Get-Date
-$listInstallationStatus = 'Interrupt'
+$listInstallationStatus = $status.INTERRUPT
 $WindowsVersion = (Get-WmiObject -class Win32_OperatingSystem).Caption
 $listCompletelog = ''
 $listInstallationDuration = ''
@@ -46,7 +52,7 @@ function PostInstallInfo{
 		App_Logs = $applogs
 		List_complete_log = $listCompletelog
 		List_installation_duration = $listInstallationDuration.TotalMinutes
-		List_installation_status = 0
+		List_installation_status = $listInstallationStatus
 		Windows_version = $WindowsVersion
 		Machine_computer_name = $machineComputerName
 		Machine_ip_address = $MachineIpAddress
@@ -54,7 +60,8 @@ function PostInstallInfo{
 		EndTime = $endTime
 	}
 	$json = $body | ConvertTo-Json
-	$response = Invoke-RestMethod $uri -Method Post -Body $json -ContentType 'application/json'
+	#$response = Invoke-RestMethod $uri -Method Post -Body $json -ContentType 'application/json'
+    write-host $json
 }
 
 # Help with installing other dependencies
@@ -83,12 +90,12 @@ function Install($programName, $message, $script, $appId, $shouldExit) {
 	$appInstallationStatus = 'Interrupt'
 	Write-Host "EXIT CODE: $LASTEXITCODE"
 	if ($LASTEXITCODE -ne 0) {
-		$appInstallationStatus = 'Fail'
+		$appInstallationStatus = $status.FAIL
 		$applog = "WARNING: $($programName) not installed"
-		PostInstallInfo -applogs $applogs
+        $listInstallationStatus = $status.FAIL
 		Write-Host -ForegroundColor Yellow $applog
 	}else{
-		$appInstallationStatus = 'Success'
+		$appInstallationStatus = $status.SUCCESS
 		$applog = "Install $($programName) success"
 	}
 	$applogs = @{
@@ -122,11 +129,15 @@ function Pause {
 # }
 
 $ApplicationListObject = (new-object net.webclient).DownloadString('<<POWERSHELLTEMPLATEID>>') | ConvertFrom-Json
-PostInstallInfo -applogs $applogs
+
 foreach ($app in $ApplicationListObject.Applications) {
 	Install $app.Name $app.Message $app.Script $app._id
 }
 $endTime = Get-Date
+if($listInstallationStatus -ne $status.FAIL){
+    $listInstallationStatus=$status.SUCCESS
+}
 $listInstallationDuration = $endTime-$startTime
+PostInstallInfo -applogs $applogs
 Write-Host -ForegroundColor Green "This script has modified your environment. You need to log off and log back on for the changes to take effect."
 Pause
