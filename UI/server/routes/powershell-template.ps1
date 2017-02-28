@@ -128,4 +128,5 @@ foreach ($app in $ApplicationListObject.Applications) {
 }
 $endTime = Get-Date
 $listInstallationDuration = $endTime-$startTime
+Write-Host -ForegroundColor Green "This script has modified your environment. You need to log off and log back on for the changes to take effect."
 Pause
