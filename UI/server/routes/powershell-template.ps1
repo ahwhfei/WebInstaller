@@ -25,9 +25,41 @@ if (-not $isAdministrator) {
 	exit 1
 }
 
+$applist_id = '<<APPLISTID>>'
+$startTime = Get-Date
+$listInstallationStatus = 'Interrupt'
+$WindowsVersion = (Get-WmiObject -class Win32_OperatingSystem).Caption
+$listCompletelog = ''
+$listInstallationDuration = ''
+$machineComputer = Get-WmiObject -Class Win32_ComputerSystem
+$machineComputerName = $machineComputer.name
+$ipV4 = Test-Connection -ComputerName (hostname) -Count 1  | Select-Object -ExpandProperty IPV4Address
+$MachineIpAddress = $ipV4.IPAddressToString
+$applogs = @{}
+function PostInstallInfo{
+	Param(
+		[hashtable]$applogs,
+		[string]$uri = "http:/test.com"
+	)
+	$body = @{
+		Applist_id = $applist_id
+		App_Logs = $applogs
+		List_complete_log = $listCompletelog
+		List_installation_duration = $listInstallationDuration.TotalMinutes
+		List_installation_status = 0
+		Windows_version = $WindowsVersion
+		Machine_computer_name = $machineComputerName
+		Machine_ip_address = $MachineIpAddress
+		StartTime = $startTime
+		EndTime = $endTime
+	}
+	$json = $body | ConvertTo-Json
+	$response = Invoke-RestMethod $uri -Method Post -Body $json -ContentType 'application/json'
+}
+
 # Help with installing other dependencies
 $script:answer = ""
-function Install($programName, $message, $script, $shouldExit) {
+function Install($programName, $message, $script, $appId, $shouldExit) {
 	if ($script:answer -ne "a") {
 		Write-Host -ForegroundColor Green "Allow the script to install $($programName)?"
 		Write-Host "Tip: Note that if you type a you won't be prompted for subsequent installations"
@@ -42,12 +74,30 @@ function Install($programName, $message, $script, $shouldExit) {
 	}
 
 	Write-Host $message
+	
+	$appStartTime = Get-Date
 	Invoke-Expression($script)
-
+	$appEndTime = Get-Date
+	$appInstatllationDuration = $appEndTime-$appStartTime
+	$applog = ''
+	$appInstallationStatus = 'Interrupt'
 	Write-Host "EXIT CODE: $LASTEXITCODE"
 	if ($LASTEXITCODE -ne 0) {
-		Write-Host -ForegroundColor Yellow "WARNING: $($programName) not installed"
+		$appInstallationStatus = 'Fail'
+		$applog = "WARNING: $($programName) not installed"
+		PostInstallInfo -applogs $applogs
+		Write-Host -ForegroundColor Yellow $applog
+	}else{
+		$appInstallationStatus = 'Success'
+		$applog = "Install $($programName) success"
 	}
+	$applogs = @{
+					App_id = $appId
+					App_log = $applog
+					App_instatllation_duration = $appInstatllationDuration.TotalMinutes
+					App_installation_status = $appInstallationStatus
+				}
+	PostInstallInfo -applogs $applogs
 }
 
 function Pause {
@@ -72,10 +122,10 @@ function Pause {
 # }
 
 $ApplicationListObject = (new-object net.webclient).DownloadString('<<POWERSHELLTEMPLATEID>>') | ConvertFrom-Json
-
+PostInstallInfo -applogs $applogs
 foreach ($app in $ApplicationListObject.Applications) {
-	Install $app.Name $app.Message $app.Script
+	Install $app.Name $app.Message $app.Script $app._id
 }
-
-Write-Host -ForegroundColor Green "This script has modified your environment. You need to log off and log back on for the changes to take effect."
+$endTime = Get-Date
+$listInstallationDuration = $endTime-$startTime
 Pause
