@@ -9,7 +9,7 @@ import { ApiService } from '../services/api.service';
 
 @Injectable()
 export class PackageManagementService {
-    private applicationsApi: string = ApiService.apiUrl + '/package/';
+    private applicationsApi: string = ApiService.apiUrl + '/application/';
 
     constructor(private http: Http) {}
 
