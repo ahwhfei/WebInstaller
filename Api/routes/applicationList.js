@@ -11,8 +11,7 @@ router.get('/:customer/applicationLists', function(req, res, next) {
         .exec(function (err, appLists) {
             if (err) return next(err);
             res.json(appLists);
-    })
-    .sort({count: -1});
+    });
 });
 
 /* GET an application list according to ID */
