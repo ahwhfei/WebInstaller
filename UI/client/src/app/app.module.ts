@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { DndModule } from 'ng2-dnd';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,9 +27,6 @@ import { LoginService } from './login/login.service';
 import { OauthComponent } from './oauth/oauth.component';
 import { OauthService } from './oauth/oauth.service';
 import { CustomerService } from './services/customer.service';
-import { SortableContainer,SortableComponent } from './ng2-dnd/sortable.component';
-import { DragDropConfig } from './ng2-dnd/dnd.config';
-import { DragDropService, DragDropSortableService, dragDropServiceFactory, dragDropSortableServiceFactory } from './ng2-dnd/dnd.service';
 
 @NgModule({
   declarations: [
@@ -47,25 +45,21 @@ import { DragDropService, DragDropSortableService, dragDropServiceFactory, dragD
     CreateSubscriptionComponent,
     SpinnerComponent,
     LoginComponent,
-    OauthComponent,
-    SortableContainer,
-    SortableComponent
+    OauthComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DndModule.forRoot()
   ],
   providers: [
     PackageListService,
     PackageService,
     LoginService,
     OauthService,
-    CustomerService,
-    DragDropConfig,
-    { provide: DragDropService, useFactory: dragDropServiceFactory },
-    { provide: DragDropSortableService, useFactory: dragDropSortableServiceFactory, deps: [DragDropConfig] }
+    CustomerService
   ],
   bootstrap: [AppComponent]
 })

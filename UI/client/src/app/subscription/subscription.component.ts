@@ -2,8 +2,6 @@ import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
 import { PackageListService } from '../subscription/subscription.service';
 import { Package } from '../package/package';
 import { PackageList } from './subscription';
-import {DragDropConfig} from '../ng2-dnd/dnd.config';
-import {SortableContainer, SortableComponent} from '../ng2-dnd/sortable.component';
 
 @Component({
     encapsulation: ViewEncapsulation.None,
