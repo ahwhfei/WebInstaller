@@ -26,6 +26,9 @@ import { LoginService } from './login/login.service';
 import { OauthComponent } from './oauth/oauth.component';
 import { OauthService } from './oauth/oauth.service';
 import { CustomerService } from './services/customer.service';
+import { SortableContainer,SortableComponent } from './ng2-dnd/sortable.component';
+import { DragDropConfig } from './ng2-dnd/dnd.config';
+import { DragDropService, DragDropSortableService, dragDropServiceFactory, dragDropSortableServiceFactory } from './ng2-dnd/dnd.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { CustomerService } from './services/customer.service';
     CreateSubscriptionComponent,
     SpinnerComponent,
     LoginComponent,
-    OauthComponent
+    OauthComponent,
+    SortableContainer,
+    SortableComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,10 @@ import { CustomerService } from './services/customer.service';
     PackageService,
     LoginService,
     OauthService,
-    CustomerService
+    CustomerService,
+    DragDropConfig,
+    { provide: DragDropService, useFactory: dragDropServiceFactory },
+    { provide: DragDropSortableService, useFactory: dragDropSortableServiceFactory, deps: [DragDropConfig] }
   ],
   bootstrap: [AppComponent]
 })

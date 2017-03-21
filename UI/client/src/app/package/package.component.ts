@@ -59,9 +59,7 @@ export class PackageComponent implements OnInit {
     }
 
     private removePackage(list: Array<Package>, element: Package): void {
-        let i = list.findIndex(e => {
-            return e.id === element.id;
-        });
+        let i = list.findIndex(e => e.id === element.id);
 
         if (i >= 0) {
             list.splice(i, 1);

@@ -2,3 +2,4 @@
 .vscode/
 npm-debug.log
 npm-debug.log.*
+UI/**/*.d.ts
