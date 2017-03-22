@@ -2,11 +2,11 @@
     <div class="generate-command">
         <create-subscription [subscription]="toBeCreatedSubscription"></create-subscription>
     </div>
-    <div class="subscription">
+    <div class="subscription" dnd-sortable-container [sortableData]="selectedPackageList">
         <div *ngIf="selectedPackageList.length === 0" class="non-package">
             <span>You don't subscribe any app! Go to <a routerLink="/package">subscribe</a> yours! </span>
         </div>
-        <div *ngFor="let app of selectedPackageList; let i=index;" class="package-item">
+        <div *ngFor="let app of selectedPackageList; let i = index;" class="package-item" dnd-sortable [sortableIndex]="i">
             <div class="item">
                 <div class="col-md-1 col-sm-1">
                     <img src={{app.icon}}></div>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { DndModule } from 'ng2-dnd';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,7 +51,8 @@ import { CustomerService } from './services/customer.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DndModule.forRoot()
   ],
   providers: [
     PackageListService,
