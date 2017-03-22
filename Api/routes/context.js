@@ -7,14 +7,7 @@ var application = require('../model/context');
 /* GET all contexts */
 router.get('/:customer/contexts', function(req, res, next) {
     let queryOption = {};
-    if (!!req.query['q']) {
-        queryOption = {
-            name: {
-                $regex: req.query['q'],
-                $options: 'i'   // Case insentive
-        }};
-    }
-
+    
     application.find(queryOption, function (err, apps) {
         if (err) return next(err);
         res.json(apps);
@@ -41,9 +34,9 @@ router.get('/:customer/context/:query', function(req, res, next) {
 /* CREATE a new context */
 router.post('/:customer/context', function(req, res, next) {
     application.create(req.body, function (err, app) {
-		if (err) return next(err);
-		res.send(app);
-	});
+        if (err) return next(err);
+        res.send(app);
+    });
 });
 
 /* UPDATE an context */
