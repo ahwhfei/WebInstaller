@@ -2,23 +2,23 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let contextSchema = new mongoose.Schema({
-    applicationListId: string,
+    applicationListId: String,
     applicationLogs: [{
-        applicationId: string, 
-        applicationLog: string,
-        executionDurtion: number,
-        endTime: date,
-        executionStatus: string,
-        startTime: date
+        applicationId: String, 
+        applicationLog: String,
+        executionDurtion: Number,
+        endTime: Date,
+        executionStatus: String,
+        startTime: Date
     }],
-    applicationListLog: string,
-    endTime: date,
-    executionDurtion: number,
-    executionStatus: string,
-    hostName: string,
-    hostIp: string,
-    startTime: date,
-    OsVersion: string
+    applicationListLog: String,
+    endTime: Date,
+    executionDurtion: Number,
+    executionStatus: String,
+    hostName: String,
+    hostIp: String,
+    startTime: Date,
+    OsVersion: String
 });
 
 module.exports = mongoose.model('context', contextSchema);
