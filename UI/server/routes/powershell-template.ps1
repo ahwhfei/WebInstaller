@@ -42,22 +42,23 @@ $machineComputerName = $machineComputer.name
 $ipV4 = Test-Connection -ComputerName (hostname) -Count 1  | Select-Object -ExpandProperty IPV4Address
 $MachineIpAddress = $ipV4.IPAddressToString
 $applogs = @{}
+$appLogsArray = New-Object System.Collections.ArrayList
 function PostInstallInfo{
     Param(
         [hashtable]$applogs,
         [string]$uri = "<<APIURL>>/context"
     )
     $body = @{
-        Applist_id = $applist_id
-        App_Logs = $applogs
-        List_complete_log = $listCompletelog
-        List_installation_duration = $listInstallationDuration.TotalMinutes
-        List_installation_status = $listInstallationStatus
-        Windows_version = $WindowsVersion
-        Machine_computer_name = $machineComputerName
-        Machine_ip_address = $MachineIpAddress
-        StartTime = $startTime
-        EndTime = $endTime
+        applicationListId = $applist_id
+        applicationLogs = $appLogsArray
+        applicationListLog = $listCompletelog
+        executionDurtion = $listInstallationDuration.TotalMinutes
+        executionStatus = $listInstallationStatus
+        OsVersion = $WindowsVersion
+        hostName = $machineComputerName
+        hostIp = $MachineIpAddress
+        startTime = $startTime.ToString("u")
+        endTime = $endTime.ToString("u")
     }
     $json = $body | ConvertTo-Json
     $response = Invoke-RestMethod $uri -Method Post -Body $json -ContentType 'application/json'
@@ -99,12 +100,15 @@ function Install($programName, $message, $script, $appId, $shouldExit) {
         $applog = "Install $($programName) success"
     }
     $applogs = @{
-        App_id = $appId
-        App_log = $applog
-        App_instatllation_duration = $appInstatllationDuration.TotalMinutes
-        App_installation_status = $appInstallationStatus
+        applicationId = $appId
+        applicationLog = $applog
+        executionDurtion = $appInstatllationDuration.TotalMinutes
+        executionStatus = $appInstallationStatus
+        startTime = $appStartTime.ToString("u")
+        endTime = $appEndTime.ToString("u")
     }
-    PostInstallInfo -applogs $applogs
+    [void] $appLogsArray.Add($applogs)
+    #PostInstallInfo -applogs $applogs
 }
 
 function Pause {
