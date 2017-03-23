@@ -13,7 +13,7 @@
         const id = req.params.id;
 
         let psTemplate = fs.readFileSync(path.join(__dirname, 'powershell-template.ps1'))
-                            .toString().replace('<<POWERSHELLTEMPLATEID>>', config.host + '/apps/' + id);
+                            .toString().replace('<<POWERSHELLTEMPLATEID>>', config.host + '/apps/' + id).replace('<<APPLISTID>>',id);
         res.send(psTemplate);
     });
 
