@@ -45,7 +45,7 @@ $applogs = @{}
 function PostInstallInfo{
     Param(
         [hashtable]$applogs,
-        [string]$uri = "http:/test.com"
+        [string]$uri = "<<APIURL>>/context"
     )
     $body = @{
         Applist_id = $applist_id
@@ -60,7 +60,7 @@ function PostInstallInfo{
         EndTime = $endTime
     }
     $json = $body | ConvertTo-Json
-    #$response = Invoke-RestMethod $uri -Method Post -Body $json -ContentType 'application/json'
+    $response = Invoke-RestMethod $uri -Method Post -Body $json -ContentType 'application/json'
     write-host $json
 }
 
