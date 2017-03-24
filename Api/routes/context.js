@@ -8,9 +8,9 @@ var application = require('../model/context');
 router.get('/:customer/contexts', function(req, res, next) {
     let queryOption = {};
     
-    application.find(queryOption, function (err, apps) {
+    application.find(queryOption, function (err, contexts) {
         if (err) return next(err);
-        res.json(apps);
+        res.json(contexts);
     })
     .limit(40)
     .sort({count: -1, name: 1});
@@ -19,29 +19,40 @@ router.get('/:customer/contexts', function(req, res, next) {
 /* GET context detail according to ID or Name */
 router.get('/:customer/context/:query', function(req, res, next) {
     if (req.params.query.length === 24) {  // Query by ID
-        application.findById(req.params.query, function (err, app) {
+        application.findById(req.params.query, function (err, context) {
             if (err) return next(err);
-            res.json(app);
+            res.json(context);
         });
     } else {  // Query by Name
-        application.find({Name: req.params.query}, function (err, app) {
+        application.find({Name: req.params.query}, function (err, context) {
             if (err) return next(err);
-            res.json(app);
+            res.json(context);
         });
     }
 });
 
-/* CREATE a new context */
+/* CREATE OR UPDATE a new context */
 router.post('/:customer/context', function(req, res, next) {
-    application.create(req.body, function (err, app) {
-        if (err) return next(err);
-        res.send(app);
-    });
-});
+    var appListLogs = req.body;
 
-/* UPDATE an context */
-router.put('/:customer/context/:id', function(req, res, next) {
-    application.findByIdAndUpdate(req.params.id, req.body, function (err, app) {
+    var guid = {};
+    guid['guid'] = appListLogs.guid;
+
+    var defaultLogs={};
+    defaultLogs['OsVersion'] = appListLogs.OsVersion;
+    defaultLogs['hostName'] = appListLogs.hostName;
+    defaultLogs['applicationListId'] = appListLogs.applicationListId;
+    defaultLogs['hostIp'] = appListLogs.hostIp;
+    defaultLogs['startTime'] = appListLogs.startTime;
+
+    var logs = {};
+    logs['applicationLogs'] = appListLogs.applicationLogs;
+    logs['applicationListLog'] = appListLogs.applicationListLog;
+    logs['endTime'] = appListLogs.endTime;
+    logs['executionStatus'] = appListLogs.executionStatus;
+    logs['executionDurtion'] = appListLogs.executionDurtion;
+
+    application.update(guid, {$set: logs, $setOnInsert: defaultLogs}, {upsert: true}, err => {
         if (err) return next(err);
         res.send('Update successfully');
     });
@@ -49,9 +60,9 @@ router.put('/:customer/context/:id', function(req, res, next) {
 
 /* DELETE an context */
 router.delete('/:customer/context/:id', function(req, res, next) {
-    application.findByIdAndRemove(req.params.id, function (err, app) {
+    application.findByIdAndRemove(req.params.id, function (err, context) {
         if (err) return next(err);
-        res.send(app);
+        res.send(context);
     });
 });
 

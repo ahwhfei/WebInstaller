@@ -31,11 +31,12 @@ $status = @{
     INTERRUPT='Interrupt'
 }
 
+$guid = [GUID]::NewGuid().toString().replace("-","")
 $applist_id = '<<APPLISTID>>'
 $startTime = Get-Date
 $listInstallationStatus = $status.INTERRUPT
 $WindowsVersion = (Get-WmiObject -class Win32_OperatingSystem).Caption
-$listCompletelog = ''
+$global:listCompletelog = ''
 $listInstallationDuration = ''
 $machineComputer = Get-WmiObject -Class Win32_ComputerSystem
 $machineComputerName = $machineComputer.name
@@ -45,13 +46,15 @@ $applogs = @{}
 $appLogsArray = New-Object System.Collections.ArrayList
 function PostInstallInfo{
     Param(
-        [hashtable]$applogs,
         [string]$uri = "<<APIURL>>/context"
     )
+    $endTime = Get-Date
+    $listInstallationDuration = $endTime-$startTime
     $body = @{
+        guid = $guid
         applicationListId = $applist_id
         applicationLogs = $appLogsArray
-        applicationListLog = $listCompletelog
+        applicationListLog = $global:listCompletelog
         executionDurtion = $listInstallationDuration.TotalMinutes
         executionStatus = $listInstallationStatus
         OsVersion = $WindowsVersion
@@ -68,47 +71,54 @@ function PostInstallInfo{
 # Help with installing other dependencies
 $script:answer = ""
 function Install($programName, $message, $script, $appId, $shouldExit) {
+    $appLog = ""
     if ($script:answer -ne "a") {
         Write-Host -ForegroundColor Green "Allow the script to install $($programName)?"
         Write-Host "Tip: Note that if you type a you won't be prompted for subsequent installations"
+        $appLog += "Allow the script to install $($programName)?" + "`n" + "Tip: Note that if you type a you won't be prompted for subsequent installations" + "`n"
         do {
             $script:answer = (Read-Host "(Y)es/(N)o/(A)ll").ToLower()
+            $appLog += "(Y)es/(N)o/(A)llL " + $script:answer + "`n"
         } until ($script:answer -eq "y" -or $script:answer -eq "n" -or $script:answer -eq "a")
 
         if ($script:answer -eq "n") {
             Write-Host -ForegroundColor Yellow "You have chosen not to install $($programName). Some features may not work correctly if you haven't already installed it"
+            $appLog += "You have chosen not to install $($programName). Some features may not work correctly if you haven't already installed it" + "`n"
             return
         }
     }
 
     Write-Host $message
+    $appLog += $message + "`n"
 
     $appStartTime = Get-Date
-    Invoke-Expression($script)
+    $appLog += Invoke-Expression($script)
     $appEndTime = Get-Date
     $appInstatllationDuration = $appEndTime-$appStartTime
-    $applog = ''
     $appInstallationStatus = 'Interrupt'
     Write-Host "EXIT CODE: $LASTEXITCODE"
+    $appLog += "EXIT CODE: $LASTEXITCODE" + "`n"
+    
     if ($LASTEXITCODE -ne 0) {
         $appInstallationStatus = $status.FAIL
-        $applog = "WARNING: $($programName) not installed"
+        $appLog += "WARNING: $($programName) not installed" + "`n"
         $listInstallationStatus = $status.FAIL
-        Write-Host -ForegroundColor Yellow $applog
+        Write-Host -ForegroundColor Yellow $appLog
     }else{
         $appInstallationStatus = $status.SUCCESS
-        $applog = "Install $($programName) success"
+        $appLog += "Install $($programName) success" + "`n"
     }
     $applogs = @{
         applicationId = $appId
-        applicationLog = $applog
+        applicationLog = $appLog
         executionDurtion = $appInstatllationDuration.TotalMinutes
         executionStatus = $appInstallationStatus
         startTime = $appStartTime.ToString("u")
         endTime = $appEndTime.ToString("u")
     }
     [void] $appLogsArray.Add($applogs)
-    #PostInstallInfo -applogs $applogs
+    $global:listCompletelog += $appLog + "`n"
+    PostInstallInfo
 }
 
 function Pause {
@@ -142,6 +152,7 @@ if($listInstallationStatus -ne $status.FAIL){
     $listInstallationStatus=$status.SUCCESS
 }
 $listInstallationDuration = $endTime-$startTime
-PostInstallInfo -applogs $applogs
+$global:listCompletelog += "This script has modified your environment. You need to log off and log back on for the changes to take effect." + "`n"
+PostInstallInfo
 Write-Host -ForegroundColor Green "This script has modified your environment. You need to log off and log back on for the changes to take effect."
 Pause

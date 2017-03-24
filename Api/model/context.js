@@ -2,6 +2,7 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let contextSchema = new mongoose.Schema({
+    guid: String,
     applicationListId: String,
     applicationLogs: [{
         applicationId: String, 
