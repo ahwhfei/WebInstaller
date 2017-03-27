@@ -31,33 +31,37 @@ $status = @{
     INTERRUPT='Interrupt'
 }
 
+$guid = [GUID]::NewGuid().toString().replace("-","")
 $applist_id = '<<APPLISTID>>'
 $startTime = Get-Date
 $listInstallationStatus = $status.INTERRUPT
 $WindowsVersion = (Get-WmiObject -class Win32_OperatingSystem).Caption
-$listCompletelog = ''
+$global:listCompletelog = ''
 $listInstallationDuration = ''
 $machineComputer = Get-WmiObject -Class Win32_ComputerSystem
 $machineComputerName = $machineComputer.name
 $ipV4 = Test-Connection -ComputerName (hostname) -Count 1  | Select-Object -ExpandProperty IPV4Address
 $MachineIpAddress = $ipV4.IPAddressToString
 $applogs = @{}
+$appLogsArray = New-Object System.Collections.ArrayList
 function PostInstallInfo{
     Param(
-        [hashtable]$applogs,
         [string]$uri = "<<APIURL>>/context"
     )
+    $endTime = Get-Date
+    $listInstallationDuration = $endTime-$startTime
     $body = @{
-        Applist_id = $applist_id
-        App_Logs = $applogs
-        List_complete_log = $listCompletelog
-        List_installation_duration = $listInstallationDuration.TotalMinutes
-        List_installation_status = $listInstallationStatus
-        Windows_version = $WindowsVersion
-        Machine_computer_name = $machineComputerName
-        Machine_ip_address = $MachineIpAddress
-        StartTime = $startTime
-        EndTime = $endTime
+        guid = $guid
+        applicationListId = $applist_id
+        applicationLogs = $appLogsArray
+        applicationListLog = $global:listCompletelog
+        executionDurtion = $listInstallationDuration.TotalMinutes
+        executionStatus = $listInstallationStatus
+        OsVersion = $WindowsVersion
+        hostName = $machineComputerName
+        hostIp = $MachineIpAddress
+        startTime = $startTime.ToString("u")
+        endTime = $endTime.ToString("u")
     }
     $json = $body | ConvertTo-Json
     $response = Invoke-RestMethod $uri -Method Post -Body $json -ContentType 'application/json'
@@ -67,44 +71,54 @@ function PostInstallInfo{
 # Help with installing other dependencies
 $script:answer = ""
 function Install($programName, $message, $script, $appId, $shouldExit) {
+    $appLog = ""
     if ($script:answer -ne "a") {
         Write-Host -ForegroundColor Green "Allow the script to install $($programName)?"
         Write-Host "Tip: Note that if you type a you won't be prompted for subsequent installations"
+        $appLog += "Allow the script to install $($programName)?" + "`n" + "Tip: Note that if you type a you won't be prompted for subsequent installations" + "`n"
         do {
             $script:answer = (Read-Host "(Y)es/(N)o/(A)ll").ToLower()
+            $appLog += "(Y)es/(N)o/(A)llL " + $script:answer + "`n"
         } until ($script:answer -eq "y" -or $script:answer -eq "n" -or $script:answer -eq "a")
 
         if ($script:answer -eq "n") {
             Write-Host -ForegroundColor Yellow "You have chosen not to install $($programName). Some features may not work correctly if you haven't already installed it"
+            $appLog += "You have chosen not to install $($programName). Some features may not work correctly if you haven't already installed it" + "`n"
             return
         }
     }
 
     Write-Host $message
+    $appLog += $message + "`n"
 
     $appStartTime = Get-Date
-    Invoke-Expression($script)
+    $appLog += Invoke-Expression($script)
     $appEndTime = Get-Date
     $appInstatllationDuration = $appEndTime-$appStartTime
-    $applog = ''
     $appInstallationStatus = 'Interrupt'
     Write-Host "EXIT CODE: $LASTEXITCODE"
+    $appLog += "EXIT CODE: $LASTEXITCODE" + "`n"
+    
     if ($LASTEXITCODE -ne 0) {
         $appInstallationStatus = $status.FAIL
-        $applog = "WARNING: $($programName) not installed"
+        $appLog += "WARNING: $($programName) not installed" + "`n"
         $listInstallationStatus = $status.FAIL
-        Write-Host -ForegroundColor Yellow $applog
+        Write-Host -ForegroundColor Yellow $appLog
     }else{
         $appInstallationStatus = $status.SUCCESS
-        $applog = "Install $($programName) success"
+        $appLog += "Install $($programName) success" + "`n"
     }
     $applogs = @{
-        App_id = $appId
-        App_log = $applog
-        App_instatllation_duration = $appInstatllationDuration.TotalMinutes
-        App_installation_status = $appInstallationStatus
+        applicationId = $appId
+        applicationLog = $appLog
+        executionDurtion = $appInstatllationDuration.TotalMinutes
+        executionStatus = $appInstallationStatus
+        startTime = $appStartTime.ToString("u")
+        endTime = $appEndTime.ToString("u")
     }
-    PostInstallInfo -applogs $applogs
+    [void] $appLogsArray.Add($applogs)
+    $global:listCompletelog += $appLog + "`n"
+    PostInstallInfo
 }
 
 function Pause {
@@ -138,6 +152,7 @@ if($listInstallationStatus -ne $status.FAIL){
     $listInstallationStatus=$status.SUCCESS
 }
 $listInstallationDuration = $endTime-$startTime
-PostInstallInfo -applogs $applogs
+$global:listCompletelog += "This script has modified your environment. You need to log off and log back on for the changes to take effect." + "`n"
+PostInstallInfo
 Write-Host -ForegroundColor Green "This script has modified your environment. You need to log off and log back on for the changes to take effect."
 Pause
